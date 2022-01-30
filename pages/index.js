@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/layout";
-import styles from "../styles/Home.module.css";
 
 const HomePage = () => {
   return (
@@ -11,7 +9,7 @@ const HomePage = () => {
         <meta name="description" content="Nifty Tunes NFT Music" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      NiftyTunes meets 🌎
+      <h2 className="text-3xl font-bold underline">🌎 meet NiftyTunes</h2>
     </Layout>
   );
 };
