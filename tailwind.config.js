@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: ['Source Sans Pro', 'sans-serif'],
+      head: ['Source Sans Pro', 'sans-serif'],
+    },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
 }
