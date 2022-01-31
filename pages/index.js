@@ -9,8 +9,9 @@ const HomePage = () => {
         <meta name="description" content="Nifty Tunes NFT Music" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2 className="text-l">🌎 meet NiftyTunes</h2>
-      <button class="btn btn-primary rounded-full">daisyUI Button</button>
+      <div className="flex h-full">
+        <h2 className="text-3xl font-bold ml-5 mt-3">🌎 meet NiftyTunes</h2>
+      </div>
     </Layout>
   )
 }
