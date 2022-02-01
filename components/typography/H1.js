@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 const insertPeriodStyles = (str) => {
   const tagToInsert = `<span class="text-primary">.</span>`
   console.log(str.split('.').join(tagToInsert))
