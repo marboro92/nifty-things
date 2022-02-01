@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const Layout = ({ children }) => {
   return (
     <div className="grid grid-cols-6 h-screen divide-x divide-base-300">
@@ -18,9 +20,9 @@ const Layout = ({ children }) => {
             className="input input-bordered flex-1"
           />
           <div className="flex gap-1 items-center">
-            <button className="btn btn-sm btn-primary rounded-full">
-              Profile
-            </button>
+            <Link href="/profile">
+              <a className="btn btn-sm btn-primary rounded-full">Profile</a>
+            </Link>
             <button className="btn btn-sm btn-outline btn-secondary rounded-full">
               Connect Wallet
             </button>
