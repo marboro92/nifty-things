@@ -1,6 +1,5 @@
 const insertPeriodStyles = (str) => {
   const tagToInsert = `<span class="text-primary">.</span>`
-  console.log(str.split('.').join(tagToInsert))
   return str.split('.').join(tagToInsert)
 }
 
