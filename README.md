@@ -35,3 +35,17 @@ Styles are generated with [PostCSS](https://postcss.org/).
 
 [Prettier](https://prettier.io/)
 [Eslint](https://eslint.org/)
+
+## Testing
+
+Unit tests are written using React [Testing Library](https://testing-library.com/docs/react-testing-library/intro/) and [Jest] (https://jestjs.io/). 
+
+To run all tests
+
+`npm run test`
+
+To run a specific test file, run:
+
+`npm run tests [fileName.test.js]`
+
+All tests can be found under the `tests` folder.
