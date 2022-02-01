@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import H1 from '../components/typography/H1'
 
 const ProfilePage = () => {
   return (
@@ -10,9 +11,7 @@ const ProfilePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex h-full">
-        <h2 className="text-3xl font-bold ml-5 mt-3">
-          This is your personal profile.
-        </h2>
+        <H1>Profile Settings.</H1>
       </div>
     </Layout>
   )

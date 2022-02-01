@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import H1 from '../components/typography/H1'
 
 const HomePage = () => {
   return (
@@ -10,7 +11,7 @@ const HomePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex h-full">
-        <h2 className="text-3xl font-bold ml-5 mt-3">🌎 meet NiftyTunes</h2>
+        <H1>Artists Matter. Explore Music.</H1>
       </div>
     </Layout>
   )
