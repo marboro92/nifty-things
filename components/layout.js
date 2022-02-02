@@ -1,21 +1,14 @@
 import Link from 'next/link'
 import { PillButton } from './buttons'
 import Head from './Head'
+import Sidebar from './sidebar/Sidebar'
 
 const Layout = ({ children }) => {
   return (
     <>
       <Head />
       <div className="grid grid-cols-6 h-screen divide-x divide-base-300">
-        <nav className="bg-base-200 mt-3 ml-2">
-          <h1 className="font-bold text-[24px] mb-4">NiftyTunes</h1>
-          <section>
-            <h5 className="uppercase text-sm font-bold">Browse Music</h5>
-            <ul className="ml-2">
-              <li>Hear this</li>
-            </ul>
-          </section>
-        </nav>
+        <Sidebar />
         <main className="col-span-5 divide-y">
           <div className="flex mx-2 my-1 gap-1">
             <input
