@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <Head />
       <div className="grid grid-cols-6 h-screen divide-x divide-base-300">
         <Sidebar />
-        <main className="col-span-5 divide-y">
+        <main className="col-span-5 divide-y divide-base-300">
           <div className="flex mx-2 my-1 gap-1">
             <input
               type="text"

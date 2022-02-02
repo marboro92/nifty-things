@@ -1,20 +1,21 @@
 import Link from 'next/link'
-import HearThis from './icons/hear-this.svg'
+import * as Icons from './icons'
 
 const BROWSE_MUSIC_NAV_ITEMS = [
   {
     label: 'Explore',
-    icon: 'expore',
+    icon: <Icons.Explore />,
     href: '/',
   },
   {
     label: 'Hear this',
-    icon: 'hear-this',
+    icon: <Icons.HearThis />,
     href: '/',
+    selected: true,
   },
   {
     label: 'Radio',
-    icon: 'radio',
+    icon: <Icons.Radio />,
     href: '/',
   },
 ]
@@ -22,56 +23,82 @@ const BROWSE_MUSIC_NAV_ITEMS = [
 const YOUR_LIBRARY_NAV_ITEMS = [
   {
     label: 'Recently Added',
-    icon: 'last-added',
+    icon: <Icons.LastAdded />,
     href: '/',
   },
   {
     label: 'Favourites',
-    icon: 'favourites',
+    icon: <Icons.Favorites />,
     href: '/',
   },
   {
     label: 'Artists',
-    icon: 'artists',
+    icon: <Icons.Artists />,
     href: '/',
   },
   {
     label: 'Songs',
-    icon: 'songs',
+    icon: <Icons.Songs />,
     href: '/',
   },
   {
     label: 'Genres',
-    icon: 'genres',
+    icon: <Icons.Genres />,
     href: '/',
   },
 ]
 
-const MOCK_PLAYLIST_NAV_ITEMS = [
-  ' Nifty Beats',
+const MOCK_PLAYLIST_LIST = [
+  'Nifty Beats',
   'Workout',
   'Nostalgic',
   'Anime Stuff',
   'My Top-100',
 ]
 
+const playlistNavItems = MOCK_PLAYLIST_LIST.map((playlist) => ({
+  label: playlist,
+  icon: <Icons.Playlist />,
+  href: '/',
+}))
+
+const NavSection = ({ itemsList, sectionTitle }) => (
+  <section className="pt-1">
+    <h5 className="uppercase text-sm font-semibold mb-2 tracking-wider">
+      {sectionTitle}
+    </h5>
+    <ul>
+      {itemsList.map((item) => (
+        <li key={item.label}>
+          <Link href={item.href}>
+            <a
+              className={`flex gap-1 my-half rounded-full text-neutral py-[8px] pl-2 font-light hover:bg-[#e5edf5] ${
+                item.selected ? 'bg-primary-100' : ''
+              }`}
+            >
+              {item.icon}
+              {item.label}
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </section>
+)
+
 const Sidebar = ({ children }) => {
   return (
-    <nav className="bg-base-200 mt-3 ml-2">
+    <nav className="bg-base-200 pt-3 px-2">
       <h1 className="font-bold text-[24px] mb-4">NiftyTunes</h1>
-      <section>
-        <h5 className="uppercase text-sm font-bold">Browse Music</h5>
-        <ul className="ml-2">
-          <li>
-            <Link href="/">
-              <a className="flex gap-1 my-1">
-                <HearThis />
-                Hear this
-              </a>
-            </Link>
-          </li>
-        </ul>
-      </section>
+      <NavSection
+        itemsList={BROWSE_MUSIC_NAV_ITEMS}
+        sectionTitle="Browse Music"
+      />
+      <NavSection
+        itemsList={YOUR_LIBRARY_NAV_ITEMS}
+        sectionTitle="Your Library"
+      />
+      <NavSection itemsList={playlistNavItems} sectionTitle="playlists" />
     </nav>
   )
 }
