@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PillButton } from './buttons'
 import Head from './Head'
 
 const Layout = ({ children }) => {
@@ -24,11 +25,9 @@ const Layout = ({ children }) => {
             />
             <div className="flex gap-1 items-center">
               <Link href="/profile">
-                <a className="btn btn-sm btn-primary rounded-full">Profile</a>
+                <PillButton as="a">Profile</PillButton>
               </Link>
-              <button className="btn btn-sm btn-outline btn-secondary rounded-full">
-                Connect Wallet
-              </button>
+              <PillButton secondary>Connect Wallet</PillButton>
             </div>
           </div>
           <div className="h-full">{children}</div>
