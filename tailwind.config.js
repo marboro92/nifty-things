@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['Source Sans Pro', 'sans-serif'],
-      head: ['Source Sans Pro', 'sans-serif'],
+      sans: ['SF Pro Display', 'sans-serif'],
+      head: ['SF Pro Display', 'sans-serif'],
     },
     spacing: {
       half: '5px',
@@ -26,6 +26,9 @@ module.exports = {
     },
     fontSize: {
       tiny: '0.5',
+    },
+    colors: {
+      'primary-100': 'rgba(93, 95, 239, 0.1)',
     },
   },
   daisyui: {
