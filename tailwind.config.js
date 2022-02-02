@@ -18,6 +18,15 @@ module.exports = {
       5: '50px',
       6: '60px',
     },
+    fontWeight: {
+      light: 300,
+      normal: 400,
+      semibold: 600,
+      bold: 700,
+    },
+    fontSize: {
+      tiny: '0.5',
+    },
   },
   daisyui: {
     themes: [
@@ -38,7 +47,7 @@ module.exports = {
           'accent-content':
             '#ffffff' /* Foreground content color to use on accent color */,
 
-          neutral: '#51596D' /* Neutral color */,
+          neutral: '#5C656C' /* Neutral color */,
           'neutral-focus': '#1E263A' /* Neutral color - focused */,
           'neutral-content':
             '#ffffff' /* Foreground content color to use on neutral color */,
