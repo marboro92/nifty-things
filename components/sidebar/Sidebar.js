@@ -86,9 +86,13 @@ const NavSection = ({ itemsList, sectionTitle }) => (
   </section>
 )
 
-const Sidebar = ({ children }) => {
+const Sidebar = ({ open = true }) => {
   return (
-    <nav className="bg-base-200 pt-3 px-2">
+    <nav
+      className={`bg-base-200 pt-3 px-2 w-full min-w-[257px] ${
+        open ? 'block' : 'hidden'
+      } md:max-w-[257px] md:block`}
+    >
       <h1 className="font-bold text-[24px] mb-4">NiftyTunes</h1>
       <NavSection
         itemsList={BROWSE_MUSIC_NAV_ITEMS}

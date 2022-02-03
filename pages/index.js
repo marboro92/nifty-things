@@ -4,7 +4,7 @@ import { H1, Body1 } from '../components/typography'
 const HomePage = () => {
   return (
     <Layout>
-      <div className="h-full ml-5 mt-3">
+      <div className="h-full mx-2 my-2 md:mx-5 md:my-3">
         <H1>Artists Matter. Explore Music.</H1>
         <Body1>
           Music NFTs are changing the way fans connect with their favorite
