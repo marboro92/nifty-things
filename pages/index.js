@@ -1,4 +1,4 @@
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import { H1, Body1 } from '../components/typography'
 
 const HomePage = () => {
