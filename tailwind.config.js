@@ -25,7 +25,8 @@ module.exports = {
       bold: 700,
     },
     fontSize: {
-      tiny: '0.5',
+      tiny: '0.5rem',
+      xs: '0.75rem',
     },
     colors: {
       'primary-100': 'rgba(93, 95, 239, 0.1)',
