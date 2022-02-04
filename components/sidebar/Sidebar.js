@@ -94,7 +94,7 @@ const Sidebar = ({ open = true }) => {
       } md:block`}
     >
       <nav
-        className={`py-3 px-2 h-[calc(100%-80px)] w-full fixed overflow-auto min-w-[257px] md:max-w-[257px]`}
+        className={`py-3 px-2 h-[calc(100%-80px)] w-full fixed overflow-auto min-w-[257px] max-w-[257px]`}
       >
         <h1 className="font-bold text-[24px] mb-4">NiftyTunes</h1>
         <NavSection
