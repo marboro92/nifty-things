@@ -88,11 +88,13 @@ const NavSection = ({ itemsList, sectionTitle }) => (
 
 const Sidebar = ({ open = true }) => {
   return (
-    <aside className="min-w-[257px]">
+    <aside
+      className={`min-w-[257px] bg-base-200 ${
+        open ? 'block' : 'hidden'
+      } md:block`}
+    >
       <nav
-        className={`bg-base-200 py-3 px-2 w-full fixed overflow-scroll h-full min-w-[257px] ${
-          open ? 'block' : 'hidden'
-        } md:max-w-[257px] md:block`}
+        className={`py-3 px-2 h-[calc(100%-80px)] w-full fixed overflow-auto min-w-[257px] md:max-w-[257px]`}
       >
         <h1 className="font-bold text-[24px] mb-4">NiftyTunes</h1>
         <NavSection
