@@ -1,6 +1,7 @@
 import ReactHowler from 'react-howler'
-
+import raf from 'raf'
 import { useRef, useState } from 'react'
+
 import * as Icons from './icons'
 import { Label, LabelDescription } from '../typography'
 
@@ -25,6 +26,14 @@ const MOCK_TRACKLIST = [
   },
 ]
 
+const convertToMinutes = (seconds) => {
+  const remainingSeconds = (seconds % 60).toFixed(0)
+  const formattedSeconds =
+    remainingSeconds > 9 ? remainingSeconds : '0' + remainingSeconds
+  const minutes = (seconds / 60).toFixed(0)
+  return `${minutes}:${formattedSeconds}`
+}
+
 const PlayerButton = ({ children, onClick }) => (
   <button
     className="p-1 h-4 w-4 hover:bg-base-300 m-1 rounded-full"
@@ -34,10 +43,10 @@ const PlayerButton = ({ children, onClick }) => (
   </button>
 )
 
-const PlayPauseButton = ({ playing, onClick }) => (
+const PlayPauseButton = ({ playing, onPlay, onPause }) => (
   <button
     className="p-1 bg-primary m-1 rounded-full hover:scale-110 transition-all"
-    onClick={onClick}
+    onClick={playing ? onPause : onPlay}
   >
     {playing ? <Icons.Pause /> : <Icons.Play />}
   </button>
@@ -48,40 +57,44 @@ const Player = () => {
   const [loaded, setLoaded] = useState(false)
   const [duration, setDuration] = useState()
   const [loop, setLoop] = useState(false)
-  const [seek, setSeek] = useState(0)
+  const [seek, setSeek] = useState()
   const [isSeeking, setIsSeeking] = useState(false)
   const [trackNumber, setTrackNumber] = useState(0)
   const [volume, setVolume] = useState(1)
-  const player = useRef(null)
+  const [playError, setPlayError] = useState(false)
 
-  const handlePlayPause = () => setPlaying(!playing)
+  const playerRef = useRef(null)
+  let _raf
+
+  const onPlayError = () => setPlayError(true)
+
   const handleOnLoad = () => {
     setLoaded(true)
-    setDuration(player.duration)
+    setDuration(playerRef.current.duration())
+    renderSeekPos()
   }
   const handleOnPlay = () => {
-    setPlaying(true)
-    // renderSeekPos()
+    setPlaying(true, () => renderSeekPos())
+  }
+  const handleOnPause = () => {
+    setPlaying(false)
   }
   const handleOnEnd = () => {
     setPlaying(false)
-    setDuration(player.duration)
+    clearRAF()
   }
   const handleLoopToggle = () => {
-    setLoop(false)
+    setLoop(!loop)
   }
-  const handleMouseDownSeek = () => {
-    setIsSeeking(true)
+  const handleMuteToggle = () => {
+    setMute(!mute)
   }
-  const handleMouseUpSeek = (e) => {
-    setIsSeeking(false)
+  const handleSeek = (e) => {
+    const seek = e.target.value
+    playerRef.current.seek(seek)
+    setSeek(seek)
+  }
 
-    player.seek(e.target.value)
-  }
-
-  const handleSeekingChange = (e) => {
-    setSeek(parseFloat(e.target.value))
-  }
   const handleNext = () => {
     if (trackNumber < MOCK_TRACKLIST.length + 1) {
       setTrackNumber(trackNumber + 1)
@@ -98,21 +111,24 @@ const Player = () => {
   }
 
   const renderSeekPos = () => {
-    if (!isSeeking) {
-      setSeek(player.seek())
-    }
-    if (playing) {
-      // this._raf = raf(this.renderSeekPos)
+    const seek = playerRef.current.seek()
+    setSeek(seek)
+    if (!playing) {
+      _raf = raf(renderSeekPos)
     }
   }
+
+  const clearRAF = () => raf.cancel(_raf)
+
   const handleShuffle = () => {}
   const handleRepeat = () => {}
   return (
     <>
       <ReactHowler
+        html5={true}
         src={MOCK_TRACKLIST[trackNumber].file}
         playing={playing}
-        ref={player}
+        ref={playerRef}
         onLoad={handleOnLoad}
         onPlay={handleOnPlay}
         onEnd={handleOnEnd}
@@ -141,31 +157,48 @@ const Player = () => {
           <PlayerButton onClick={handleBack}>
             <Icons.Rewind />
           </PlayerButton>
-          <PlayPauseButton playing={playing} onClick={handlePlayPause} />
+          <PlayPauseButton
+            playing={playing}
+            onPause={handleOnPause}
+            onPlay={handleOnPlay}
+          />
           <PlayerButton onClick={handleBack}>
             <Icons.Rewind className="rotate-180" onClick={handleNext} />
           </PlayerButton>
           {/* <PlayerButton onClick={handleBack}>
             <Icons.Replay />
           </PlayerButton> */}
-          {/* <div className="seek">
-            <label>
-              Seek:
-              <span className="slider-container">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration ? duration.toFixed(2) : 0}
-                  step=".01"
-                  value={seek}
-                  onChange={handleSeekingChange}
-                  onMouseDown={handleMouseDownSeek}
-                  onMouseUp={handleMouseUpSeek}
-                />
-              </span>
-            </label>
-          </div> */}
         </div>
+        <label className="flex mx-1 items-center">
+          <span className="block w-[50px]">
+            {seek !== undefined ? convertToMinutes(seek) : '0:00'}
+          </span>
+          <input
+            className="mx-1 range range-xs range-primary"
+            type="range"
+            min="0"
+            name="seek"
+            max={duration}
+            step="0.1"
+            value={seek}
+            onChange={handleSeek}
+          />
+          <output name="duration" for="seek">
+            {duration ? convertToMinutes(duration) : '0:00'}
+          </output>
+        </label>
+        <label className="flex mx-1 items-center">
+          Volume
+          <input
+            className="range range-xs range-primary"
+            type="range"
+            min="0"
+            max={1}
+            step="0.25"
+            value={volume}
+            onChange={(e) => setVolume(e.target.value)}
+          />
+        </label>
       </div>
     </>
   )

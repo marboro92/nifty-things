@@ -16,6 +16,7 @@
     "@svgr/webpack": "^6.2.1",
     "daisyui": "^1.25.4",
     "next": "12.0.9",
+    "raf": "^3.4.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-howler": "^5.2.0"
