@@ -120,6 +120,15 @@ const Player = () => {
 
   const clearRAF = () => raf.cancel(_raf)
 
+  const getRangeStyle = (val, max) => ({
+    backgroundImage: `linear-gradient(#5D5FEF, #5D5FEF)`,
+    backgroundSize: `${
+      (val > 0 ? (Number(val) / Number(max)) * 100 : 0) + '%'
+    } 4px`,
+    backgroundPosition: 'left center',
+    backgroundRepeat: `no-repeat`,
+  })
+
   const handleShuffle = () => {}
   const handleRepeat = () => {}
   return (
@@ -182,6 +191,7 @@ const Player = () => {
             step="0.1"
             value={seek}
             onChange={handleSeek}
+            style={getRangeStyle(seek, duration)}
           />
           <output name="duration" for="seek">
             {duration ? convertToMinutes(duration) : '0:00'}
@@ -197,6 +207,7 @@ const Player = () => {
             step="0.25"
             value={volume}
             onChange={(e) => setVolume(e.target.value)}
+            style={getRangeStyle(volume, 1)}
           />
         </label>
       </div>
