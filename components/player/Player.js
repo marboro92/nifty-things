@@ -3,7 +3,8 @@ import raf from 'raf'
 import { useRef, useState } from 'react'
 
 import * as Icons from './icons'
-import { Label, LabelDescription } from '../typography'
+
+// TODO: remove mock data, add shuffle, loop functionality and error handler
 
 const MOCK_TRACKLIST = [
   {
@@ -34,14 +35,60 @@ const convertToMinutes = (seconds) => {
   return `${minutes}:${formattedSeconds}`
 }
 
-const PlayerButton = ({ children, onClick }) => (
+const PlayerButton = ({
+  children,
+  onClick,
+  active = false,
+  xsHidden = false,
+}) => (
   <button
-    className="p-1 h-4 w-4 hover:bg-base-300 m-1 rounded-full"
+    className={`p-1 h-4 w-4 hover:bg-[#e5edf5] m-1 rounded-full ${
+      xsHidden ? 'hidden sm:block' : ''
+    } ${active ? 'text-primary' : 'text-[#51596D]'}`}
     onClick={onClick}
   >
     {children}
   </button>
 )
+
+const PlayerRange = ({
+  label,
+  output,
+  name,
+  max,
+  min,
+  value,
+  onChange,
+  step,
+  className,
+}) => {
+  const getRangeStyle = (val, max) => ({
+    backgroundSize: `${
+      (val > 0 ? (Number(val) / Number(max)) * 100 : 0) + '%'
+    } 4px`,
+    backgroundPosition: 'left center',
+    backgroundRepeat: `no-repeat`,
+  })
+  return (
+    <label className={`mx-1 items-center text-neutral text-xs ${className}`}>
+      {label}
+      <input
+        className="mx-1 range range-xs range-primary bg-gradient-to-r from-primary to-primary"
+        type="range"
+        min={min}
+        name={name}
+        max={max}
+        step={step}
+        value={value}
+        onChange={onChange}
+        style={getRangeStyle(value, max)}
+      />
+      <output name="duration" for="seek">
+        {output}
+      </output>
+    </label>
+  )
+}
 
 const PlayPauseButton = ({ playing, onPlay, onPause }) => (
   <button
@@ -58,10 +105,9 @@ const Player = () => {
   const [duration, setDuration] = useState()
   const [loop, setLoop] = useState(false)
   const [seek, setSeek] = useState()
-  const [isSeeking, setIsSeeking] = useState(false)
   const [trackNumber, setTrackNumber] = useState(0)
-  const [volume, setVolume] = useState(1)
-  const [playError, setPlayError] = useState(false)
+  const [volume, setVolume] = useState(0.75)
+  const [shuffle, setShuffle] = useState(false)
 
   const playerRef = useRef(null)
   let _raf
@@ -83,15 +129,9 @@ const Player = () => {
     setPlaying(false)
     clearRAF()
   }
-  const handleLoopToggle = () => {
-    setLoop(!loop)
-  }
-  const handleMuteToggle = () => {
-    setMute(!mute)
-  }
   const handleSeek = (e) => {
     const seek = e.target.value
-    playerRef.current.seek(seek)
+    playerRef?.current?.seek(seek)
     setSeek(seek)
   }
 
@@ -111,7 +151,7 @@ const Player = () => {
   }
 
   const renderSeekPos = () => {
-    const seek = playerRef.current.seek()
+    const seek = playerRef?.current?.seek()
     setSeek(seek)
     if (!playing) {
       _raf = raf(renderSeekPos)
@@ -120,17 +160,9 @@ const Player = () => {
 
   const clearRAF = () => raf.cancel(_raf)
 
-  const getRangeStyle = (val, max) => ({
-    backgroundImage: `linear-gradient(#5D5FEF, #5D5FEF)`,
-    backgroundSize: `${
-      (val > 0 ? (Number(val) / Number(max)) * 100 : 0) + '%'
-    } 4px`,
-    backgroundPosition: 'left center',
-    backgroundRepeat: `no-repeat`,
-  })
+  const handleShuffle = () => setShuffle(!shuffle)
+  const handleLoop = () => setLoop(!loop)
 
-  const handleShuffle = () => {}
-  const handleRepeat = () => {}
   return (
     <>
       <ReactHowler
@@ -144,72 +176,69 @@ const Player = () => {
         loop={loop}
         volume={volume}
       />
-      <div className="flex items-center bg-base-100 w-full px-4 h-[80px] border-t border-base-300">
-        <div className="flex items-center min-w-[300px]">
-          <img
-            className="h-[48px] w-48px rounded"
-            src={MOCK_TRACKLIST[trackNumber].coverImage}
-          />
-          <div className="px-1">
-            <p className="font-semibold leading-tight">
-              {MOCK_TRACKLIST[trackNumber].title}
-            </p>
-            <p className="text-neutral text-xs leading-tight">
-              {MOCK_TRACKLIST[trackNumber].artist}
-            </p>
+      <div className="flex items-center bg-base-100 w-full px-4 h-[80px] mx-auto border-t border-base-300">
+        {loaded && (
+          <div className="flex items-center w-full max-w-[1600px] mx-auto">
+            <div className="flex items-center lg:grow lg:min-w-[300px]">
+              <img
+                className="h-[48px] w-48px rounded"
+                src={MOCK_TRACKLIST[trackNumber].coverImage}
+              />
+              <div className="px-1">
+                <p className="font-semibold leading-tight">
+                  {MOCK_TRACKLIST[trackNumber].title}
+                </p>
+                <p className="text-neutral text-xs leading-tight">
+                  {MOCK_TRACKLIST[trackNumber].artist}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <PlayerButton onClick={handleShuffle} xsHidden active={shuffle}>
+                <Icons.Shuffle />
+              </PlayerButton>
+              <PlayerButton onClick={handleBack}>
+                <Icons.Rewind />
+              </PlayerButton>
+              <PlayPauseButton
+                playing={playing}
+                onPause={handleOnPause}
+                onPlay={handleOnPlay}
+              />
+              <PlayerButton onClick={handleNext}>
+                <Icons.Rewind className="rotate-180" />
+              </PlayerButton>
+              <PlayerButton onClick={handleLoop} xsHidden active={loop}>
+                <Icons.Replay />
+              </PlayerButton>
+            </div>
+            <PlayerRange
+              className="grow mx-1 hidden md:flex"
+              label={
+                <span className="block w-[50px]">
+                  {seek !== undefined ? convertToMinutes(seek) : '0:00'}
+                </span>
+              }
+              min="0"
+              name="seek"
+              max={duration}
+              step="0.1"
+              value={seek}
+              onChange={handleSeek}
+              output={duration ? convertToMinutes(duration) : '0:00'}
+            />
+            <PlayerRange
+              className="hidden lg:flex"
+              label={<Icons.Volume />}
+              min="0"
+              name="volume"
+              max={1}
+              step="0.25"
+              value={volume}
+              onChange={(e) => setVolume(e.target.value)}
+            />
           </div>
-        </div>
-        <div className="flex items-center">
-          {/* <PlayerButton onClick={handleBack}>
-            <Icons.Shuffle />
-          </PlayerButton> */}
-          <PlayerButton onClick={handleBack}>
-            <Icons.Rewind />
-          </PlayerButton>
-          <PlayPauseButton
-            playing={playing}
-            onPause={handleOnPause}
-            onPlay={handleOnPlay}
-          />
-          <PlayerButton onClick={handleBack}>
-            <Icons.Rewind className="rotate-180" onClick={handleNext} />
-          </PlayerButton>
-          {/* <PlayerButton onClick={handleBack}>
-            <Icons.Replay />
-          </PlayerButton> */}
-        </div>
-        <label className="flex mx-1 items-center">
-          <span className="block w-[50px]">
-            {seek !== undefined ? convertToMinutes(seek) : '0:00'}
-          </span>
-          <input
-            className="mx-1 range range-xs range-primary"
-            type="range"
-            min="0"
-            name="seek"
-            max={duration}
-            step="0.1"
-            value={seek}
-            onChange={handleSeek}
-            style={getRangeStyle(seek, duration)}
-          />
-          <output name="duration" for="seek">
-            {duration ? convertToMinutes(duration) : '0:00'}
-          </output>
-        </label>
-        <label className="flex mx-1 items-center">
-          Volume
-          <input
-            className="range range-xs range-primary"
-            type="range"
-            min="0"
-            max={1}
-            step="0.25"
-            value={volume}
-            onChange={(e) => setVolume(e.target.value)}
-            style={getRangeStyle(volume, 1)}
-          />
-        </label>
+        )}
       </div>
     </>
   )
