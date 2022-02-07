@@ -1,4 +1,4 @@
-import { CloseMenu, OpenMenu, className } from './icons'
+import { CloseMenu, OpenMenu } from './icons'
 
 const MenuButton = ({ open, onClick, className }) => (
   <button onClick={onClick} className={`rounded-full ${className}`}>
