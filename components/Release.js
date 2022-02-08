@@ -1,30 +1,38 @@
 import { VerifiedArtist } from './icons'
-import { Label, Body2 } from './typography'
+import { Label } from './typography'
 
-const Release = ({ title, body, handle, profileImg, className = '' }) => {
+const Release = ({
+  title,
+  description,
+  handle,
+  verified,
+  profileImgSrc,
+  coverImgSrc,
+  href = '/',
+  className = '',
+}) => {
   return (
-    <div
-      class={`card card-bordered card-compact lg:card-normal max-w-[270px] min-h-[300px] ${className}`}
+    <a
+      href={href}
+      class={`card card-bordered card-compact lg:card-normal max-w-[300px] h-[300px] mx-2 mt-1 ${className}`}
     >
       <figure>
-        <img src="http://placeimg.com/400/250/arch" />
+        <img src={coverImgSrc} />
       </figure>
-      <div class="relative p-3 text-center top-[-50px]">
+      <div class="relative px-3 pb-1 text-center top-[-25px]">
         <img
-          src="https://picsum.photos/id/1005/50/50"
+          src={profileImgSrc}
           className="relative rounded-full translate-x-[-50%] left-1/2"
         />
         <Label>
-          Adam Shomer <VerifiedArtist className="inline" />
+          {title} {verified && <VerifiedArtist className="mx-[2px] inline" />}
         </Label>
-        <label className="block text-primary text-xs text-bold">@A-SHO</label>
-        <Body2 className="leading-tight mt-1">
-          Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit
-          sit necessitatibus veritatis sed molestiae voluptates incidunt iure
-          sapiente.
-        </Body2>
+        <label className="block text-primary text-xs text-bold">
+          @{handle}
+        </label>
+        <p className="mt-1 text-xs text-neutral">{description}</p>
       </div>
-    </div>
+    </a>
   )
 }
 
