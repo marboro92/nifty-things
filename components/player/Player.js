@@ -83,7 +83,7 @@ const PlayerRange = ({
         onChange={onChange}
         style={getRangeStyle(value, max)}
       />
-      <output name="duration" for="seek">
+      <output name="duration" htmlFor="seek">
         {output}
       </output>
     </label>

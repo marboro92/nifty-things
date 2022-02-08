@@ -25,7 +25,7 @@ const Release = ({
           src={coverImgSrc}
         />
       </figure>
-      <div class="relative px-3 pb-1 text-center top-[-25px]">
+      <div className="relative px-3 pb-1 text-center top-[-25px]">
         <div>
           <Image
             layout="fixed"
