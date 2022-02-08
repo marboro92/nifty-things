@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Layout from '../components/Layout'
 import Release from '../components/Release'
 import { H1, H2, Body1 } from '../components/typography'
+
 const MOCK_NFT_COLLECTIONS = [
   {
     title: 'Adam Shomer',
@@ -9,6 +11,7 @@ const MOCK_NFT_COLLECTIONS = [
     handle: 'A-SHO',
     profileImgSrc: 'https://picsum.photos/id/1005/50/50',
     coverImgSrc: 'https://picsum.photos/id/158/400/200',
+    id: 1,
   },
   {
     title: 'Jane Doe',
@@ -17,45 +20,55 @@ const MOCK_NFT_COLLECTIONS = [
     handle: 'jd0e',
     profileImgSrc: 'https://picsum.photos/id/1014/50/50',
     coverImgSrc: 'https://picsum.photos/id/10/400/200',
+    id: 2,
   },
   {
     title: 'ABCD',
     verified: false,
-    description: `Injustice isn’t the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
+    description: `Injustice is not the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
     handle: 'abcd',
     profileImgSrc: 'https://picsum.photos/id/1033/50/50',
     coverImgSrc: 'https://picsum.photos/id/1002/400/200',
+    id: 3,
   },
   {
     title: 'ABCD',
     verified: false,
-    description: `Injustice isn’t the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
+    description: `Injustice is not the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
     handle: 'abcd',
     profileImgSrc: 'https://picsum.photos/id/1027/50/50',
     coverImgSrc: 'https://picsum.photos/id/451/400/200',
+    id: 4,
   },
   {
     title: 'Jane Doe',
     verified: false,
-    description: `Injustice isn’t the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
+    description: `Injustice is not the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
     handle: 'jd0e',
     profileImgSrc: 'https://picsum.photos/id/1014/50/50',
     coverImgSrc: 'https://picsum.photos/id/443/400/200',
+    id: 5,
   },
   {
     title: 'ABCD',
     verified: false,
-    description: `Injustice isn’t the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
+    description: `Injustice is not the way things should be. We should stand up to it and face it head on. This collection has 10 empowering tracks.`,
     handle: 'abcd',
     profileImgSrc: 'https://picsum.photos/id/1033/50/50',
     coverImgSrc: 'https://picsum.photos/id/1008/400/200',
+    id: 6,
   },
 ]
 
 const HomePage = () => {
   return (
     <Layout>
-      <img src="https://picsum.photos/id/452/1500/250" />
+      <Image
+        layout="responsive"
+        height="250px"
+        width="1500px"
+        src="https://picsum.photos/id/452/1500/250"
+      />
       <div className="mx-2 mt-2">
         <H1>Artists Matter. Explore Music.</H1>
         <Body1>
@@ -82,6 +95,7 @@ const HomePage = () => {
             handle,
             profileImgSrc,
             coverImgSrc,
+            id,
           }) => (
             <Release
               title={title}
@@ -90,6 +104,8 @@ const HomePage = () => {
               handle={handle}
               profileImgSrc={profileImgSrc}
               coverImgSrc={coverImgSrc}
+              href={`collections/${id}`}
+              key={id}
             />
           )
         )}
