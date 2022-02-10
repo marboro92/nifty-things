@@ -23,3 +23,13 @@ Default.args = {
   error: false,
   errorMessage: '',
 }
+
+export const Error = Template.bind({})
+
+Error.args = {
+  label: 'Name',
+  description: 'The name for your new collection.',
+  placeholder: 'Item name',
+  error: true,
+  errorMessage: 'A name is required.',
+}

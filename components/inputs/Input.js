@@ -5,6 +5,7 @@ const Input = ({
   description,
   name,
   error,
+  errorMessage,
   placeholder,
   className = '',
 }) => {
@@ -24,7 +25,7 @@ const Input = ({
       />
       {error && errorMessage && (
         <label class="label">
-          <span class="label-text-alt">{errorMessage}</span>
+          <span class="label-text-alt text-xs text-error">{errorMessage}</span>
         </label>
       )}
     </div>
