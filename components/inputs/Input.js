@@ -10,7 +10,7 @@ const Input = ({
   className = '',
 }) => {
   return (
-    <div class={`form-control ${className}`}>
+    <div className={`form-control ${className}`}>
       <Label>{label}</Label>
       {description && (
         <LabelDescription className="mt-half text-neutral">
@@ -21,11 +21,13 @@ const Input = ({
         type="text"
         name={name}
         placeholder={placeholder}
-        class={`mt-1 input input-bordered ${error ? 'input-error' : ''}`}
+        className={`mt-1 input input-bordered ${error ? 'input-error' : ''}`}
       />
       {error && errorMessage && (
-        <label class="label">
-          <span class="label-text-alt text-xs text-error">{errorMessage}</span>
+        <label className="label">
+          <span className="label-text-alt text-xs text-error">
+            {errorMessage}
+          </span>
         </label>
       )}
     </div>
