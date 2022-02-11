@@ -28,6 +28,8 @@ You can find the project specific configuration for Tailwind in tailwind.config.
 
 Styles are generated with [PostCSS](https://postcss.org/).
 
+Consider downloading Tailwind CSS IntelliSense if using VS Code. 
+
 
 ## Code Formatting & Linting
 
