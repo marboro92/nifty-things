@@ -31,6 +31,9 @@ module.exports = {
     colors: {
       'primary-100': 'rgba(93, 95, 239, 0.1)',
     },
+    zIndex: {
+      nav: '100',
+    },
   },
   daisyui: {
     themes: [
