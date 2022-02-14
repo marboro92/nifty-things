@@ -1,8 +1,15 @@
 import Image from 'next/image'
 import Head from '../../components/Head'
-import { H1, H2, Body1, Label } from '../../components/typography'
+import { H1, Body1, Label } from '../../components/typography'
 import { Button } from '../../components/buttons'
-import { HeartWithCircleBg } from '../../components/icons'
+import {
+  Facebook,
+  HeartWithCircleBg,
+  Instagram,
+  LinkedIn,
+  Twitter,
+} from '../../components/icons'
+import Link from '../../components/buttons/Link'
 
 const REASON_CONTENT = [
   {
@@ -41,25 +48,50 @@ const ReasonCard = ({ title, description }) => (
   </div>
 )
 
+const SocialMediaBar = () => (
+  <div className="flex text-neutral space-x-1">
+    <a href="" className="hover:text-primary">
+      <Facebook />
+    </a>
+    <a href="" className="hover:text-primary">
+      <Twitter />
+    </a>
+    <a href="" className="hover:text-primary">
+      <Instagram />
+    </a>
+    <a href="" className="hover:text-primary">
+      <LinkedIn />
+    </a>
+  </div>
+)
+
 const ArtistPage = () => {
   return (
     <>
       <Head title="NiftyTunes for Artists" />
       <div className="flex flex-col items-center">
         <div className="flex z-nav h-[88px] items-center justify-between fixed bg-base-100 w-full">
-          <nav className="flex w-full items-center justify-between mx-auto max-w-[1236px]">
-            <h5 className="text-[24px]">
+          <nav className="md:flex w-full items-center justify-between mx-auto px-1 max-w-[1236px]">
+            <h5 className="sm:text-[24px]">
               <span className="font-bold">NiftyTunes</span> for Artists
             </h5>
-            <div className="space-x-1">
-              <Button className="btn-outline">Login</Button>
+            <div className="grid grid-cols-2 justify-end space-x-1">
+              <Link>Login</Link>
               <Button>Get Access</Button>
             </div>
           </nav>
         </div>
-        <section className="flex flex-col items-center pt-[88px] px-1">
-          <div className="flex max-w-[1236px] items-center gap-2">
-            <div className="w-[60%]">
+        <section className="flex w-full flex-col items-center pt-[88px] px-1">
+          <div className="md:flex w-full max-w-[1236px] items-center justify-between">
+            <div className="block w-full md:max-w-[50%] md:order-last">
+              <Image
+                layout="responsive"
+                height="600px"
+                width="600px"
+                src="https://picsum.photos/id/452/600/600"
+              />
+            </div>
+            <div className="md:max-w-[50%] py-3 pr-1">
               <p className="uppercase text-neutral font-bold text-[14px]">
                 Made to be found
               </p>
@@ -70,14 +102,6 @@ const ArtistPage = () => {
                 audience and what makes us different.
               </Body1>
               <Button>Get Started</Button>
-            </div>
-            <div className="w-[600px]">
-              <Image
-                layout="responsive"
-                height="600px"
-                width="600px"
-                src="https://picsum.photos/id/452/600/600"
-              />
             </div>
           </div>
         </section>
@@ -100,8 +124,8 @@ const ArtistPage = () => {
         </section>
         <section className="flex flex-col items-center w-full px-1">
           <div className="flex flex-col py-6 max-w-[1236px] w-full items-center divide-y divide-base-300">
-            <div className="flex w-full justify-between">
-              <div className="">
+            <div className="md:flex w-full justify-between">
+              <div className="md:w-[50%]">
                 <p className="uppercase text-neutral font-bold text-[14px]">
                   Have any questions?
                 </p>
@@ -111,13 +135,13 @@ const ArtistPage = () => {
                   social media links below
                 </Body1>
               </div>
-              <div>
-                <Button>Privacy Policy</Button>
+              <div className="space-x-1 space-y-1">
+                <Button variant="outline">Privacy Policy</Button>
                 <Button>Get Access</Button>
               </div>
             </div>
             <div className="flex w-full justify-between mt-6 pt-2">
-              <p>[Social Media Links]</p>
+              <SocialMediaBar />
               <p className="text-neutral">
                 &copy;{new Date().getFullYear()} Nifty Tunes Inc. All rights
                 reserved.

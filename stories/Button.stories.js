@@ -8,7 +8,7 @@ export default {
     children: { control: 'text' },
     as: { control: 'text' },
     size: { control: 'text' },
-    secondary: { control: 'boolean' },
+    variant: { options: ['primary', 'secondary', 'outline'], control: 'radio' },
     fullWidth: { control: 'boolean' },
   },
 }
@@ -25,7 +25,14 @@ export const Secondary = Template.bind({})
 
 Secondary.args = {
   children: 'Upload',
-  secondary: true,
+  variant: 'secondary',
+}
+
+export const Outline = Template.bind({})
+
+Outline.args = {
+  children: 'Upload',
+  variant: 'outline',
 }
 
 export const FullWidth = Template.bind({})
