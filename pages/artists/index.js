@@ -24,7 +24,7 @@ const REASON_CONTENT = [
   },
   {
     title: 'Learn from your fans',
-    description: `Find out how your songs are performing, how you’re being discovered, and where your audience is through our Artists Dashboard.`,
+    description: `Find out how your songs are performing, how you are being discovered, and where your audience is through our Artists Dashboard.`,
   },
   {
     title: 'Artist Friendly. User. Friendly.',
@@ -129,7 +129,7 @@ const ArtistPage = () => {
                 <p className="uppercase text-neutral font-bold text-[14px]">
                   Have any questions?
                 </p>
-                <H1>We're Happy to Help!</H1>
+                <H1>We&apos;re Happy to Help!</H1>
                 <Body1>
                   Please feel free to contact us at any time using one of our
                   social media links below
