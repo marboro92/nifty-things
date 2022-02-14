@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import NextLink from 'next/link'
 import Head from '../../components/Head'
 import { H1, Body1, Label } from '../../components/typography'
 import { Button } from '../../components/buttons'
@@ -77,7 +78,9 @@ const ArtistPage = () => {
             </h5>
             <div className="grid grid-cols-2 justify-end space-x-1">
               <Link>Login</Link>
-              <Button>Get Access</Button>
+              <NextLink href="/artists/get-access">
+                <Button as="a">Get Access</Button>
+              </NextLink>
             </div>
           </nav>
         </div>
@@ -101,7 +104,9 @@ const ArtistPage = () => {
                 NiftyTunes — plus a few steps you can take now to grow your
                 audience and what makes us different.
               </Body1>
-              <Button>Get Started</Button>
+              <NextLink href="/artists/get-access">
+                <Button as="a">Get Access</Button>
+              </NextLink>
             </div>
           </div>
         </section>

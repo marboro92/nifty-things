@@ -10,6 +10,7 @@ const Button = ({
   const sizeClasses = {
     sm: 'btn-sm',
     lg: 'btn-lg',
+    xl: 'btn-lg text-[2rem]',
   }
   const variantClasses = {
     primary: 'btn-primary',
@@ -18,9 +19,9 @@ const Button = ({
   }
   return (
     <Tag
-      className={`btn ${sizeClasses[size]} rounded font-semibold normal-case ${
+      className={`btn rounded font-semibold normal-case ${
         fullWidth ? 'w-full' : 'min-w-[10.75rem]'
-      } ${variantClasses[variant]} ${className}`}
+      } ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}

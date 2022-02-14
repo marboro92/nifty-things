@@ -10,7 +10,7 @@ const H1 = ({ children, className = '' }) => {
       : children
   return (
     <h1
-      className={`text-[32px] font-bold ${className}`}
+      className={`text-[2rem] font-bold ${className}`}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   )
