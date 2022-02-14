@@ -49,7 +49,7 @@ const ReasonCard = ({ title, description }) => (
 )
 
 const SocialMediaBar = () => (
-  <div className="flex text-neutral space-x-1">
+  <div className="flex text-neutral-400 space-x-1">
     <a href="" className="hover:text-primary">
       <Facebook />
     </a>
@@ -96,7 +96,7 @@ const ArtistPage = () => {
                 Made to be found
               </p>
               <H1>Learn how Music Fans Discover your Music.</H1>
-              <Body1>
+              <Body1 className="text-neutral-700">
                 A guide to the three key pathways for getting discovered on
                 NiftyTunes — plus a few steps you can take now to grow your
                 audience and what makes us different.
@@ -142,7 +142,7 @@ const ArtistPage = () => {
             </div>
             <div className="flex w-full justify-between mt-6 pt-2">
               <SocialMediaBar />
-              <p className="text-neutral">
+              <p className="text-neutral-400">
                 &copy;{new Date().getFullYear()} Nifty Tunes Inc. All rights
                 reserved.
               </p>

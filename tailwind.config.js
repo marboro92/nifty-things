@@ -4,7 +4,20 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary-100': 'rgba(93, 95, 239, 0.1)',
+        'neutral-100': '#e0e0e6',
+        'neutral-200': '#c2c2cc',
+        'neutral-300': '#a3a3b3',
+        'neutral-400': '#858599',
+        'neutral-500': '#666680',
+        'neutral-600': '#525266',
+        'neutral-700': '#3d3d4d',
+        'neutral-800': '#292933',
+        'neutral-900': '#14141a',
+      },
+    },
     fontFamily: {
       sans: ['SF Pro Display', 'sans-serif'],
       head: ['SF Pro Display', 'sans-serif'],
@@ -27,9 +40,6 @@ module.exports = {
     fontSize: {
       tiny: '0.5rem',
       xs: '0.75rem',
-    },
-    colors: {
-      'primary-100': 'rgba(93, 95, 239, 0.1)',
     },
     zIndex: {
       nav: '100',
@@ -55,7 +65,7 @@ module.exports = {
             '#ffffff' /* Foreground content color to use on accent color */,
 
           neutral: '#5C656C' /* Neutral color */,
-          'neutral-focus': '#1E263A' /* Neutral color - focused */,
+          'neutral-focus': '#14141a' /* Neutral color - focused */,
           'neutral-content':
             '#ffffff' /* Foreground content color to use on neutral color */,
 
