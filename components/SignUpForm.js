@@ -8,12 +8,12 @@ const AgreementText = ({ children }) => (
   <p className="text-neutral-500 my-1 text-[14px]">{children}</p>
 )
 
-const SignUpForm = ({ onSubmit }) => {
+const SignUpForm = ({ onSubmit, loginHref }) => {
   return (
     <div className="artboard-demo p-3 max-w-[448px]">
       <div className="flex w-full pb-1 justify-between">
         <H2>Sign Up</H2>
-        <Link>I have an account</Link>
+        <Link href={loginHref}>I have an account</Link>
       </div>
       <form onSubmit={onSubmit}>
         <Input placeholder="Email" name="email" />

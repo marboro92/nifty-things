@@ -16,7 +16,7 @@ const Button = ({
   const variantClasses = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
-    outline: 'btn-outline border-base-300 text-neutral',
+    outline: 'btn-outline border-base-300 text-neutral bg-base-100',
   }
   return (
     <Tag
