@@ -28,3 +28,7 @@ export const signUp = async ({ email, password }) => {
   }
   throw new Error('User not registered')
 }
+
+export const confirmSignUp = async ({ email, code }) => {
+  await Auth.confirmSignUp(email, code)
+}

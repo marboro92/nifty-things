@@ -8,7 +8,6 @@ const LoginForm = ({ onSubmit, errorMessage }) => {
   const handleSubmit = () => {
     const email = getValues('email')
     const password = getValues('password')
-    console.log(email, password)
     onSubmit({ email, password })
   }
   return (
