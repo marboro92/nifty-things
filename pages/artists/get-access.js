@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 import { Button } from '../../components/buttons'
 import { H1 } from '../../components/typography'
+import { ROUTES } from '../../constants/artists-routes'
 
 const HelpLink = ({ children, href = '/' }) => (
   <a className="block underline text-neutral text-center" href={href}>
@@ -14,7 +15,7 @@ const GetAccessPage = () => {
       <div className="absolute top-1 self-end">
         <p className="font-bold text-neutral-700">
           Already part of a team?{' '}
-          <a href="/login" className="font-bold text-primary">
+          <a href={ROUTES.LOGIN} className="font-bold text-primary">
             Login
           </a>
         </p>
@@ -24,12 +25,12 @@ const GetAccessPage = () => {
       </H1>
       <p className="font-bold text-neutral-700">First, tell us who you are.</p>
       <div className="space-y-2 py-6">
-        <NextLink href="/artists/sign-up">
+        <NextLink href={ROUTES.SIGN_UP}>
           <Button fullWidth size="xl">
             Artist or Manager
           </Button>
         </NextLink>
-        <NextLink href="/artists/sign-up">
+        <NextLink href={ROUTES.SIGN_UP}>
           <Button fullWidth size="xl">
             Label Team Member
           </Button>

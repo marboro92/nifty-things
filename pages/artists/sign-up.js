@@ -4,6 +4,7 @@ import ForArtistsHeader from '../../components/artists/ForArtistsHeader'
 import ConfirmSignUpForm from '../../components/ConfirmSignUpForm'
 import SignUpForm from '../../components/SignUpForm'
 import { confirmSignUp, signUp } from '../../utils/cognito'
+import { ROUTES } from '../../constants/artists-routes'
 
 const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState()
@@ -23,7 +24,7 @@ const SignUpPage = () => {
     try {
       await confirmSignUp({ email: signUpEmail, code })
       setErrorMessage()
-      router.push({ pathname: '/artists' })
+      router.push({ pathname: ROUTES.LANDING })
     } catch (e) {
       setErrorMessage(e.message)
     }
@@ -33,7 +34,7 @@ const SignUpPage = () => {
       <ForArtistsHeader className="mb-3" />
       {!signUpEmail ? (
         <SignUpForm
-          loginHref={'/artists/login'}
+          loginHref={ROUTES.LOGIN}
           onSubmit={handleSignUp}
           errorMessage={errorMessage}
         />

@@ -11,6 +11,7 @@ import {
   Twitter,
 } from '../../components/icons'
 import Link from '../../components/links/Link'
+import { ROUTES } from '../../constants/artists-routes'
 
 const REASON_CONTENT = [
   {
@@ -77,8 +78,8 @@ const ArtistPage = () => {
               <span className="font-bold">NiftyTunes</span> for Artists
             </h5>
             <div className="flex items-center justify-center space-x-3">
-              <Link href="/artists/login">Login</Link>
-              <NextLink href="/artists/get-access" passHref>
+              <Link href={ROUTES.LOGIN}>Login</Link>
+              <NextLink href={ROUTES.GET_ACCESS} passHref>
                 <Button as="a">Get Access</Button>
               </NextLink>
             </div>
@@ -104,7 +105,7 @@ const ArtistPage = () => {
                 NiftyTunes — plus a few steps you can take now to grow your
                 audience and what makes us different.
               </Body1>
-              <NextLink href="/artists/get-access">
+              <NextLink href={ROUTES.GET_ACCESS}>
                 <Button as="a">Get Access</Button>
               </NextLink>
             </div>
@@ -142,7 +143,9 @@ const ArtistPage = () => {
               </div>
               <div className="space-x-1 space-y-1">
                 <Button variant="outline">Privacy Policy</Button>
-                <Button>Get Access</Button>
+                <NextLink href={ROUTES.GET_ACCESS} passHref>
+                  <Button>Get Access</Button>
+                </NextLink>
               </div>
             </div>
             <div className="flex w-full justify-between mt-6 pt-2">
