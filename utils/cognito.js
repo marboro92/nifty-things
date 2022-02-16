@@ -15,14 +15,15 @@ export const logIn = async ({ email, password }) => {
 }
 
 export const signUp = async ({ email, password }) => {
-  const { user, userConfirmed } = await Auth.signUp({
+  const { user } = await Auth.signUp({
     username: email,
     password,
     attributes: {
       email,
+      preferred_username: email,
     },
   })
-  if (userConfirmed) {
+  if (user) {
     return user
   }
   throw new Error('User not registered')

@@ -9,7 +9,7 @@ const AgreementText = ({ children }) => (
   <p className="text-neutral-500 my-1 text-[14px]">{children}</p>
 )
 
-const SignUpForm = ({ onSubmit, loginHref }) => {
+const SignUpForm = ({ onSubmit, loginHref, errorMessage }) => {
   const { getValues, register } = useForm()
   const handleSubmit = () => {
     const email = getValues('email')
@@ -30,6 +30,7 @@ const SignUpForm = ({ onSubmit, loginHref }) => {
         type="password"
         inputProps={register('password')}
       />
+      {errorMessage && <p className="pt-1 text-error">{errorMessage}</p>}
       <AgreementText>
         By signing up, you agree to the{' '}
         <InlineLink>Terms and Conditions</InlineLink> and{' '}
