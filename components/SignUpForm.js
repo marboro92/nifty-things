@@ -16,8 +16,8 @@ const SignUpForm = ({ onSubmit }) => {
         <Link>I have an account</Link>
       </div>
       <form onSubmit={onSubmit}>
-        <Input placeholder="email" name="email" />
-        <Input placeholder="password" name="password" />
+        <Input placeholder="Email" name="email" />
+        <Input placeholder="Password" name="password" />
         <AgreementText>
           By signing up, you agree to the{' '}
           <InlineLink>Terms and Conditions</InlineLink> and{' '}
