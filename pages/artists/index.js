@@ -10,7 +10,7 @@ import {
   LinkedIn,
   Twitter,
 } from '../../components/icons'
-import Link from '../../components/buttons/Link'
+import Link from '../../components/links/Link'
 
 const REASON_CONTENT = [
   {
