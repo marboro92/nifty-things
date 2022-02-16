@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { Label, LabelDescription } from '../typography'
 
 const Input = ({
@@ -13,7 +12,6 @@ const Input = ({
   type,
   className = '',
 }) => {
-  const { register } = useForm()
   return (
     <div className={`form-control w-full ${className}`}>
       <Label>{label}</Label>
@@ -23,7 +21,6 @@ const Input = ({
         </LabelDescription>
       )}
       <input
-        type="text"
         name={name}
         placeholder={placeholder}
         onChange={onChange}
