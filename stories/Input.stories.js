@@ -18,6 +18,7 @@ export const Default = Template.bind({})
 
 Default.args = {
   label: 'Name',
+  name: 'name',
   description: 'The name for your new collection.',
   placeholder: 'Item name',
   error: false,
@@ -28,6 +29,7 @@ export const Error = Template.bind({})
 
 Error.args = {
   label: 'Name',
+  name: 'name',
   description: 'The name for your new collection.',
   placeholder: 'Item name',
   error: true,

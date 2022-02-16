@@ -1,6 +1,5 @@
-import NextLink from 'next/link'
-import { Button, InlineLink } from './buttons'
-import Link from './buttons/Link'
+import { Button } from './buttons'
+import { Link, InlineLink } from './links'
 import { FacebookBrand, GoogleBrand } from './icons'
 import Input from './inputs/Input'
 import { H2, Overline } from './typography'
