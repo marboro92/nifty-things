@@ -1,3 +1,4 @@
+import NextLink from 'next/link'
 import { Button } from '../../components/buttons'
 import { H1 } from '../../components/typography'
 
@@ -23,12 +24,16 @@ const GetAccessPage = () => {
       </H1>
       <p className="font-bold text-neutral-700">First, tell us who you are.</p>
       <div className="space-y-2 py-6">
-        <Button fullWidth size="xl">
-          Artist or Manager
-        </Button>
-        <Button fullWidth size="xl">
-          Label Team Member
-        </Button>
+        <NextLink href="/artists/signup">
+          <Button fullWidth size="xl">
+            Artist or Manager
+          </Button>
+        </NextLink>
+        <NextLink href="/artists/signup">
+          <Button fullWidth size="xl">
+            Label Team Member
+          </Button>
+        </NextLink>
       </div>
       <HelpLink>If your team already exists, ask an admin for access.</HelpLink>
       <HelpLink>Not sure which to choose?</HelpLink>

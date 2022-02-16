@@ -9,6 +9,7 @@ const Button = ({
 }) => {
   const sizeClasses = {
     sm: 'btn-sm',
+    md: 'btn-md text-[1.125rem]',
     lg: 'btn-lg',
     xl: 'btn-lg text-[2rem]',
   }
