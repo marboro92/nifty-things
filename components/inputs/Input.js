@@ -9,7 +9,7 @@ const Input = ({
   errorMessage,
   placeholder,
   onChange,
-  validationRules = {},
+  inputProps = {},
   type,
   className = '',
 }) => {
@@ -28,10 +28,10 @@ const Input = ({
         placeholder={placeholder}
         onChange={onChange}
         type={type}
-        {...register(name, validationRules)}
         className={`mt-1 input input-bordered w-full ${
           error ? 'input-error' : ''
         }`}
+        {...inputProps}
       />
       {error && errorMessage && (
         <label className="label">
