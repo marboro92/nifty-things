@@ -17,7 +17,7 @@ const SignUpForm = ({ onSubmit, loginHref }) => {
       </div>
       <form onSubmit={onSubmit}>
         <Input placeholder="Email" name="email" />
-        <Input placeholder="Password" name="password" />
+        <Input placeholder="Password" name="password" type="password" />
         <AgreementText>
           By signing up, you agree to the{' '}
           <InlineLink>Terms and Conditions</InlineLink> and{' '}

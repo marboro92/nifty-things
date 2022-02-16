@@ -7,7 +7,7 @@ const LoginForm = ({ onSubmit }) => {
     <div className="p-3 w-full max-w-[448px]">
       <form onSubmit={onSubmit}>
         <Input placeholder="Email" name="email" />
-        <Input placeholder="Password" name="password" />
+        <Input placeholder="Password" name="password" type="password" />
         <Button size="md" fullWidth type="submit" className="my-2">
           Sign in to account
         </Button>

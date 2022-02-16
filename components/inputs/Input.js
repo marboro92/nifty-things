@@ -10,6 +10,7 @@ const Input = ({
   placeholder,
   onChange,
   validationRules = {},
+  type,
   className = '',
 }) => {
   const { register } = useForm()
@@ -26,6 +27,7 @@ const Input = ({
         name={name}
         placeholder={placeholder}
         onChange={onChange}
+        type={type}
         {...register(name, validationRules)}
         className={`mt-1 input input-bordered w-full ${
           error ? 'input-error' : ''
