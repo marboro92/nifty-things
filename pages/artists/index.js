@@ -76,9 +76,9 @@ const ArtistPage = () => {
             <h5 className="sm:text-[24px]">
               <span className="font-bold">NiftyTunes</span> for Artists
             </h5>
-            <div className="grid grid-cols-2 justify-end space-x-1">
-              <Link>Login</Link>
-              <NextLink href="/artists/get-access">
+            <div className="flex items-center justify-center space-x-3">
+              <Link href="/artists/login">Login</Link>
+              <NextLink href="/artists/get-access" passHref>
                 <Button as="a">Get Access</Button>
               </NextLink>
             </div>

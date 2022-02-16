@@ -4,6 +4,7 @@ import { FacebookBrand, GoogleBrand } from './icons'
 import Input from './inputs/Input'
 import { H2, Overline } from './typography'
 import { useForm } from 'react-hook-form'
+import NextLink from 'next/link'
 
 const AgreementText = ({ children }) => (
   <p className="text-neutral-500 my-1 text-[14px]">{children}</p>
@@ -20,7 +21,9 @@ const SignUpForm = ({ onSubmit, loginHref, errorMessage }) => {
     <div className="artboard-demo p-3 max-w-[448px]">
       <div className="flex w-full pb-1 justify-between">
         <H2>Sign Up</H2>
-        <Link href={loginHref}>I have an account</Link>
+        <NextLink href={loginHref} passHref>
+          <Link>I have an account</Link>
+        </NextLink>
       </div>
 
       <Input placeholder="Email" name="email" inputProps={register('email')} />

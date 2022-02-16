@@ -1,12 +1,17 @@
-const Link = ({ as: Tag = 'a', children, className = '', ...props }) => {
-  return (
-    <Tag
-      className={`text-primary rounded hover:bg-base-200 ${className}`}
-      {...props}
-    >
-      {children}
-    </Tag>
-  )
-}
+import { forwardRef } from 'react'
+
+const Link = forwardRef(
+  ({ as: Tag = 'a', children, className = '', ...props }, ref) => {
+    return (
+      <Tag
+        className={`text-primary rounded hover:underline ${className}`}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Tag>
+    )
+  }
+)
 
 export default Link
