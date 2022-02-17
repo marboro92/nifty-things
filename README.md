@@ -19,6 +19,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+For a complete set up you will need to create an .env.local in the root directory and fill with env variables.
+
+```
+NEXT_PUBLIC_COGNITO_USER_POOL_ID=""
+NEXT_PUBLIC_COGNITO_CLIENT_ID=""
+```
+
 To see examples of all available components or easily develop components outside of the app run `npm run storybook` [Storybook](https://storybook.js.org/blog/get-started-with-storybook-and-next-js/)
 
 ## Deploy on Vercel
