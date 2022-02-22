@@ -4,4 +4,5 @@ export const ROUTES = {
   SIGN_UP: '/artists/sign-up',
   HOME: '/artists',
   LANDING: '/artists/landing',
+  ONBOARDING: '/artists/onboarding',
 }

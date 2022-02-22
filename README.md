@@ -26,6 +26,12 @@ NEXT_PUBLIC_COGNITO_USER_POOL_ID=""
 NEXT_PUBLIC_COGNITO_CLIENT_ID=""
 ```
 
+To skip sending real user data to cognito, add the following env variable
+
+```
+NEXT_PUBLIC_MOCK_COGNITO="true"
+```
+
 To see examples of all available components or easily develop components outside of the app run `npm run storybook` [Storybook](https://storybook.js.org/blog/get-started-with-storybook-and-next-js/)
 
 ## Deploy on Vercel

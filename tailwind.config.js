@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'primary-100': 'rgba(93, 95, 239, 0.1)',
+        'primary-200': '#C3C4FE',
         'neutral-100': '#e0e0e6',
         'neutral-200': '#c2c2cc',
         'neutral-300': '#a3a3b3',

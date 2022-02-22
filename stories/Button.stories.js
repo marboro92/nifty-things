@@ -7,8 +7,9 @@ export default {
   argTypes: {
     children: { control: 'text' },
     as: { control: 'text' },
-    size: { options: ['sm', 'lg', 'xl'], control: 'radio' },
+    size: { options: ['sm', 'md', 'lg', 'xl'], control: 'radio' },
     variant: { options: ['primary', 'secondary', 'outline'], control: 'radio' },
+    disabled: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
   },
 }

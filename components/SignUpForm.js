@@ -10,7 +10,7 @@ const AgreementText = ({ children }) => (
   <p className="text-neutral-500 my-1 text-[14px]">{children}</p>
 )
 
-const SignUpForm = ({ onSubmit, loginHref, errorMessage }) => {
+const SignUpForm = ({ onSubmit, loginHref = '/', errorMessage }) => {
   const { getValues, register } = useForm()
   const handleSubmit = () => {
     const email = getValues('email')

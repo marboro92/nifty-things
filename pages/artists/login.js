@@ -7,13 +7,20 @@ import { ArrowRight } from '../../components/icons'
 import LoginForm from '../../components/LoginForm'
 import { logIn } from '../../utils/cognito'
 import { ROUTES } from '../../constants/artists-routes'
+import {
+  ARTIST_USER_ACTIONS,
+  useArtistUser,
+} from '../../contexts/ArtistUserContext'
 
 const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState()
   const router = useRouter()
+  const [, dispatch] = useArtistUser()
   const handleLogin = async ({ email, password }) => {
     try {
-      await logIn({ email, password })
+      const cognitoUser = await logIn({ email, password })
+      dispatch({ type: ARTIST_USER_ACTIONS.LOG_IN, payload: cognitoUser })
+      setErrorMessage()
       router.push({ pathname: ROUTES.LANDING })
     } catch (e) {
       setErrorMessage(e.message)

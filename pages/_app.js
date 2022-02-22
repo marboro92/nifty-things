@@ -1,11 +1,17 @@
-import { useEffect } from 'react'
 import { configureAmplify } from '../utils/cognito'
 import '../styles/globals.css'
+import { ArtistUserProvider } from '../contexts/ArtistUserContext'
 
-configureAmplify()
+if (process.env.NEXT_PUBLIC_MOCK_COGNITO) {
+  configureAmplify()
+}
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ArtistUserProvider>
+      <Component {...pageProps} />
+    </ArtistUserProvider>
+  )
 }
 
 export default MyApp

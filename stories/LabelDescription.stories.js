@@ -6,6 +6,7 @@ export default {
   component: LabelDescription,
   argTypes: {
     children: { control: 'text' },
+    size: { options: ['sm', 'lg'], control: 'radio' },
   },
 }
 
