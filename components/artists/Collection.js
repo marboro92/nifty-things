@@ -37,8 +37,8 @@ const Collection = ({
       </ol>
       <div className="mx-auto mt-auto pb-3">
         <Link href={minted ? viewHref : createHref}>
-          <Button variant={minted ? 'primary-outline' : 'primary'}>
-            {minted ? 'Create NFT Collection' : 'View Created NFT'}
+          <Button variant={!minted ? 'primary-outline' : 'primary'}>
+            {!minted ? 'Create NFT Collection' : 'View Created NFT'}
           </Button>
         </Link>
       </div>
