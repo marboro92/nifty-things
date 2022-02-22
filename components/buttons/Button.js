@@ -23,6 +23,7 @@ const Button = (
       'btn-primary disabled:bg-primary-200 disabled:border-primary-200 disabled:text-base-100',
     secondary: 'btn-secondary',
     outline: 'btn-outline border-base-300 text-neutral bg-base-100',
+    'primary-outline': 'btn-primary btn-outline',
   }
   return (
     <Tag

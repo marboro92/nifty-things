@@ -62,7 +62,12 @@ const OnboardingPage = () => {
   }
 
   const claimProfile = () => {
-    setShowProfileClaimedError(true)
+    try {
+      // TODO: add check here to see if profile is claimed and complete error handling
+      router.push(ROUTES.LANDING)
+    } catch {
+      setShowProfileClaimedError(true)
+    }
   }
 
   return !showProfileClaimedError ? (

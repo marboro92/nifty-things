@@ -92,7 +92,7 @@ const ArtistPage = () => {
                 layout="responsive"
                 height="600px"
                 width="600px"
-                src="https://picsum.photos/id/452/600/600"
+                src="/artists/artist-intro-1.jpg"
               />
             </div>
             <div className="md:max-w-[50%] py-3 pr-1">
