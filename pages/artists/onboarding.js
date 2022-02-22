@@ -8,7 +8,7 @@ import ProfileExistsError from '../../components/artists/ProfileExistsError'
 
 const SearchResult = ({ children }) => (
   <span className="flex items-center text-neutral">
-    <PlaceholderAvatar className="mr-2" className="h-[4rem] w-[4rem]" />
+    <PlaceholderAvatar className="mr-2 h-[4rem] w-[4rem]" />
     {children}
   </span>
 )

@@ -34,7 +34,7 @@ const ProfileExistsError = ({ userType = 'artist', name, onBack, onNext }) => {
           : 'To gain access ask an Admin on your team to invite you'}
       </LabelDescription>
       <LabelDescription size="md" className="my-3 text-neutral">
-        <InlineLink>Can't reach your team?</InlineLink>
+        <InlineLink>Can&apos;t reach your team?</InlineLink>
       </LabelDescription>
     </OnboardingLayout>
   )
