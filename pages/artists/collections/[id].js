@@ -96,7 +96,7 @@ const CollectionPage = () => {
               <IconSummary icon={<Heart />} label="0 liked" />
             </div>
             <div className="mt-3 space-y-1">
-              {!collection.public && (
+              {!collection.isPublic && (
                 <TableCard
                   header={
                     <>

@@ -1,10 +1,12 @@
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import { ROUTES } from '../../constants/artists-routes'
-import { Button } from '../buttons'
+import { Button, Tab } from '../buttons'
 import Head from '../Head'
 import { Link } from '../links'
 
 const Layout = ({ children, user, showNav }) => {
+  const router = useRouter()
   return (
     <>
       <Head title="NiftyTunes for Artists" />
@@ -17,7 +19,15 @@ const Layout = ({ children, user, showNav }) => {
               </h5>
               <div className="flex items-center justify-center space-x-3">
                 {user ? (
-                  <div />
+                  <>
+                    <NextLink href={ROUTES.LANDING} passHref>
+                      <Tab as="a" selected={ROUTES.LANDING === router.pathname}>
+                        Profile
+                      </Tab>
+                    </NextLink>
+                    <Tab>NFT Collection</Tab>
+                    <Tab>Settings</Tab>
+                  </>
                 ) : (
                   <>
                     <Link href={ROUTES.LOGIN}>Login</Link>
