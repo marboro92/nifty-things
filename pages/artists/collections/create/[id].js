@@ -31,7 +31,7 @@ const CreateCollectionPage = () => {
       royalty: collection?.royalty || '5.00',
     },
   })
-  console.log(errors)
+
   const onSubmit = async () => {
     const form = getValues()
     try {
@@ -92,6 +92,7 @@ const CreateCollectionPage = () => {
               }}
               required
             />
+            {/* TODO: ADD SOCIAL */}
             <Textarea
               label="Description"
               inputProps={register('description')}
@@ -156,7 +157,7 @@ const CreateCollectionPage = () => {
             <Textarea
               label="Additional Utilities"
               description="Add any other utilities you would like to provide your NFT holders."
-              inputProps={register('description')}
+              inputProps={register('otherUtilitiesDescription')}
             />
             <Button className="my-5" type="submit">
               Create Collection

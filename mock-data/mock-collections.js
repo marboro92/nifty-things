@@ -7,9 +7,21 @@ export const MOCK_COLLECTIONS = [
     coverImgSrc: '/artists/cover-1.jpg',
     minted: false,
     trackList: [
-      { title: 'Covered Tears' },
-      { title: 'Covered Tears (radio edit)' },
-      { title: 'Covered Tears House Mix' },
+      {
+        title: 'Covered Tears',
+        coverImgSrc: '/artists/cover-1.jpg',
+        duration: '5:30',
+      },
+      {
+        title: 'Covered Tears (radio edit)',
+        coverImgSrc: '/artists/cover-1.jpg',
+        duration: '2:10',
+      },
+      {
+        title: 'Covered Tears House Mix',
+        coverImgSrc: '/artists/cover-1.jpg',
+        duration: '5:56',
+      },
     ],
   },
   {
@@ -19,20 +31,51 @@ export const MOCK_COLLECTIONS = [
     type: 'EP',
     coverImgSrc: '/artists/cover-2.jpg',
     minted: true,
-    trackList: [{ title: 'Starlite' }, { title: 'thx' }],
+    supply: 300,
+    price: 2,
+    royalty: 5,
+    description:
+      'This EP release is a special one of a kind release that features my heart and soul put into a track. I really wanted to try something different than my usual breakhearting approach to my music.',
+    trackList: [
+      {
+        title: 'Starlite',
+        coverImgSrc: '/artists/cover-2.jpg',
+        duration: '5:56',
+      },
+      { title: 'thx', coverImgSrc: '/artists/cover-2.jpg', duration: '3:16' },
+    ],
+    otherUtilitiesDescription:
+      'Other utility that comes with this NFT (concert tickets, merch, VIP)',
   },
   {
     id: '3',
     title: 'Miss you',
     date: `January 11th, 2022`,
     type: 'EP',
+    supply: 12,
+    price: 122,
+    royalty: 1.2,
+    description:
+      'Super special limited NFT edition of this EP, get it before its gone! xo',
     coverImgSrc: '/artists/artist-intro-1.jpg',
     minted: true,
     trackList: [
-      { title: 'Miss u' },
-      { title: 'You 2' },
-      { title: 'Ce soir' },
-      { title: 'Nu song' },
+      {
+        title: 'Miss u',
+        coverImgSrc: '/artists/cover-3.jpg',
+        duration: '5:16',
+      },
+      { title: 'You 2', coverImgSrc: '/artists/cover-3.jpg', duration: '3:56' },
+      {
+        title: 'Ce soir',
+        coverImgSrc: '/artists/cover-3.jpg',
+        duration: '1:06',
+      },
+      {
+        title: 'Nu song',
+        coverImgSrc: '/artists/cover-3.jpg',
+        duration: '2:22',
+      },
     ],
   },
 ]
