@@ -5,4 +5,6 @@ export const ROUTES = {
   HOME: '/artists',
   LANDING: '/artists/landing',
   ONBOARDING: '/artists/onboarding',
+  COLLECTION_DETAILS: '/artists/collections/',
+  COLLECTION_CREATE: '/artists/collections/create/',
 }

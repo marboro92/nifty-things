@@ -9,7 +9,7 @@ const Collection = ({
   date,
   trackList = [],
   minted = false,
-  coverImgSrc,
+  coverImgSrc = '/placeholder.jpg',
   viewHref = '/',
   createHref = '/',
   className = '',
@@ -37,7 +37,7 @@ const Collection = ({
       </ol>
       <div className="mx-auto mt-auto pb-3">
         <Link href={minted ? viewHref : createHref}>
-          <Button variant={!minted ? 'primary-outline' : 'primary'}>
+          <Button variant={minted ? 'primary-outline' : 'primary'}>
             {!minted ? 'Create NFT Collection' : 'View Created NFT'}
           </Button>
         </Link>

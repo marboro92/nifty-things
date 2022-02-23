@@ -2,9 +2,12 @@ import Image from 'next/image'
 import Collection from '../../components/artists/Collection'
 import Layout from '../../components/artists/Layout'
 import H1 from '../../components/typography/H1'
+import { ROUTES } from '../../constants/artists-routes'
+import { useArtistCollections } from '../../contexts/ArtistCollectionsContext'
 import { MOCK_COLLECTIONS } from '../../mock-data/mock-collections'
 
 const LandingPage = () => {
+  const [{ collections }] = useArtistCollections()
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
       <Image
@@ -15,7 +18,7 @@ const LandingPage = () => {
       />
       <H1 className="mt-5">Profile</H1>
       <div className="grid w-full md:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
-        {MOCK_COLLECTIONS.map(
+        {collections.map(
           ({ id, title, date, type, coverImgSrc, minted, trackList }) => (
             <Collection
               key={id}
@@ -25,8 +28,8 @@ const LandingPage = () => {
               type={type}
               coverImgSrc={coverImgSrc}
               trackList={trackList}
-              createHref={`collections/create/${id}`}
-              viewHref={`collections/${id}`}
+              createHref={`${ROUTES.COLLECTION_CREATE}${id}`}
+              viewHref={`${ROUTES.COLLECTION_DETAILS}${id}`}
             />
           )
         )}

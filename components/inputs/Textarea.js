@@ -1,3 +1,4 @@
+import { Label } from '../typography'
 import FormFieldDescription from './FormFieldDescription'
 import FormFieldErrorHint from './FormFieldErrorHint'
 import FormFieldLabel from './FormFieldLabel'
@@ -23,12 +24,12 @@ const Input = ({
       {description && (
         <FormFieldDescription>{description}</FormFieldDescription>
       )}
-      <input
+      <textarea
         name={name}
         placeholder={placeholder}
         onChange={onChange}
         type={type}
-        className={`mt-1 input input-bordered w-full ${
+        className={`mt-1 textarea textarea-bordered resize-none h-[116px] w-full ${
           error ? 'input-error' : ''
         }`}
         readOnly={readonly}

@@ -3,11 +3,13 @@ import { useRouter } from 'next/router'
 import H1 from '../../../components/typography/H1'
 import Layout from '../../../components/artists/Layout'
 import { MOCK_COLLECTIONS } from '../../../mock-data/mock-collections'
+import { useArtistCollections } from '../../../contexts/ArtistCollectionsContext'
 
 const CollectionPage = () => {
   const router = useRouter()
+  const [{ collections }] = useArtistCollections()
   const { id: currentId } = router.query
-  const collection = MOCK_COLLECTIONS.find(({ id }) => id == currentId)
+  const collection = collections.find(({ id }) => id == currentId)
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
       <Image

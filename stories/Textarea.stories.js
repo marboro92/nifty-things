@@ -1,9 +1,9 @@
 import React from 'react'
-import Input from '../components/inputs/Input'
+import Textarea from '../components/inputs/Textarea'
 
 export default {
-  title: 'Inputs/Input',
-  component: Input,
+  title: 'Inputs/Textarea',
+  component: Textarea,
   argTypes: {
     label: { control: 'text' },
     description: { control: 'text' },
@@ -13,7 +13,7 @@ export default {
   },
 }
 
-const Template = (args) => <Input {...args} />
+const Template = (args) => <Textarea {...args} />
 
 export const Default = Template.bind({})
 
