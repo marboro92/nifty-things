@@ -93,6 +93,7 @@ const ArtistPage = () => {
                 height="600px"
                 width="600px"
                 src="/artists/artist-intro-1.jpg"
+                priority
               />
             </div>
             <div className="md:max-w-[50%] py-3 pr-1">

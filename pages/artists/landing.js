@@ -22,6 +22,7 @@ const LandingPage = () => {
         height="176px"
         width="1236px"
         src="/artists/banner-1.jpg"
+        priority
       />
       <H1 className="mt-5">Profile</H1>
       <div className="flex space-x-2 mt-3 mb-2">

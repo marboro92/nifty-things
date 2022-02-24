@@ -1,8 +1,8 @@
-import { current } from 'daisyui/colors'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../../../components/artists/Layout'
+import SocialInputGroup from '../../../../components/artists/SocialInputGroup'
 import { Button } from '../../../../components/buttons'
 import { ImageUpload, Input, Textarea } from '../../../../components/inputs'
 import H1 from '../../../../components/typography/H1'
@@ -29,18 +29,31 @@ const CreateCollectionPage = () => {
       price: collection?.price || 1,
       supply: collection?.supply || 500,
       royalty: collection?.royalty || '5.00',
+      web: collection?.social?.web,
+      twitter: collection?.social?.twitter,
+      instagram: collection?.social?.instagram,
+      tiktok: collection?.social?.tiktok,
+      discord: collection?.social?.discord,
     },
   })
 
   const onSubmit = async () => {
     const form = getValues()
     try {
+      const { web, discord, instagram, twitter, tiktok } = form
       await dispatch({
         type: ARTIST_COLLECTIONS_ACTIONS.UPDATE_COLLECTION,
         payload: {
           id: currentId,
           data: {
             ...form,
+            social: {
+              web,
+              discord,
+              instagram,
+              twitter,
+              tiktok,
+            },
             minted: true,
           },
         },
@@ -60,8 +73,8 @@ const CreateCollectionPage = () => {
             width="1236px"
             src="/artists/banner-1.jpg"
           />
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <H1 className="mt-5" size="md">
+          <form onSubmit={handleSubmit(onSubmit)} className="pb-3 space-y-2">
+            <H1 className="mt-3" size="md">
               Create a collection
             </H1>
             <ImageUpload
@@ -92,7 +105,43 @@ const CreateCollectionPage = () => {
               }}
               required
             />
-            {/* TODO: ADD SOCIAL */}
+            <SocialInputGroup
+              label="Links"
+              description={
+                'Add your social media accounts here to maximize potential viewership.'
+              }
+            >
+              <SocialInputGroup.Input
+                platform="web"
+                inputProps={{
+                  ...register('web'),
+                }}
+              />
+              <SocialInputGroup.Input
+                platform="discord"
+                inputProps={{
+                  ...register('discord'),
+                }}
+              />
+              <SocialInputGroup.Input
+                platform="instagram"
+                inputProps={{
+                  ...register('instagram'),
+                }}
+              />
+              <SocialInputGroup.Input
+                platform="twitter"
+                inputProps={{
+                  ...register('twitter'),
+                }}
+              />
+              <SocialInputGroup.Input
+                platform="tiktok"
+                inputProps={{
+                  ...register('tiktok'),
+                }}
+              />
+            </SocialInputGroup>
             <Textarea
               label="Description"
               inputProps={register('description')}

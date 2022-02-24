@@ -7,7 +7,6 @@ import { useArtistCollections } from '../../../contexts/ArtistCollectionsContext
 import {
   Fraction,
   Heart,
-  LinkedIn,
   Lock,
   Multiuser,
   PlayButton,
@@ -15,6 +14,7 @@ import {
   User,
 } from '../../../components/icons'
 import { H1 } from '../../../components/typography'
+import { SOCIAL_ICON_MAP } from '../../../components/icons/social-icon-map.const'
 
 const TableCard = ({ children, header, className }) => (
   <div
@@ -50,15 +50,17 @@ const CollectionPage = () => {
         height="176px"
         width="1236px"
         src="/artists/banner-1.jpg"
+        priority
       />
       {collection && (
-        <div className="flex w-full gap-3 mt-5">
+        <div className="flex w-full gap-3 my-5">
           <div>
             <Image
               layout="fixed"
               height="512px"
               width="512px"
               src={collection.coverImgSrc}
+              priority
             />
             <div className="space-y-1 mt-2 max-w-[512px]">
               {collection.trackList.map((item, index) => (
@@ -90,7 +92,7 @@ const CollectionPage = () => {
             <div className="flex space-x-1">
               <IconSummary icon={<Multiuser />} label="0 owners" />
               <IconSummary
-                icon={<Multiuser />}
+                icon={<User />}
                 label={`${collection?.supply} total supply`}
               />
               <IconSummary icon={<Heart />} label="0 liked" />
@@ -137,19 +139,51 @@ const CollectionPage = () => {
                   </div>
                 </div>
               </TableCard>
-              <TableCard
-                header={
-                  <>
-                    <Fraction />
-                    <label className="font-bold text-primary ml-half">
-                      Description
-                    </label>
-                  </>
-                }
-              >
-                {collection?.description}
-              </TableCard>
-              {/* TODO: ADD SOCIAL */}
+              {collection?.description && (
+                <TableCard
+                  header={
+                    <>
+                      <Fraction />
+                      <label className="font-bold text-primary ml-half">
+                        Description
+                      </label>
+                    </>
+                  }
+                >
+                  {collection?.description}
+                </TableCard>
+              )}
+              {collection?.social && (
+                <TableCard
+                  header={
+                    <>
+                      <Fraction />
+                      <label className="font-bold text-primary ml-half">
+                        Social Media
+                      </label>
+                    </>
+                  }
+                >
+                  <ul className="space-y-2">
+                    {Object.keys(collection?.social).map(
+                      (platform) =>
+                        collection?.social[platform] && (
+                          <li className="flex">
+                            <div className="scale-90 origin-top-left">
+                              {SOCIAL_ICON_MAP[platform]}
+                            </div>
+                            <a
+                              className="ml-1 hover:underline"
+                              href={collection?.social[platform]}
+                            >
+                              {collection?.social[platform]}
+                            </a>
+                          </li>
+                        )
+                    )}
+                  </ul>
+                </TableCard>
+              )}
               {collection?.otherUtilitiesDescription && (
                 <TableCard
                   header={

@@ -106,6 +106,13 @@ export const MOCK_COLLECTIONS = [
         duration: '3:16',
       },
     ],
+    social: {
+      web: 'asho.com',
+      discord: 'https://www.discord.gg/a-sho#000',
+      instagram: 'https://www.instagram.com/a-sho',
+      twitter: 'https://www.twitter.com/a-sho',
+      tiktok: 'https://www.tiktok.com/a-sho',
+    },
     otherUtilitiesDescription:
       'Other utility that comes with this NFT (concert tickets, merch, VIP)',
   },
@@ -134,6 +141,13 @@ export const MOCK_COLLECTIONS = [
         duration: '5:56',
       },
     ],
+    social: {
+      web: 'asho.com',
+      discord: 'https://www.discord.gg/a-sho#000',
+      instagram: 'https://www.instagram.com/a-sho',
+      twitter: 'https://www.twitter.com/a-sho',
+      tiktok: 'https://www.tiktok.com/a-sho',
+    },
   },
   {
     id: '6',
@@ -156,5 +170,12 @@ export const MOCK_COLLECTIONS = [
       },
       { title: 'GOAT', coverImgSrc: '/artists/cover-3.jpg', duration: '3:56' },
     ],
+    social: {
+      web: 'asho.com',
+      discord: 'https://www.discord.gg/a-sho#000',
+      instagram: 'https://www.instagram.com/a-sho',
+      twitter: 'https://www.twitter.com/a-sho',
+      tiktok: 'https://www.tiktok.com/a-sho',
+    },
   },
 ]
