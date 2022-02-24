@@ -25,7 +25,13 @@ const Layout = ({ children, user, showNav }) => {
                         Profile
                       </Tab>
                     </NextLink>
-                    <Tab>NFT Collection</Tab>
+                    <NextLink href={ROUTES.NFT_COLLECTIONS} passHref>
+                      <Tab
+                        selected={ROUTES.NFT_COLLECTIONS === router.pathname}
+                      >
+                        NFT Collections
+                      </Tab>
+                    </NextLink>
                     <Tab>Settings</Tab>
                   </>
                 ) : (

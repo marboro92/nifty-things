@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import H2 from '../../../components/typography/H2'
 import Layout from '../../../components/artists/Layout'
-import { MOCK_COLLECTIONS } from '../../../mock-data/mock-collections'
 import { useArtistCollections } from '../../../contexts/ArtistCollectionsContext'
 import {
   Fraction,
@@ -13,8 +11,10 @@ import {
   Solana,
   User,
 } from '../../../components/icons'
-import { H1 } from '../../../components/typography'
+import { H1, H2 } from '../../../components/typography'
 import { SOCIAL_ICON_MAP } from '../../../components/icons/social-icon-map.const'
+import { ROUTES } from '../../../constants/artists-routes'
+import CollectionGrid from '../../../components/artists/CollectionsGrid'
 
 const TableCard = ({ children, header, className }) => (
   <div
@@ -43,6 +43,12 @@ const CollectionPage = () => {
   const [{ collections }] = useArtistCollections()
   const { id: currentId } = router.query
   const collection = collections.find(({ id }) => id == currentId)
+  const otherCollections = collections.filter(
+    ({ id, minted, isPublic }) => id != currentId && minted && isPublic
+  )
+  const otherUpcomingCollections = collections.filter(
+    ({ id, minted, isPublic }) => id != currentId && minted && !isPublic
+  )
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
       <Image
@@ -60,6 +66,7 @@ const CollectionPage = () => {
               height="512px"
               width="512px"
               src={collection.coverImgSrc}
+              className="rounded-lg"
               priority
             />
             <div className="space-y-1 mt-2 max-w-[512px]">
@@ -201,6 +208,21 @@ const CollectionPage = () => {
             </div>
           </div>
         </div>
+      )}
+      <H2 as="h6" className="my-2">
+        Other Upcoming Drops
+      </H2>
+      {otherUpcomingCollections && otherUpcomingCollections.length > 0 && (
+        <CollectionGrid
+          collections={otherUpcomingCollections}
+          expandable={false}
+        />
+      )}
+      <H2 as="h6" className="mb-2">
+        Other NFT Collections
+      </H2>
+      {otherCollections && otherCollections.length > 0 && (
+        <CollectionGrid collections={otherCollections} expandable={false} />
       )}
     </Layout>
   )

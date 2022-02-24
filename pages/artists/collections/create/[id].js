@@ -71,7 +71,7 @@ const CreateCollectionPage = () => {
             layout="fixed"
             height="176px"
             width="1236px"
-            src="/artists/banner-1.jpg"
+            src={'/artists/banner-1.jpg'}
           />
           <form onSubmit={handleSubmit(onSubmit)} className="pb-3 space-y-2">
             <H1 className="mt-3" size="md">
@@ -84,7 +84,7 @@ const CreateCollectionPage = () => {
               description={
                 <>
                   This image will be used for featuring your collection on the
-                  homepage, category pages, or other promtional areas of
+                  homepage, category pages, or other promotional areas of
                   NiftyTunes.{' '}
                   <span className="text-primary">600 x 600 recommended.</span>{' '}
                 </>

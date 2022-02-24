@@ -38,7 +38,7 @@ const REASON_CONTENT = [
   },
   {
     title: 'Multi-Wallet Compatibility',
-    description: `Tortor interdum condimentum nunc molestie quam lectus euismod pulvinar risus. Cursus in odio aenean.`,
+    description: `We support multiple wallets so users can use the tools tehy are familiar with.`,
   },
 ]
 
