@@ -15,7 +15,11 @@ const Layout = ({ children, user, showNav }) => {
           <div className="flex z-nav h-[88px] items-center justify-between fixed bg-base-100 w-full">
             <nav className="md:flex w-full items-center justify-between mx-auto px-1 max-w-[1236px]">
               <h5 className="sm:text-[24px]">
-                <span className="font-bold">NiftyTunes</span> for Artists
+                <NextLink href={ROUTES.HOME} passHref>
+                  <a>
+                    <span className="font-bold">NiftyTunes</span> for Artists
+                  </a>
+                </NextLink>
               </h5>
               <div className="flex items-center justify-center space-x-3">
                 {user ? (

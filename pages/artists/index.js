@@ -4,10 +4,10 @@ import Head from '../../components/Head'
 import { H1, Body1, Label } from '../../components/typography'
 import { Button } from '../../components/buttons'
 import {
+  Discord,
   Facebook,
   HeartWithCircleBg,
   Instagram,
-  LinkedIn,
   Twitter,
 } from '../../components/icons'
 import Link from '../../components/links/Link'
@@ -52,17 +52,29 @@ const ReasonCard = ({ title, description }) => (
 
 const SocialMediaBar = () => (
   <div className="flex text-neutral-400 space-x-1">
-    <a href="" className="hover:text-primary">
+    <a
+      href="https://www.facebook.com/tunesnifty/"
+      className="hover:text-primary"
+    >
       <Facebook />
     </a>
-    <a href="" className="hover:text-primary">
+    <a
+      href="https://twitter.com/tunesnifty?s=21"
+      className="hover:text-primary"
+    >
       <Twitter />
     </a>
-    <a href="" className="hover:text-primary">
+    <a
+      href="https://instagram.com/tunesnifty?utm_medium=copy_link"
+      className="hover:text-primary"
+    >
       <Instagram />
     </a>
-    <a href="" className="hover:text-primary">
-      <LinkedIn />
+    <a
+      href="https://discord.com/invite/uAhpWjR6Pa "
+      className="hover:text-primary"
+    >
+      <Discord />
     </a>
   </div>
 )

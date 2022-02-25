@@ -182,6 +182,8 @@ const CollectionPage = () => {
                             <a
                               className="ml-1 hover:underline"
                               href={collection?.social[platform]}
+                              target="_blank"
+                              rel="noreferrer"
                             >
                               {collection?.social[platform]}
                             </a>

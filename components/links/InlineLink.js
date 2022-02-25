@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const InlineLink = ({
   as: Tag = 'a',
-  href = '/',
+  href = '',
   children,
   className = '',
   ...props

@@ -107,7 +107,7 @@ export const MOCK_COLLECTIONS = [
       },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',
@@ -142,7 +142,7 @@ export const MOCK_COLLECTIONS = [
       },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',
@@ -171,7 +171,7 @@ export const MOCK_COLLECTIONS = [
       { title: 'GOAT', coverImgSrc: '/artists/cover-8.jpg', duration: '3:56' },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',
@@ -200,7 +200,7 @@ export const MOCK_COLLECTIONS = [
       { title: 'GOAT', coverImgSrc: '/artists/cover-2.jpg', duration: '3:56' },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',
@@ -229,7 +229,7 @@ export const MOCK_COLLECTIONS = [
       { title: 'GOAT', coverImgSrc: '/artists/cover-8.jpg', duration: '3:56' },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',
@@ -258,7 +258,7 @@ export const MOCK_COLLECTIONS = [
       { title: 'GOAT', coverImgSrc: '/artists/cover-10.jpg', duration: '3:56' },
     ],
     social: {
-      web: 'asho.com',
+      web: 'https://www.asho.com',
       discord: 'https://www.discord.gg/a-sho#000',
       instagram: 'https://www.instagram.com/a-sho',
       twitter: 'https://www.twitter.com/a-sho',

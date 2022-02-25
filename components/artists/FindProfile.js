@@ -50,7 +50,7 @@ const FindProfile = ({
             <InlineLink>Music not yet live on Nifty Tunes?</InlineLink>
           </LabelDescription>
           <LabelDescription size="md" className="text-neutral">
-            <InlineLink href="/">Are you part of a label team?</InlineLink>
+            <InlineLink>Are you part of a label team?</InlineLink>
           </LabelDescription>
         </div>
       )}
