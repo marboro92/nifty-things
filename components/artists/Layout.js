@@ -36,7 +36,11 @@ const Layout = ({ children, user, showNav }) => {
                         NFT Collections
                       </Tab>
                     </NextLink>
-                    <Tab>Settings</Tab>
+                    <NextLink href={ROUTES.SETTINGS} passHref>
+                      <Tab selected={ROUTES.SETTINGS === router.pathname}>
+                        Settings
+                      </Tab>
+                    </NextLink>
                   </>
                 ) : (
                   <>

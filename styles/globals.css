@@ -3,3 +3,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* DAISY UI OVERRIDES */
+
+.input-disabled, .input[disabled] {
+ @apply border-neutral-200;
+ @apply bg-neutral-100;
+}
+
+.input[disabled]::placeholder {
+  @apply text-neutral-300;
+  opacity: 1;
+}

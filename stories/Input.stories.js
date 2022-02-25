@@ -1,4 +1,5 @@
 import React from 'react'
+import { User } from '../components/icons'
 import Input from '../components/inputs/Input'
 
 export default {
@@ -10,6 +11,7 @@ export default {
     error: { control: 'boolean' },
     errorMessage: { control: 'text' },
     required: { control: 'boolean' },
+    readonly: { control: 'boolean' },
   },
 }
 
@@ -35,4 +37,14 @@ Error.args = {
   placeholder: 'Item name',
   error: true,
   errorMessage: 'A name is required.',
+}
+
+export const WithIcon = Template.bind({})
+
+WithIcon.args = {
+  label: 'Name',
+  name: 'name',
+  description: 'The name for your new collection.',
+  placeholder: 'Item name',
+  icon: <User />,
 }

@@ -17,8 +17,8 @@ const Tab = (
         {children}
       </Tag>
       <div
-        className={`w-[20px] h-[5px] border-b-2 ${
-          selected ? 'border-primary' : 'border-transparent'
+        className={`w-[20px] h-[5px] border-b-2 transition ${
+          selected ? 'border-primary scale-100' : 'border-transparent scale-0'
         }`}
       ></div>
     </div>

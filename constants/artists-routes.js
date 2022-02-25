@@ -1,11 +1,12 @@
 export const ROUTES = {
+  COLLECTION_CREATE: '/artists/collections/create/',
+  COLLECTION_DETAILS: '/artists/collections/',
   GET_ACCESS: '/artists/get-access',
-  LOGIN: '/artists/login',
-  SIGN_UP: '/artists/sign-up',
   HOME: '/artists',
   LANDING: '/artists/landing',
-  ONBOARDING: '/artists/onboarding',
-  COLLECTION_DETAILS: '/artists/collections/',
-  COLLECTION_CREATE: '/artists/collections/create/',
+  LOGIN: '/artists/login',
   NFT_COLLECTIONS: '/artists/nft-collections',
+  ONBOARDING: '/artists/onboarding',
+  SETTINGS: '/artists/settings',
+  SIGN_UP: '/artists/sign-up',
 }

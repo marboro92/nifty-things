@@ -6,8 +6,10 @@ import FormField from './FormField'
 const Input = ({
   className = '',
   description,
+  disabled,
   error,
   errorMessage,
+  icon,
   inputProps = {},
   label,
   name,
@@ -16,6 +18,7 @@ const Input = ({
   readonly,
   required,
   type = 'text',
+  value,
 }) => {
   return (
     <FormField className={className}>
@@ -23,17 +26,28 @@ const Input = ({
       {description && (
         <FormFieldDescription>{description}</FormFieldDescription>
       )}
-      <input
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
-        type={type}
-        className={`mt-1 input input-bordered w-full ${
-          error ? 'input-error' : ''
-        }`}
-        readOnly={readonly}
-        {...inputProps}
-      />
+      <div className="mt-1 w-full relative">
+        {icon && (
+          <div className="absolute translate-y-[-50%] top-1/2 translate-x-1/2 text-primary-600">
+            {icon}
+          </div>
+        )}
+        <input
+          name={name}
+          placeholder={placeholder}
+          onChange={onChange}
+          type={type}
+          readOnly={readonly}
+          disabled={disabled}
+          className={`input input-bordered w-full ${icon ? 'pl-4' : ''} ${
+            error ? 'input-error' : ''
+          } ${readonly ? 'input-disabled' : ''} ${
+            disabled ? 'border-1 border-neutral' : ''
+          } ${className}`}
+          value={value}
+          {...inputProps}
+        />
+      </div>
       {error && errorMessage && (
         <FormFieldErrorHint>{errorMessage}</FormFieldErrorHint>
       )}
