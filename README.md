@@ -24,6 +24,7 @@ For a complete set up you will need to create an .env.local in the root director
 ```
 NEXT_PUBLIC_COGNITO_USER_POOL_ID=""
 NEXT_PUBLIC_COGNITO_CLIENT_ID=""
+NEXT_PUBLIC_ENV="local"
 ```
 
 To skip sending real user data to cognito, add the following env variable

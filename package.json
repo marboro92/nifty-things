@@ -13,9 +13,10 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
-    "aws-amplify": "latest",
     "@svgr/webpack": "^6.2.1",
+    "aws-amplify": "latest",
     "daisyui": "^1.25.4",
+    "logrocket": "^2.2.0",
     "next": "12.0.9",
     "raf": "^3.4.1",
     "react": "17.0.2",
