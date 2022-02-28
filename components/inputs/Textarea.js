@@ -7,6 +7,7 @@ import FormField from './FormField'
 const Input = ({
   className = '',
   description,
+  disabled,
   error,
   errorMessage,
   inputProps = {},
@@ -33,6 +34,7 @@ const Input = ({
           error ? 'input-error' : ''
         }`}
         readOnly={readonly}
+        disabled={disabled}
         {...inputProps}
       />
       {error && errorMessage && (

@@ -15,6 +15,7 @@ import { H1, H2 } from '../../../components/typography'
 import { SOCIAL_ICON_MAP } from '../../../components/icons/social-icon-map.const'
 import { ROUTES } from '../../../constants/artists-routes'
 import CollectionGrid from '../../../components/artists/CollectionsGrid'
+import ProfileBanner from '../../../components/artists/ProfileBanner'
 
 const TableCard = ({ children, header, className }) => (
   <div
@@ -51,12 +52,10 @@ const CollectionPage = () => {
   )
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
-      <Image
-        layout="fixed"
-        height="176px"
-        width="1236px"
-        src="/artists/banner-1.jpg"
-        priority
+      <ProfileBanner
+        artistName="Adam Shomer"
+        bannerSrc="/artists/banner-1.jpg"
+        verified
       />
       {collection && (
         <div className="flex w-full gap-3 my-5">

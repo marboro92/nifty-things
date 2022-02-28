@@ -6,12 +6,12 @@
 
 /* DAISY UI OVERRIDES */
 
-.input-disabled, .input[disabled] {
+.input-disabled, .input[disabled], .textarea[disabled] {
  @apply border-neutral-200;
  @apply bg-neutral-100;
 }
 
-.input[disabled]::placeholder {
+.textarea[disabled]::placeholder, .input[disabled]::placeholder {
   @apply text-neutral-300;
   opacity: 1;
 }

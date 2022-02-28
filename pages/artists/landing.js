@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Collection from '../../components/artists/Collection'
 import Layout from '../../components/artists/Layout'
+import ProfileBanner from '../../components/artists/ProfileBanner'
 import { Tab } from '../../components/buttons'
 import H1 from '../../components/typography/H1'
 import { ROUTES } from '../../constants/artists-routes'
@@ -17,12 +18,10 @@ const LandingPage = () => {
 
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
-      <Image
-        layout="fixed"
-        height="176px"
-        width="1236px"
-        src="/artists/banner-1.jpg"
-        priority
+      <ProfileBanner
+        artistName="Adam Shomer"
+        bannerSrc="/artists/banner-1.jpg"
+        verified
       />
       <H1 className="mt-5">Profile</H1>
       <div className="flex space-x-2 mt-3 mb-2">

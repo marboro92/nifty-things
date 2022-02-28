@@ -36,7 +36,8 @@ const Release = ({
           />
         </div>
         <Label>
-          {title} {verified && <VerifiedArtist className="mx-[2px] inline" />}
+          {title}{' '}
+          {verified && <VerifiedArtist className="h-1 w-1 mx-[2px] inline" />}
         </Label>
         <label className="block text-primary text-xs text-bold">
           @{handle}

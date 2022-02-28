@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../../../components/artists/Layout'
+import ProfileBanner from '../../../../components/artists/ProfileBanner'
 import SocialInputGroup from '../../../../components/artists/SocialInputGroup'
 import { Button } from '../../../../components/buttons'
 import { ImageUpload, Input, Textarea } from '../../../../components/inputs'
@@ -67,11 +68,10 @@ const CreateCollectionPage = () => {
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
       {collection && (
         <div className="">
-          <Image
-            layout="fixed"
-            height="176px"
-            width="1236px"
-            src={'/artists/banner-1.jpg'}
+          <ProfileBanner
+            artistName="Adam Shomer"
+            bannerSrc="/artists/banner-1.jpg"
+            verified
           />
           <form onSubmit={handleSubmit(onSubmit)} className="pb-3 space-y-2">
             <H1 className="mt-3" size="md">
