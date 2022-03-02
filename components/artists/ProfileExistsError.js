@@ -21,16 +21,16 @@ const ProfileExistsError = ({ userType = 'artist', name, onBack, onNext }) => {
     >
       <PlaceholderAvatar className="w-[200px] h-[200px]" />
       <H1 size="lg" className="text-center">
-        {name} is already on NiftyTunes for Artists.
+        {name} is already on Bridge3 for Artists.
       </H1>
       {isArtist && (
         <LabelDescription size="md" className="my-2 text-neutral">
-          <InlineLink>Listen On NiftyTunes</InlineLink>
+          <InlineLink>Listen On Bridge3</InlineLink>
         </LabelDescription>
       )}
       <LabelDescription size="lg" className="my-2 text-neutral">
         {isArtist
-          ? "This artist's profile has already been claimed. Ask your team to invite you to NiftyTunes for Artists."
+          ? "This artist's profile has already been claimed. Ask your team to invite you to Bridge3 for Artists."
           : 'To gain access ask an Admin on your team to invite you'}
       </LabelDescription>
       <LabelDescription size="md" className="my-3 text-neutral">

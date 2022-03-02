@@ -7,7 +7,7 @@ const MOCK_NFT_COLLECTIONS = [
   {
     title: 'Adam Shomer',
     verified: true,
-    description: `Adam Shomer is an independent producer responible for bringing artists around the world to the global marketplace NiftyTunes.`,
+    description: `Adam Shomer is an independent producer responible for bringing artists around the world to the global marketplace Bridge3.`,
     handle: 'A-SHO',
     profileImgSrc: 'https://picsum.photos/id/1005/50/50',
     coverImgSrc: 'https://picsum.photos/id/158/400/200',

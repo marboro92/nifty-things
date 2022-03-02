@@ -85,7 +85,7 @@ const CreateCollectionPage = () => {
                 <>
                   This image will be used for featuring your collection on the
                   homepage, category pages, or other promotional areas of
-                  NiftyTunes.{' '}
+                  Bridge3.{' '}
                   <span className="text-primary">600 x 600 recommended.</span>{' '}
                 </>
               }

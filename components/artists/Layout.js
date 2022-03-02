@@ -10,7 +10,7 @@ const Layout = ({ children, user, showNav }) => {
   const router = useRouter()
   return (
     <>
-      <Head title="NiftyTunes for Artists" />
+      <Head title="Bridge3 for Artists" />
       <div className="flex flex-col items-center">
         {showNav && (
           <div className="flex z-nav h-[88px] items-center justify-between fixed bg-base-100 w-full">

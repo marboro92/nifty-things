@@ -47,7 +47,7 @@ const FindProfile = ({
       {isArtist && (
         <div className="mt-5 space-y-1 text-center">
           <LabelDescription size="md" className="text-neutral">
-            <InlineLink>Music not yet live on Nifty Tunes?</InlineLink>
+            <InlineLink>Music not yet live on Bridge3?</InlineLink>
           </LabelDescription>
           <LabelDescription size="md" className="text-neutral">
             <InlineLink>Are you part of a label team?</InlineLink>

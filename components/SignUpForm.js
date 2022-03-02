@@ -60,8 +60,8 @@ const SignUpForm = ({ onSubmit, loginHref = '/', errorMessage }) => {
         <InlineLink>Terms of Service</InlineLink> apply.
       </AgreementText>
       <AgreementText>
-        You also agree to receive product-related marketing emails from
-        NiftyTunes, which you can unsubscribe from at any time.
+        You also agree to receive product-related marketing emails from Bridge3,
+        which you can unsubscribe from at any time.
       </AgreementText>
     </div>
   )
