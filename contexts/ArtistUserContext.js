@@ -13,6 +13,8 @@ export const ARTIST_USER_ACTIONS = {
 export const ArtistUserContext = React.createContext()
 
 const artistUserReducer = (state, action) => {
+  console.log('action', action)
+  console.log('state', state)
   switch (action.type) {
     case ARTIST_USER_ACTIONS.UPDATE_TYPE: {
       return { ...state, type: action.payload }

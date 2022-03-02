@@ -12,6 +12,7 @@ import {
 } from '../../components/icons'
 import Link from '../../components/links/Link'
 import { ROUTES } from '../../constants/artists-routes'
+import ForArtistsHeader from '../../components/artists/ForArtistsHeader'
 
 const REASON_CONTENT = [
   {
@@ -86,9 +87,11 @@ const ArtistPage = () => {
       <div className="flex flex-col items-center">
         <div className="flex z-nav h-[88px] items-center justify-between fixed bg-base-100 w-full">
           <nav className="md:flex w-full items-center justify-between mx-auto px-1 max-w-[1236px]">
-            <h5 className="sm:text-[24px]">
-              <span className="font-bold">NiftyTunes</span> for Artists
-            </h5>
+            <NextLink href={ROUTES.HOME} passHref>
+              <a>
+                <ForArtistsHeader />
+              </a>
+            </NextLink>
             <div className="flex items-center justify-center space-x-3">
               <Link href={ROUTES.LOGIN}>Login</Link>
               <NextLink href={ROUTES.GET_ACCESS} passHref>

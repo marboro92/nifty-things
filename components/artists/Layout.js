@@ -4,6 +4,7 @@ import { ROUTES } from '../../constants/artists-routes'
 import { Button, Tab } from '../buttons'
 import Head from '../Head'
 import { Link } from '../links'
+import ForArtistsHeader from './ForArtistsHeader'
 
 const Layout = ({ children, user, showNav }) => {
   const router = useRouter()
@@ -17,7 +18,7 @@ const Layout = ({ children, user, showNav }) => {
               <h5 className="sm:text-[24px]">
                 <NextLink href={ROUTES.HOME} passHref>
                   <a>
-                    <span className="font-bold">NiftyTunes</span> for Artists
+                    <ForArtistsHeader />
                   </a>
                 </NextLink>
               </h5>
