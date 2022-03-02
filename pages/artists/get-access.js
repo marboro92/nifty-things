@@ -21,7 +21,7 @@ const UserTypeForm = () => {
   return (
     <>
       <H1 className="text-[3rem] text-center">
-        Get Access to Bridge3 for Artists.
+        Get Access to BRIDG3 for Artists.
       </H1>
       <p className="font-bold text-neutral-700">First, tell us who you are.</p>
       <div className="space-y-2 py-6">

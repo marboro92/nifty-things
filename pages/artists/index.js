@@ -18,7 +18,7 @@ const REASON_CONTENT = [
   {
     title: 'Build your audience at any stage',
     description: `A guide to the three key pathways for getting discovered on
-    Bridge3 — plus a few steps you can take now to grow your
+    BRIDG3 — plus a few steps you can take now to grow your
     audience and what makes us different.`,
   },
   {
@@ -83,7 +83,7 @@ const SocialMediaBar = () => (
 const ArtistPage = () => {
   return (
     <>
-      <Head title="Bridge3 for Artists" />
+      <Head title="BRIDG3 for Artists" />
       <div className="flex flex-col items-center">
         <div className="flex z-nav h-[88px] items-center justify-between fixed bg-base-100 w-full">
           <nav className="md:flex w-full items-center justify-between mx-auto px-1 max-w-[1236px]">
@@ -118,8 +118,8 @@ const ArtistPage = () => {
               <H1>Learn how Music Fans Discover your Music.</H1>
               <Body1 className="text-neutral-700">
                 A guide to the three key pathways for getting discovered on
-                Bridge3 — plus a few steps you can take now to grow your
-                audience and what makes us different.
+                BRIDG3 — plus a few steps you can take now to grow your audience
+                and what makes us different.
               </Body1>
               <NextLink href={ROUTES.GET_ACCESS}>
                 <Button as="a">Get Access</Button>
@@ -129,7 +129,7 @@ const ArtistPage = () => {
         </section>
         <section className="flex bg-base-200 flex-col items-center w-full px-1">
           <div className="flex py-6 flex-col max-w-[1236px] items-center">
-            <Label className="text-primary">Why Bridge3?</Label>
+            <Label className="text-primary">Why BRIDG3?</Label>
             <H1 className="max-w-[600px] text-center mt-2 mb-3">
               It changes the way of what true ownership means.
             </H1>
@@ -167,7 +167,7 @@ const ArtistPage = () => {
             <div className="flex w-full justify-between mt-6 pt-2">
               <SocialMediaBar />
               <p className="text-neutral-400">
-                &copy;{new Date().getFullYear()} Bridge3 Inc. All rights
+                &copy;{new Date().getFullYear()} BRIDG3 Inc. All rights
                 reserved.
               </p>
             </div>
