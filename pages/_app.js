@@ -8,9 +8,7 @@ if (process.env.NEXT_PUBLIC_ENV !== 'local') {
   LogRocket.init('rnmr6s/nifty')
 }
 
-if (process.env.NEXT_PUBLIC_MOCK_COGNITO) {
-  configureAmplify()
-}
+configureAmplify()
 
 function MyApp({ Component, pageProps }) {
   return (

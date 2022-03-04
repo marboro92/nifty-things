@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/artists/Layout'
-import { useArtistCollections } from '../../../contexts/ArtistCollectionsContext'
+import {
+  findIdInCollection,
+  useArtistCollections,
+} from '../../../contexts/ArtistCollectionsContext'
 import {
   Fraction,
   Heart,
@@ -13,7 +16,6 @@ import {
 } from '../../../components/icons'
 import { H1, H2 } from '../../../components/typography'
 import { SOCIAL_ICON_MAP } from '../../../components/icons/social-icon-map.const'
-import { ROUTES } from '../../../constants/artists-routes'
 import CollectionGrid from '../../../components/artists/CollectionsGrid'
 import ProfileBanner from '../../../components/artists/ProfileBanner'
 
@@ -43,12 +45,14 @@ const CollectionPage = () => {
   const router = useRouter()
   const [{ collections }] = useArtistCollections()
   const { id: currentId } = router.query
-  const collection = collections.find(({ id }) => id == currentId)
-  const otherCollections = collections.filter(
-    ({ id, minted, isPublic }) => id != currentId && minted && isPublic
+  const collection =
+    findIdInCollection(collections.private, currentId) ||
+    findIdInCollection(collections.public, currentId)
+  const otherCollections = collections?.public?.filter(
+    ({ id, minted }) => id != currentId && minted
   )
-  const otherUpcomingCollections = collections.filter(
-    ({ id, minted, isPublic }) => id != currentId && minted && !isPublic
+  const otherUpcomingCollections = collections?.private?.filter(
+    ({ id, minted }) => id != currentId && minted
   )
   return (
     <Layout showNav user={{ email: 'placeholder@email.com' }}>
@@ -104,7 +108,7 @@ const CollectionPage = () => {
               <IconSummary icon={<Heart />} label="0 liked" />
             </div>
             <div className="mt-3 space-y-1">
-              {!collection.isPublic && (
+              {!collection.status === 'public' && (
                 <TableCard
                   header={
                     <>
@@ -210,20 +214,24 @@ const CollectionPage = () => {
           </div>
         </div>
       )}
-      <H2 as="h6" className="my-2">
-        Other Upcoming Drops
-      </H2>
       {otherUpcomingCollections && otherUpcomingCollections.length > 0 && (
-        <CollectionGrid
-          collections={otherUpcomingCollections}
-          expandable={false}
-        />
+        <>
+          <H2 as="h6" className="my-2">
+            Other Upcoming Drops
+          </H2>
+          <CollectionGrid
+            collections={otherUpcomingCollections}
+            expandable={false}
+          />
+        </>
       )}
-      <H2 as="h6" className="mb-2">
-        Other NFT Collections
-      </H2>
       {otherCollections && otherCollections.length > 0 && (
-        <CollectionGrid collections={otherCollections} expandable={false} />
+        <>
+          <H2 as="h6" className="mb-2">
+            Other NFT Collections
+          </H2>
+          <CollectionGrid collections={otherCollections} expandable={false} />
+        </>
       )}
     </Layout>
   )

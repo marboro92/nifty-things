@@ -1,7 +1,7 @@
-import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import ForArtistsHeader from '../../components/artists/ForArtistsHeader'
 import { Button } from '../../components/buttons'
+import Head from '../../components/Head'
 import { H1 } from '../../components/typography'
 import { ROUTES } from '../../constants/artists-routes'
 import {
@@ -23,7 +23,9 @@ const UserTypeForm = () => {
       <H1 className="text-[3rem] text-center">
         Get Access to BRIDG3 for Artists.
       </H1>
-      <p className="font-bold text-neutral-700">First, tell us who you are.</p>
+      <p className="text-[1.5rem] font-bold text-neutral-700">
+        First, tell us who you are.
+      </p>
       <div className="space-y-2 py-6">
         <Button
           fullWidth
@@ -58,10 +60,12 @@ const UserTypeForm = () => {
 
 const GetAccessPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen p-1">
-      <div className="absolute top-1 self-end">
+    <div className="flex flex-col items-center justify-center w-full h-screen px-1 pb-1">
+      <Head title="BRIDG3 for Artists" />
+      <div className="absolute top-[0] w-full flex items-center justify-between px-1">
+        <ForArtistsHeader />
         <p className="font-bold text-neutral-700">
-          Already part of a team?{' '}
+          <span className="xs:hidden">Already part of a team? </span>
           <a href={ROUTES.LOGIN} className="font-bold text-primary">
             Login
           </a>

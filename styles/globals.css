@@ -7,11 +7,25 @@
 /* DAISY UI OVERRIDES */
 
 .input-disabled, .input[disabled], .textarea[disabled] {
- @apply border-neutral-200;
- @apply bg-neutral-100;
+ @apply border-neutral-200 bg-neutral-100;
 }
 
 .textarea[disabled]::placeholder, .input[disabled]::placeholder {
   @apply text-neutral-300;
   opacity: 1;
+}
+
+/* React Input Verification Code OVERRIDES */
+
+.custom-verification-code-input .ReactInputVerificationCode__container {
+  @apply w-full;
+}
+
+.custom-verification-code-input .ReactInputVerificationCode__item {
+  @apply border border-solid border-primary text-primary rounded-lg shadow-none;
+}
+
+.custom-verification-code-input .ReactInputVerificationCode__item.is-active {
+   box-shadow: inset 0 0 0 2px;
+   @apply shadow-primary;
 }

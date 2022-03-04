@@ -7,6 +7,7 @@ const ForArtistsHeader = ({ className = '' }) => {
       layout="fixed"
       height="100px"
       width="100px"
+      className={className}
     />
   )
 }

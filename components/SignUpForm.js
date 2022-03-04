@@ -10,15 +10,21 @@ const AgreementText = ({ children }) => (
   <p className="text-neutral-500 my-1 text-[14px]">{children}</p>
 )
 
-const SignUpForm = ({ onSubmit, loginHref = '/', errorMessage }) => {
+const SignUpForm = ({
+  onSubmit,
+  loginHref = '/',
+  loading = false,
+  errorMessage,
+}) => {
   const { getValues, register } = useForm()
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const email = getValues('email')
     const password = getValues('password')
     onSubmit({ email, password })
   }
   return (
-    <div className="artboard-demo p-3 max-w-[448px]">
+    <form className="artboard-demo p-3 max-w-[448px]" onSubmit={handleSubmit}>
       <div className="flex w-full pb-1 justify-between">
         <H2>Sign Up</H2>
         <NextLink href={loginHref} passHref>
@@ -40,7 +46,7 @@ const SignUpForm = ({ onSubmit, loginHref = '/', errorMessage }) => {
         <InlineLink>Privacy Policy</InlineLink>. California residents, see our{' '}
         <InlineLink>CA Privacy Notice</InlineLink>.
       </AgreementText>
-      <Button size="md" fullWidth onClick={handleSubmit} className="my-2">
+      <Button size="md" fullWidth className="my-2" submit loading={loading}>
         Agree and Sign up
       </Button>
       <Overline className="mb-1">Or sign up with</Overline>
@@ -63,7 +69,7 @@ const SignUpForm = ({ onSubmit, loginHref = '/', errorMessage }) => {
         You also agree to receive product-related marketing emails from BRIDG3,
         which you can unsubscribe from at any time.
       </AgreementText>
-    </div>
+    </form>
   )
 }
 

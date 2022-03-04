@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '../buttons'
+import { Loading } from '../icons'
 import { LabelDescription, Overline } from '../typography'
 
 const Collection = ({
@@ -45,5 +46,15 @@ const Collection = ({
     </div>
   )
 }
+
+const LoadingPlaceholder = ({ className }) => (
+  <div
+    className={`card border flex flex-col items-center justify-center max-w-[400px] h-[500px] p-1 ${className}`}
+  >
+    <Loading className="text-primary w-4 h-4" />
+  </div>
+)
+
+Collection.LoadingPlaceholder = LoadingPlaceholder
 
 export default Collection

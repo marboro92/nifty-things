@@ -12,6 +12,8 @@ const FindProfile = ({
   searchResults,
   onSelectProfile,
   searchValue,
+  hideDropdown,
+  loading,
 }) => {
   const isArtist = userType === 'artist'
   return (
@@ -43,6 +45,8 @@ const FindProfile = ({
         value={searchValue}
         dropdownItems={searchResults}
         onSelectItem={onSelectProfile}
+        hideDropdown={hideDropdown}
+        loading={loading}
       />
       {isArtist && (
         <div className="mt-5 space-y-1 text-center">

@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { Loading } from '../icons'
 
 const Button = (
   {
@@ -8,6 +9,9 @@ const Button = (
     fullWidth = false,
     children,
     className = '',
+    loading = false,
+    disabled = false,
+    submit = false,
     ...props
   },
   ref
@@ -16,7 +20,7 @@ const Button = (
     sm: 'btn-sm',
     md: 'btn-md text-[1.125rem]',
     lg: 'btn-lg',
-    xl: 'btn-lg text-[2rem]',
+    xl: 'btn-lg text-[1.5rem] sm:text-[2rem]',
   }
   const variantClasses = {
     primary:
@@ -27,13 +31,20 @@ const Button = (
   }
   return (
     <Tag
-      className={`btn rounded font-semibold normal-case ${
+      className={`relative btn rounded font-semibold normal-case ${
         fullWidth ? 'w-full' : 'min-w-[10.75rem]'
       } ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       ref={ref}
+      disabled={disabled}
+      {...(Tag === 'button' && { type: submit ? 'submit' : 'button' })}
       {...props}
     >
-      {children}
+      <span className={`flex items-center ${loading ? 'hidden' : 'visible'}`}>
+        {children}
+      </span>
+      {loading && (
+        <Loading className="absolute ml-1 h-[15px] w-[15px] inline" />
+      )}
     </Tag>
   )
 }

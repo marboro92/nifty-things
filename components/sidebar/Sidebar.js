@@ -5,18 +5,18 @@ const BROWSE_MUSIC_NAV_ITEMS = [
   {
     label: 'Explore',
     icon: <Icons.Explore />,
-    href: '/',
+    href: '',
   },
   {
     label: 'Hear this',
     icon: <Icons.HearThis />,
-    href: '/',
+    href: '',
     selected: true,
   },
   {
     label: 'Radio',
     icon: <Icons.Radio />,
-    href: '/',
+    href: '',
   },
 ]
 
@@ -24,27 +24,27 @@ const YOUR_LIBRARY_NAV_ITEMS = [
   {
     label: 'Recently Added',
     icon: <Icons.LastAdded />,
-    href: '/',
+    href: '',
   },
   {
     label: 'Favourites',
     icon: <Icons.Favorites />,
-    href: '/',
+    href: '',
   },
   {
     label: 'Artists',
     icon: <Icons.Artists />,
-    href: '/',
+    href: '',
   },
   {
     label: 'Songs',
     icon: <Icons.Songs />,
-    href: '/',
+    href: '',
   },
   {
     label: 'Genres',
     icon: <Icons.Genres />,
-    href: '/',
+    href: '',
   },
 ]
 
@@ -59,7 +59,7 @@ const MOCK_PLAYLIST_LIST = [
 const playlistNavItems = MOCK_PLAYLIST_LIST.map((playlist) => ({
   label: playlist,
   icon: <Icons.Playlist />,
-  href: '/',
+  href: '',
 }))
 
 const NavSection = ({ itemsList, sectionTitle }) => (

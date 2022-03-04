@@ -11,8 +11,8 @@ const H1 = ({ children, size = 'sm', className = '' }) => {
 
   const sizeClasses = {
     sm: 'text-[2rem]',
-    md: 'text-[3rem]',
-    lg: 'text-[4rem]',
+    md: 'text-[2.5rem] sm:text-[3rem]',
+    lg: 'text-[3rem] md:text-[3.8rem]',
   }
   return (
     <h1

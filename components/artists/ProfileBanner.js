@@ -1,8 +1,3 @@
-import { H1, LabelDescription } from '../typography'
-import { Button } from '../buttons'
-import OnboardingLayout from '../artists/OnboardingLayout'
-import { SearchInput } from '../inputs'
-import { InlineLink } from '../links'
 import { VerifiedArtist } from '../icons'
 import Image from 'next/image'
 

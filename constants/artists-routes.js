@@ -9,4 +9,5 @@ export const ROUTES = {
   ONBOARDING: '/artists/onboarding',
   SETTINGS: '/artists/settings',
   SIGN_UP: '/artists/sign-up',
+  PROFILE_CLAIMED: '/artists/profile-claimed',
 }

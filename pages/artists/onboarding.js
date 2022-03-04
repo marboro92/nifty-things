@@ -5,72 +5,132 @@ import { useEffect, useState } from 'react'
 import FindProfile from '../../components/artists/FindProfile'
 import { PlaceholderAvatar } from '../../components/icons'
 import ProfileExistsError from '../../components/artists/ProfileExistsError'
+import _debounce from 'lodash.debounce'
+import SomethingWentWrong from '../../components/artists/SomethingWentWrong'
+import VerifyProfile from '../../components/artists/VerifyProfile'
+import {
+  checkVerificationCode,
+  getProfileSearchResults,
+  initiateProfileClaim,
+} from '../../utils/api'
 
-const SearchResult = ({ children }) => (
+const SearchResult = ({ children, imgSrc }) => (
   <span className="flex items-center text-neutral">
-    <PlaceholderAvatar className="mr-2 h-[4rem] w-[4rem]" />
+    <div className="relative mr-2 h-[4rem] w-[4rem] rounded-full overflow-hidden">
+      <PlaceholderAvatar className="mr-2 h-[4rem] w-[4rem]" />
+      {imgSrc && (
+        <img
+          className="absolute top-[0] right-[0] h-[4rem] w-[4rem] "
+          src={imgSrc}
+        />
+      )}
+    </div>
     {children}
   </span>
 )
-const PROFILES_MOCK = [
-  {
-    name: 'A-SHO',
-    id: 1,
-  },
-  {
-    name: 'marboro',
-    id: 2,
-  },
-  {
-    name: 'abcd',
-    id: 3,
-  },
-]
 
-const LABELS_MOCK = [
-  {
-    name: 'Nifty Tunes Records',
-    id: 1,
-  },
-  {
-    name: 'Sadboy Records',
-    id: 2,
-  },
-]
 const OnboardingPage = () => {
   const [{ type, cognitoUser }] = useArtistUser()
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState(null)
   const [profile, setProfile] = useState()
+  const [userList, setUserList] = useState()
+  const [loading, setLoading] = useState(false)
   const [showProfileClaimedError, setShowProfileClaimedError] = useState(false)
+  const [showError, setShowError] = useState(false)
+  const [showVerification, setShowVerification] = useState(false)
   const router = useRouter()
-  const userList = type === 'label' ? LABELS_MOCK : PROFILES_MOCK
+
   const searchResults =
-    search && search.length > 0 && !profile
+    search && search.length > 0 && !profile && userList?.length > 0
       ? userList.map((item) => ({
-          ...item,
-          content: <SearchResult>{item.name}</SearchResult>,
+          id: item[type === 'label' ? 'labelID' : 'artistProfileId'],
+          name: item[type === 'label' ? 'name' : 'artistName'],
+          content: (
+            <SearchResult imgSrc={item?.profilePicture}>
+              {item[type === 'label' ? 'name' : 'artistName']}
+            </SearchResult>
+          ),
         }))
       : []
 
-  // useEffect(() => {
-  //   if (!cognitoUser) router.push(ROUTES.GET_ACCESS)
-  // })
+  useEffect(() => {
+    if (!cognitoUser) router.push(ROUTES.GET_ACCESS)
+  })
+
+  const handleChangeSearch = _debounce(async (search, type) => {
+    const results = await getProfileSearchResults(search, type)
+    setLoading(false)
+    setUserList(results)
+  }, 300)
+
+  useEffect(() => {
+    if (search) {
+      setLoading(true)
+      handleChangeSearch(search, type)
+    }
+  }, [search, type])
 
   const onSelectProfile = (item) => {
     setProfile(item)
     setSearch(item.name)
   }
 
-  const claimProfile = () => {
+  const proceedToVerify = () => {
+    setShowVerification(true)
+  }
+
+  const claimProfile = async () => {
     try {
-      // TODO: add check here to see if profile is claimed and complete error handling
-      router.push(ROUTES.LANDING)
-    } catch {
-      setShowProfileClaimedError(true)
+      resetErrors()
+      await initiateProfileClaim('0c0a60c2-0184-4dd5-8383-615e41238908')
+      proceedToVerify()
+    } catch (e) {
+      if (e.message == 'Artist Profile Already Claimed.') {
+        setShowProfileClaimedError(true)
+      } else {
+        setShowError(true)
+      }
     }
   }
 
-  return !showProfileClaimedError ? (
+  const resetErrors = () => {
+    setShowProfileClaimedError(false)
+    setShowError(false)
+  }
+
+  const checkCode = async (code) => {
+    try {
+      setLoading(true)
+      await checkVerificationCode(code)
+      await router.push(ROUTES.PROFILE_CLAIMED)
+    } catch (e) {
+      //TODO: handle mismatch or other errors
+      setShowError()
+    }
+    setLoading(false)
+  }
+
+  if (showProfileClaimedError) {
+    return (
+      <ProfileExistsError
+        name={profile.name}
+        userType={type}
+        onBack={resetErrors}
+      />
+    )
+  }
+
+  if (showError) {
+    return <SomethingWentWrong onBack={resetErrors} />
+  }
+
+  if (showVerification) {
+    return (
+      <VerifyProfile userType={type} onSubmit={checkCode} loading={loading} />
+    )
+  }
+
+  return (
     <FindProfile
       userType={type}
       onBack={() => router.push(ROUTES.GET_ACCESS)}
@@ -79,15 +139,11 @@ const OnboardingPage = () => {
         setProfile(null)
         setSearch(e.target.value)
       }}
-      searchValue={search}
+      hideDropdown={profile}
+      loading={loading}
+      searchValue={search || ''}
       searchResults={searchResults}
       onSelectProfile={onSelectProfile}
-    />
-  ) : (
-    <ProfileExistsError
-      name={profile.name}
-      userType={type}
-      onBack={() => setShowProfileClaimedError(false)}
     />
   )
 }

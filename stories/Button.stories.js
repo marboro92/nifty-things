@@ -11,6 +11,7 @@ export default {
     variant: { options: ['primary', 'secondary', 'outline'], control: 'radio' },
     disabled: { control: 'boolean' },
     fullWidth: { control: 'boolean' },
+    loading: { control: 'boolean' },
   },
 }
 

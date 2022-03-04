@@ -10,6 +10,7 @@ import H1 from '../../../../components/typography/H1'
 import { ROUTES } from '../../../../constants/artists-routes'
 import {
   ARTIST_COLLECTIONS_ACTIONS,
+  findIdInCollection,
   useArtistCollections,
 } from '../../../../contexts/ArtistCollectionsContext'
 
@@ -17,7 +18,9 @@ const CreateCollectionPage = () => {
   const router = useRouter()
   const [{ collections }, dispatch] = useArtistCollections()
   const { id: currentId } = router.query
-  const collection = collections.find(({ id }) => id === currentId)
+  const collection =
+    findIdInCollection(collections.public, currentId) ||
+    findIdInCollection(collections.private, currentId)
   const {
     getValues,
     register,

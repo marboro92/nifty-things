@@ -1,16 +1,15 @@
 import Amplify, { Auth } from 'aws-amplify'
-
-const createMockCognitoUser = ({ email }) => {
-  return { user: { Username: email }, userConfirmed: true }
-}
+import { createMockCognitoUser } from '../mock-data/create-mock-cognito-user'
 
 export const configureAmplify = () => {
-  Amplify.configure({
-    Auth: {
-      userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
-      userPoolWebClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
-    },
-  })
+  if (!process.env.NEXT_PUBLIC_MOCK_COGNITO) {
+    Amplify.configure({
+      Auth: {
+        userPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
+        userPoolWebClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
+      },
+    })
+  }
 }
 
 export const logIn = async ({ email, password }) => {
@@ -39,6 +38,14 @@ export const signUp = async ({ email, password }) => {
 
 export const confirmSignUp = async ({ email, code }) => {
   await Auth.confirmSignUp(email, code)
+}
+
+export const getToken = async () => {
+  const user = await Amplify.Auth.currentAuthenticatedUser()
+  console.log(user)
+  const token = user.signInUserSession.idToken.jwtToken
+  console.log('token', token)
+  return token
 }
 
 export const getSession = async () => await Auth.currentSession()
