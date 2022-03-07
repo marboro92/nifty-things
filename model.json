@@ -5,10 +5,9 @@
     "title": {":type": "line"},
     "content": {":type": "text", ":richtext": true}
   },
-  "artists": {
+  "forArtists": {
     "homePage": {
-      "title": {":type": "line"},
-      "content": {":type": "text", ":richtext": true}
+      ":content": {":type": "text"}
     }
   }
 }
