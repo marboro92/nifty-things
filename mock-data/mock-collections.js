@@ -52,6 +52,13 @@ export const MOCK_COLLECTIONS = {
         },
         { title: 'thx', coverImgSrc: '/artists/cover-2.jpg', duration: '3:16' },
       ],
+      social: {
+        web: 'https://www.asho.com',
+        discord: 'https://www.discord.gg/a-sho#000',
+        instagram: 'https://www.instagram.com/a-sho',
+        twitter: 'https://www.twitter.com/a-sho',
+        tiktok: 'https://www.tiktok.com/a-sho',
+      },
       otherUtilitiesDescription:
         'Other utility that comes with this NFT (concert tickets, merch, VIP)',
     },
@@ -89,6 +96,13 @@ export const MOCK_COLLECTIONS = {
           duration: '2:22',
         },
       ],
+      social: {
+        web: 'https://www.asho.com',
+        discord: 'https://www.discord.gg/a-sho#000',
+        instagram: 'https://www.instagram.com/a-sho',
+        twitter: 'https://www.twitter.com/a-sho',
+        tiktok: 'https://www.tiktok.com/a-sho',
+      },
     },
   ],
   private: [

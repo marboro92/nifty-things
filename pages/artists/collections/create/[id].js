@@ -33,31 +33,18 @@ const CreateCollectionPage = () => {
       price: collection?.price || 1,
       supply: collection?.supply || 500,
       royalty: collection?.royalty || '5.00',
-      web: collection?.social?.web,
-      twitter: collection?.social?.twitter,
-      instagram: collection?.social?.instagram,
-      tiktok: collection?.social?.tiktok,
-      discord: collection?.social?.discord,
     },
   })
 
   const onSubmit = async () => {
     const form = getValues()
     try {
-      const { web, discord, instagram, twitter, tiktok } = form
       await dispatch({
         type: ARTIST_COLLECTIONS_ACTIONS.UPDATE_COLLECTION,
         payload: {
           id: currentId,
           data: {
             ...form,
-            social: {
-              web,
-              discord,
-              instagram,
-              twitter,
-              tiktok,
-            },
             minted: true,
           },
         },
@@ -81,18 +68,11 @@ const CreateCollectionPage = () => {
               Create a collection
             </H1>
             <ImageUpload
-              label="Featured Image"
+              label={collection.title}
               value={collection.title}
               previewSrc={collection.coverImgSrc}
-              description={
-                <>
-                  This image will be used for featuring your collection on the
-                  homepage, category pages, or other promotional areas of
-                  BRIDG3.{' '}
-                  <span className="text-primary">600 x 600 recommended.</span>{' '}
-                </>
-              }
               type="file"
+              description={collection.type}
               inputProps={register('featuredImage')}
               readonly
             />
@@ -108,43 +88,6 @@ const CreateCollectionPage = () => {
               }}
               required
             />
-            <SocialInputGroup
-              label="Links"
-              description={
-                'Add your social media accounts here to maximize potential viewership.'
-              }
-            >
-              <SocialInputGroup.Input
-                platform="web"
-                inputProps={{
-                  ...register('web'),
-                }}
-              />
-              <SocialInputGroup.Input
-                platform="discord"
-                inputProps={{
-                  ...register('discord'),
-                }}
-              />
-              <SocialInputGroup.Input
-                platform="instagram"
-                inputProps={{
-                  ...register('instagram'),
-                }}
-              />
-              <SocialInputGroup.Input
-                platform="twitter"
-                inputProps={{
-                  ...register('twitter'),
-                }}
-              />
-              <SocialInputGroup.Input
-                platform="tiktok"
-                inputProps={{
-                  ...register('tiktok'),
-                }}
-              />
-            </SocialInputGroup>
             <Textarea
               label="Description"
               inputProps={register('description')}
@@ -152,7 +95,7 @@ const CreateCollectionPage = () => {
             <H1 className="mt-5">Pricing</H1>
             <Input
               label="Price"
-              description="This is the starting set price (in SOL) this NFT collection will mint at. Please notice that once it is published, this value can not be changed."
+              description="This is the price this NFT collection will mint at. Please notice that once it is published, this value can not be changed."
               type="number"
               error={errors?.price}
               errorMessage={errors?.price?.message}
@@ -188,7 +131,7 @@ const CreateCollectionPage = () => {
             <H1 className="mt-5">Utilities</H1>
             <Input
               label="Streaming Royalty Allocation"
-              description="This is the percentage you want to allocate into your NFTs."
+              description="This is the percentage of future streaming royalties you would like to provide your NFT holders."
               type="number"
               error={errors?.royalty}
               errorMessage={errors?.royalty?.message}

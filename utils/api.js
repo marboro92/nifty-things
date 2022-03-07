@@ -81,10 +81,5 @@ export const checkVerificationCode = async (code) => {
  */
 export const getProfileSearchResults = async (search, type) => {
   // uncomment to use mock data
-  // return type === 'label' ? MOCK_LABEL_SEARCH : MOCK_ARTIST_SEARCH
-  const response = await fetch(
-    `${API_BASE_URL}${type === 'label' ? 'label' : 'artist'}/search/${search}`
-  )
-  const data = await response.json()
-  return data?.records || []
+  return (type === 'label' ? MOCK_LABEL_SEARCH : MOCK_ARTIST_SEARCH).records
 }
