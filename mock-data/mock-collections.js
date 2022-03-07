@@ -39,6 +39,8 @@ export const MOCK_COLLECTIONS = {
       type: 'EP',
       coverImgSrc: '/artists/cover-2.jpg',
       minted: true,
+      marketplace: 'nifty',
+      currency: 'SOL',
       supply: 300,
       price: 2,
       royalty: 5,
@@ -74,6 +76,8 @@ export const MOCK_COLLECTIONS = {
         'Super special limited NFT edition of this EP, get it before its gone! xo',
       coverImgSrc: '/artists/cover-4.jpg',
       minted: true,
+      marketplace: 'cryptoCom',
+      currency: 'USD ($)',
       trackList: [
         {
           title: 'Miss u',
@@ -113,6 +117,8 @@ export const MOCK_COLLECTIONS = {
       type: 'EP',
       coverImgSrc: '/artists/cover-5.jpg',
       minted: true,
+      marketplace: 'oneOf',
+      currency: 'USD ($)',
       supply: 300,
       price: 2,
       royalty: 5,
@@ -184,6 +190,8 @@ export const MOCK_COLLECTIONS = {
         'Super special limited NFT edition of this EP, get it before its gone! xo',
       coverImgSrc: '/artists/cover-8.jpg',
       minted: true,
+      marketplace: 'decent',
+      currency: 'ETH',
       trackList: [
         {
           title: 'All Time',
@@ -216,6 +224,7 @@ export const MOCK_COLLECTIONS = {
         'Super special limited NFT edition of this EP, get it before its gone! xo',
       coverImgSrc: '/artists/cover-2.jpg',
       minted: true,
+      marketplace: 'royal',
       trackList: [
         {
           title: 'Understand',
@@ -248,6 +257,8 @@ export const MOCK_COLLECTIONS = {
         'Super special limited NFT edition of this EP, get it before its gone! xo',
       coverImgSrc: '/artists/cover-6.jpg',
       minted: true,
+      marketplace: 'nifty',
+      currency: 'SOL',
       trackList: [
         {
           title: 'F Disco',
@@ -280,6 +291,8 @@ export const MOCK_COLLECTIONS = {
         'Super special limited NFT edition of this EP, get it before its gone! xo',
       coverImgSrc: '/artists/cover-10.jpg',
       minted: true,
+      marketplace: 'nifty',
+      currency: 'SOL',
       trackList: [
         {
           title: 'All Time',

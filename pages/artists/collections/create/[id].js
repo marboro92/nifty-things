@@ -3,11 +3,12 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import Layout from '../../../../components/artists/Layout'
 import ProfileBanner from '../../../../components/artists/ProfileBanner'
-import SocialInputGroup from '../../../../components/artists/SocialInputGroup'
 import { Button } from '../../../../components/buttons'
 import { ImageUpload, Input, Textarea } from '../../../../components/inputs'
+import Select from '../../../../components/inputs/Select'
 import H1 from '../../../../components/typography/H1'
 import { ROUTES } from '../../../../constants/artists-routes'
+import { MARKETPLACE_INFO } from '../../../../constants/marketplaces'
 import {
   ARTIST_COLLECTIONS_ACTIONS,
   findIdInCollection,
@@ -24,6 +25,7 @@ const CreateCollectionPage = () => {
   const {
     getValues,
     register,
+    watch,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -33,8 +35,12 @@ const CreateCollectionPage = () => {
       price: collection?.price || 1,
       supply: collection?.supply || 500,
       royalty: collection?.royalty || '5.00',
+      marketplace: 'nifty',
+      currency: MARKETPLACE_INFO['nifty'].currencies[0],
     },
   })
+
+  const watchMarketplace = watch('marketplace')
 
   const onSubmit = async () => {
     const form = getValues()
@@ -50,8 +56,8 @@ const CreateCollectionPage = () => {
         },
       })
       router.push(`${ROUTES.COLLECTION_DETAILS}${currentId}`)
-    } catch {
-      // TODO: handle error.
+    } catch (e) {
+      console.warn(e)
     }
   }
   return (
@@ -63,7 +69,7 @@ const CreateCollectionPage = () => {
             bannerSrc="/artists/banner-1.jpg"
             verified
           />
-          <form onSubmit={handleSubmit(onSubmit)} className="pb-3 space-y-2">
+          <form onSubmit={handleSubmit(onSubmit)} className="pb-3 space-y-3">
             <H1 className="mt-3" size="md">
               Create a collection
             </H1>
@@ -93,20 +99,70 @@ const CreateCollectionPage = () => {
               inputProps={register('description')}
             />
             <H1 className="mt-5">Pricing</H1>
-            <Input
-              label="Price"
-              description="This is the price this NFT collection will mint at. Please notice that once it is published, this value can not be changed."
-              type="number"
-              error={errors?.price}
-              errorMessage={errors?.price?.message}
-              inputProps={{
-                ...register('price', {
-                  required: 'A price for your NFT is required.',
-                }),
-                step: '0.01',
-              }}
+            <Select
+              label="NFT Marketplace"
+              description="Choose where fans can buy and sell your NFT."
               required
-            />
+              inputProps={{
+                ...register('marketplace', {
+                  required: 'You must choose a marketplace.',
+                }),
+              }}
+            >
+              {Object.keys(MARKETPLACE_INFO).map((market) => (
+                <option value={market} key={market}>
+                  {MARKETPLACE_INFO[market].name}
+                </option>
+              ))}
+            </Select>
+            <div className="flex space-x-1">
+              <Input
+                label="Price"
+                description="This is the price this NFT collection will mint at. Please notice that once it is published, this value can not be changed."
+                type="number"
+                error={errors?.price}
+                errorMessage={errors?.price?.message}
+                className="max-w-600"
+                inputProps={{
+                  ...register('price', {
+                    required: 'A price for your NFT is required.',
+                  }),
+                  step: '0.01',
+                }}
+                required
+              />
+              {MARKETPLACE_INFO[watchMarketplace].currencies && (
+                <Select
+                  label="Currency"
+                  description={
+                    MARKETPLACE_INFO[watchMarketplace].currencies.length > 1
+                      ? 'Choose the currency you want to use.'
+                      : 'The marketplace you chose supports a single currency'
+                  }
+                  className="max-w-sm"
+                  disabled={
+                    MARKETPLACE_INFO[watchMarketplace].currencies.length === 1
+                  }
+                  inputProps={{
+                    ...register('currency', {
+                      required: 'You must choose a currency',
+                    }),
+                  }}
+                >
+                  {MARKETPLACE_INFO[watchMarketplace].currencies.map(
+                    (currency, i) => (
+                      <option
+                        value={currency}
+                        key={currency}
+                        selected={i === 0}
+                      >
+                        {currency}
+                      </option>
+                    )
+                  )}
+                </Select>
+              )}
+            </div>
             <Input
               label="Total Supply"
               description="Max 10000."

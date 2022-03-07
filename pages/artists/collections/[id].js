@@ -13,11 +13,14 @@ import {
   PlayButton,
   Solana,
   User,
+  Www,
 } from '../../../components/icons'
 import { H1, H2 } from '../../../components/typography'
 import { SOCIAL_ICON_MAP } from '../../../components/icons/social-icon-map.const'
 import CollectionGrid from '../../../components/artists/CollectionsGrid'
 import ProfileBanner from '../../../components/artists/ProfileBanner'
+import { Button } from '../../../components/buttons'
+import { MARKETPLACE_INFO } from '../../../constants/marketplaces'
 
 const TableCard = ({ children, header, className }) => (
   <div
@@ -141,11 +144,17 @@ const CollectionPage = () => {
                       Starting price
                     </p>
                     <p className="text-base-content font-bold text-[1.5rem]">
-                      {collection?.price} SOL{' '}
+                      {collection?.price} {collection?.currency}{' '}
                       <span className="font-normal text-[14px] text-neutral-500">
                         ($100.52)
                       </span>
                     </p>
+                    <Button className="mt-2">
+                      <>
+                        <Www className="mr-half" /> View on{' '}
+                        {MARKETPLACE_INFO[collection?.marketplace].name}
+                      </>
+                    </Button>
                   </div>
                 </div>
               </TableCard>
