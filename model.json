@@ -5,8 +5,8 @@
     "title": {":type": "line"},
     "content": {":type": "text", ":richtext": true}
   },
-  "pages": {
-    ":items": {
+  "artists": {
+    "homePage": {
       "title": {":type": "line"},
       "content": {":type": "text", ":richtext": true}
     }

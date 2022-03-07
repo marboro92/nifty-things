@@ -4,10 +4,10 @@
     "title": "Index Page",
     "content": "<p>Some <strong>index</strong> content...</p>"
   },
-  "pages": [
-    {
+  "forArtists": {
+    "homePage": {
       "title": "Artists Home",
       "content": "A guide to the three key pathways for getting discovered on BRIDG3 — plus a few steps you can take now to grow your audience and what makes us different."
     }
-  ]
+  }
 }
