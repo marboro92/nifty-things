@@ -13,35 +13,7 @@ import {
 import Link from '../../components/links/Link'
 import { ROUTES } from '../../constants/artists-routes'
 import ForArtistsHeader from '../../components/artists/ForArtistsHeader'
-
-const REASON_CONTENT = [
-  {
-    title: 'Build your audience at any stage',
-    description: `A guide to the three key pathways for getting discovered on
-    BRIDG3 — plus a few steps you can take now to grow your
-    audience and what makes us different.`,
-  },
-  {
-    title: 'Inspire fans with your creativity',
-    description: `With our profile tools, you can change your bio and photos whenever inspiration strikes. Let fans know the real you through music.`,
-  },
-  {
-    title: 'Learn from your fans',
-    description: `Find out how your songs are performing, how you are being discovered, and where your audience is through our Artists Dashboard.`,
-  },
-  {
-    title: 'Artist Friendly. User. Friendly.',
-    description: `A Familiar DSP Interface With Revolutionizing Web 3.0 Technology. Show Your Potential Now.`,
-  },
-  {
-    title: 'End 2 End Artist Suite.',
-    description: `Upload and sell their music as NFTs. Our artist suite allows users to launch their collections, songs, playlists, you name it.`,
-  },
-  {
-    title: 'Multi-Wallet Compatibility',
-    description: `We support multiple wallets so users can use the tools tehy are familiar with.`,
-  },
-]
+import content from '../../content/artists/home.json'
 
 const ReasonCard = ({ title, description }) => (
   <div className="artboard artboard-demo items-start gap-2 p-2 rounded">
@@ -53,28 +25,16 @@ const ReasonCard = ({ title, description }) => (
 
 const SocialMediaBar = () => (
   <div className="flex text-neutral-400 space-x-1">
-    <a
-      href="https://www.facebook.com/tunesnifty/"
-      className="hover:text-primary"
-    >
+    <a href={content.facebookLink} className="hover:text-primary">
       <Facebook />
     </a>
-    <a
-      href="https://twitter.com/tunesnifty?s=21"
-      className="hover:text-primary"
-    >
+    <a href={content.twitterLink} className="hover:text-primary">
       <Twitter />
     </a>
-    <a
-      href="https://instagram.com/tunesnifty?utm_medium=copy_link"
-      className="hover:text-primary"
-    >
+    <a href={content.instagramLink} className="hover:text-primary">
       <Instagram />
     </a>
-    <a
-      href="https://discord.com/invite/uAhpWjR6Pa "
-      className="hover:text-primary"
-    >
+    <a href={content.discordLink} className="hover:text-primary">
       <Discord />
     </a>
   </div>
@@ -113,28 +73,24 @@ const ArtistPage = () => {
             </div>
             <div className="md:max-w-[50%] py-3 pr-1">
               <p className="uppercase text-neutral font-bold text-[14px]">
-                Made to be found
+                {content.justifier}
               </p>
-              <H1>Learn how Music Fans Discover your Music.</H1>
-              <Body1 className="text-neutral-700">
-                A guide to the three key pathways for getting discovered on
-                BRIDG3 — plus a few steps you can take now to grow your audience
-                and what makes us different.
-              </Body1>
+              <H1>{content.title}</H1>
+              <Body1 className="text-neutral-700">{content.body}</Body1>
               <NextLink href={ROUTES.GET_ACCESS}>
-                <Button as="a">Get Access</Button>
+                <Button as="a">{content.signUpCta}</Button>
               </NextLink>
             </div>
           </div>
         </section>
         <section className="flex bg-base-200 flex-col items-center w-full px-1">
           <div className="flex py-6 flex-col max-w-[1236px] items-center">
-            <Label className="text-primary">Why BRIDG3?</Label>
+            <Label className="text-primary">{content.justifier2}</Label>
             <H1 className="max-w-[600px] text-center mt-2 mb-3">
-              It changes the way of what true ownership means.
+              {content.title2}
             </H1>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 px-1">
-              {REASON_CONTENT.map(({ title, description }) => (
+              {content.reasonsList.map(({ title, description }) => (
                 <ReasonCard
                   key={title}
                   title={title}
@@ -149,18 +105,15 @@ const ArtistPage = () => {
             <div className="md:flex w-full justify-between">
               <div className="md:w-[50%]">
                 <p className="uppercase text-neutral font-bold text-[14px]">
-                  Have any questions?
+                  {content.contactJustifier}
                 </p>
-                <H1>We&apos;re Happy to Help!</H1>
-                <Body1>
-                  Please feel free to contact us at any time using one of our
-                  social media links below
-                </Body1>
+                <H1>{content.contactTitle}</H1>
+                <Body1>{content.contactBody}</Body1>
               </div>
               <div className="space-x-1 space-y-1">
-                <Button variant="outline">Privacy Policy</Button>
+                <Button variant="outline">{content.privacyPolicyButton}</Button>
                 <NextLink href={ROUTES.GET_ACCESS} passHref>
-                  <Button>Get Access</Button>
+                  <Button>{content.signUpCta}</Button>
                 </NextLink>
               </div>
             </div>
