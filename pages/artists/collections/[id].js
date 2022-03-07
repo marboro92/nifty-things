@@ -6,9 +6,11 @@ import {
   useArtistCollections,
 } from '../../../contexts/ArtistCollectionsContext'
 import {
+  Ethereum,
   Fraction,
   Heart,
   Lock,
+  Matic,
   Multiuser,
   PlayButton,
   Solana,
@@ -43,6 +45,12 @@ const IconSummary = ({ icon, label }) => (
     <label className="relative text-neutral top-[2px]"> {label}</label>
   </div>
 )
+
+const CURRENCY_LOGO = {
+  SOL: <Solana />,
+  ETH: <Ethereum />,
+  MATIC: <Matic />,
+}
 
 const CollectionPage = () => {
   const router = useRouter()
@@ -138,7 +146,9 @@ const CollectionPage = () => {
                 }
               >
                 <div className="flex">
-                  <Solana />
+                  <div className="w-3 h-3">
+                    {CURRENCY_LOGO[collection?.currency]}
+                  </div>
                   <div className="ml-1">
                     <p className="font-[10px] mb-half text-neutral-500">
                       Starting price

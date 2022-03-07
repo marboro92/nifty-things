@@ -225,6 +225,7 @@ export const MOCK_COLLECTIONS = {
       coverImgSrc: '/artists/cover-2.jpg',
       minted: true,
       marketplace: 'royal',
+      currency: 'MATIC',
       trackList: [
         {
           title: 'Understand',

@@ -24,6 +24,7 @@ const CreateCollectionPage = () => {
     findIdInCollection(collections.private, currentId)
   const {
     getValues,
+    setValue,
     register,
     watch,
     formState: { errors },
@@ -39,8 +40,8 @@ const CreateCollectionPage = () => {
       currency: MARKETPLACE_INFO['nifty'].currencies[0],
     },
   })
-
-  const watchMarketplace = watch('marketplace')
+  const watchMarketplace = watch('marketplace', 'nifty')
+  setValue('currency', MARKETPLACE_INFO[watchMarketplace].currencies[0])
 
   const onSubmit = async () => {
     const form = getValues()
@@ -108,6 +109,10 @@ const CreateCollectionPage = () => {
                   required: 'You must choose a marketplace.',
                 }),
               }}
+              onChange={(val) => {
+                console.log('HELLLLOOO')
+                setValue(currency, MARKETPLACE_INFO[val].currencies[0])
+              }}
             >
               {Object.keys(MARKETPLACE_INFO).map((market) => (
                 <option value={market} key={market}>
@@ -151,11 +156,7 @@ const CreateCollectionPage = () => {
                 >
                   {MARKETPLACE_INFO[watchMarketplace].currencies.map(
                     (currency, i) => (
-                      <option
-                        value={currency}
-                        key={currency}
-                        selected={i === 0}
-                      >
+                      <option value={currency} key={currency}>
                         {currency}
                       </option>
                     )
