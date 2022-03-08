@@ -7,7 +7,6 @@ const Release = ({
   description,
   handle,
   verified,
-  profileImgSrc,
   coverImgSrc,
   href = '/',
   className = '',
@@ -15,7 +14,7 @@ const Release = ({
   return (
     <a
       href={href}
-      className={`card card-bordered card-compact lg:card-normal max-w-[300px] h-[320px] mx-2 mt-1 ${className}`}
+      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-[340px] h-[300px] mx-2 my-2 ${className}`}
     >
       <figure>
         <Image
@@ -25,24 +24,17 @@ const Release = ({
           src={coverImgSrc}
         />
       </figure>
-      <div className="relative px-3 pb-1 text-center top-[-25px]">
-        <div>
-          <Image
-            layout="fixed"
-            height={50}
-            width={50}
-            src={profileImgSrc}
-            className="rounded-full"
-          />
-        </div>
+      <div className="px-3 py-1 text-center overflow-hidden">
         <Label>
           {title}{' '}
           {verified && <VerifiedArtist className="h-1 w-1 mx-[2px] inline" />}
         </Label>
-        <label className="block text-primary text-xs text-bold">
-          @{handle}
+        <label className="block text-xs text-bold text-neutral">
+          by <span className="text-primary">@{handle}</span>
         </label>
-        <p className="mt-1 text-xs text-neutral">{description}</p>
+        <p className="mt-1 text-xs text-neutral max-h-[40px] overflow-hidden">
+          {description}
+        </p>
       </div>
     </a>
   )

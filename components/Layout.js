@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { MenuButton, PillButton } from './buttons'
+import { Button, MenuButton, PillButton } from './buttons'
 import Head from './Head'
 import Sidebar from './sidebar/Sidebar'
-import Player from './player/Player'
 
 const Layout = ({ children }) => {
   const [open, setOpen] = useState(false)
@@ -14,7 +13,7 @@ const Layout = ({ children }) => {
     <>
       <Head />
       <div className="h-screen flex flex-col">
-        <div className="flex h-[calc(100%-80px)] divide-x divide-base-300">
+        <div className="flex h-full divide-x divide-base-300">
           <Sidebar open={open} />
           <main className="h-full w-full divide-y divide-base-300 overflow-auto">
             <div className="flex px-1 py-1 gap-1 flex-wrap">
@@ -24,10 +23,7 @@ const Layout = ({ children }) => {
                 className="md:hidden"
               />
               <div className="grow flex gap-1 items-center justify-end sm:grow-0 sm:order-last">
-                <Link href="/profile">
-                  <PillButton as="a">Profile</PillButton>
-                </Link>
-                <PillButton secondary>Connect Wallet</PillButton>
+                <Button>Connect Wallet</Button>
               </div>
               <input
                 type="text"
@@ -38,7 +34,6 @@ const Layout = ({ children }) => {
             <div className="w-full">{children}</div>
           </main>
         </div>
-        <Player />
       </div>
     </>
   )

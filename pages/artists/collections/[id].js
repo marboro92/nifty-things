@@ -121,7 +121,7 @@ const CollectionPage = () => {
               <IconSummary icon={<Heart />} label="0 liked" />
             </div>
             <div className="mt-3 space-y-1">
-              {!collection.status === 'public' ? (
+              {!collection.status === 'public' && (
                 <TableCard
                   header={
                     <>
@@ -132,17 +132,6 @@ const CollectionPage = () => {
                     </>
                   }
                 />
-              ) : (
-                <p>
-                  {' '}
-                  Released on:{' '}
-                  {collection?.releaseDate?.toLocaleDateString('en-EN', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
               )}
               <TableCard
                 header={
