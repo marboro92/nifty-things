@@ -108,7 +108,9 @@ const CollectionPage = () => {
             </div>
           </div>
           <div>
-            <p className="text-primary">@A-SHO</p>
+            <div className="flex justify-between items-center">
+              <p className="text-primary">@A-SHO</p>
+            </div>
             <H1 className="my-1">{collection.title}</H1>
             <div className="flex space-x-1">
               <IconSummary icon={<Multiuser />} label="0 owners" />
@@ -119,7 +121,7 @@ const CollectionPage = () => {
               <IconSummary icon={<Heart />} label="0 liked" />
             </div>
             <div className="mt-3 space-y-1">
-              {!collection.status === 'public' && (
+              {!collection.status === 'public' ? (
                 <TableCard
                   header={
                     <>
@@ -130,6 +132,17 @@ const CollectionPage = () => {
                     </>
                   }
                 />
+              ) : (
+                <p>
+                  {' '}
+                  Released on:{' '}
+                  {collection?.releaseDate?.toLocaleDateString('en-EN', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
               )}
               <TableCard
                 header={

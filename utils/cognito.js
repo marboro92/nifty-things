@@ -42,9 +42,7 @@ export const confirmSignUp = async ({ email, code }) => {
 
 export const getToken = async () => {
   const user = await Amplify.Auth.currentAuthenticatedUser()
-  console.log(user)
   const token = user.signInUserSession.idToken.jwtToken
-  console.log('token', token)
   return token
 }
 

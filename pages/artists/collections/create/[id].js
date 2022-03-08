@@ -110,7 +110,6 @@ const CreateCollectionPage = () => {
                 }),
               }}
               onChange={(val) => {
-                console.log('HELLLLOOO')
                 setValue(currency, MARKETPLACE_INFO[val].currencies[0])
               }}
             >
