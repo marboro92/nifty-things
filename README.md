@@ -70,3 +70,11 @@ To run a specific test file, run:
 `npm run tests [fileName.test.js]`
 
 All tests can be found under the `tests` folder.
+
+## Managing Content
+
+Content for some pages can be found under within '.json' values `content/` in there there is a `fans` (NiftyTunes) and `artists` (BRIDG3 For Artists) folder for each section of the app. Each .json file corresponds to a single page within the app, edit the values of each key in the json object to change the text that appears on each page.
+
+You can find references to these content files throughout the app by searching for `content.[some key]` for example `content.title` in the artist's home page (`artists/index.js`) corresponds to the `"title:"` in key in the `home.json` file.
+
+If needed, you can double check the syntax of the json object after making changes by copy and pasting the contents of the .json file into a linter for example https://jsonlint.com/ and checking that it is valid.
