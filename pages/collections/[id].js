@@ -25,6 +25,23 @@ const IconSummary = ({ icon, label }) => (
   </div>
 )
 
+const ReleaseSummary = ({ collection, className }) => (
+  <div className={className}>
+    <div className="flex justify-between items-center">
+      <p className="text-primary">@{collection?.username}</p>
+    </div>
+    <H1 className="my-1">{collection.title}</H1>
+    <div className="flex space-x-1">
+      <IconSummary icon={<Multiuser />} label="0 owners" />
+      <IconSummary
+        icon={<User />}
+        label={`${collection?.supply} total supply`}
+      />
+      <IconSummary icon={<Heart />} label="0 liked" />
+    </div>
+  </div>
+)
+
 const CURRENCY_LOGO = {
   SOL: <Solana />,
   ETH: <Ethereum />,
@@ -48,17 +65,23 @@ const CollectionPage = () => {
   return (
     <Layout>
       {collection && (
-        <div className="flex w-full gap-3 my-5 pl-4 pr-1 max-w-[1236px] mx-auto">
+        <div className="lg:flex w-full lg:gap-3 my-5 px-1 max-w-[512px] lg:max-w-[1236px] mx-auto">
           <div>
-            <Image
-              layout="fixed"
-              height="512px"
-              width="512px"
-              src={collection.coverImgSrc}
-              className="rounded-lg"
-              priority
+            <ReleaseSummary
+              collection={collection}
+              className="lg:hidden items-center mb-3"
             />
-            <div className="space-y-1 mt-2 max-w-[512px]">
+            <figure className="lg:h-[512px] lg:w-[512px]">
+              <Image
+                layout="responsive"
+                height="100%"
+                width="100%"
+                src={collection.coverImgSrc}
+                className="rounded-lg"
+                priority
+              />
+            </figure>
+            <div className="space-y-1 mt-2 max-w-[512px] mx-auto">
               {collection?.trackList?.map((item, index) => (
                 <div
                   className="flex bg-neutral-100 border border-neutral-400 rounded-lg py-1 px-2"
@@ -84,19 +107,11 @@ const CollectionPage = () => {
               ))}
             </div>
           </div>
-          <div>
-            <div className="flex justify-between items-center">
-              <p className="text-primary">@{collection?.username}</p>
-            </div>
-            <H1 className="my-1">{collection.title}</H1>
-            <div className="flex space-x-1">
-              <IconSummary icon={<Multiuser />} label="0 owners" />
-              <IconSummary
-                icon={<User />}
-                label={`${collection?.supply} total supply`}
-              />
-              <IconSummary icon={<Heart />} label="0 liked" />
-            </div>
+          <div className="w-full">
+            <ReleaseSummary
+              collection={collection}
+              className="hidden lg:block"
+            />
             <div className="mt-3 space-y-1">
               <TableCard
                 header={
