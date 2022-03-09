@@ -19,10 +19,10 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <div className="mx-2 mt-[80px]">
+      <div className="mx-2 mt-3 md:mt-[80px]">
         <H1 size="md">{content.title}</H1>
       </div>
-      <h3 className="font-bold text-[1.5rem] px-2 pt-5 pb-2">
+      <h3 className="font-bold text-[1.5rem] px-2 pt-2 md:pt-5 pb-2">
         {content.subtitle}
       </h3>
       <div className="flex flex-wrap">
