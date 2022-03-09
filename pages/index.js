@@ -17,7 +17,7 @@ const GeneralLandingPage = () => {
       <Nav homeHref="/" />
       <div className="flex flex-col items-center justify-center h-[600px] bg-primary-400">
         <h1 className="text-base-100 font-bold text-[4rem]">{content.title}</h1>
-        <Body1 className="text-[1.3rem] text-base-100">{content.body}</Body1>
+        <h2 className="text-[1.3rem] text-base-100 my-1">{content.body}</h2>
         <button
           className="btn btn-primary btn-sm rounded-full bg-primary-500 text-base-100 tracking-widest font-normal hover:bg-primary-600 mt-3 px-2"
           onClick={() => router.push('/discover')}
