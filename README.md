@@ -33,13 +33,26 @@ To skip sending real user data to cognito, add the following env variable
 NEXT_PUBLIC_MOCK_COGNITO="true"
 ```
 
-To see examples of all available components or easily develop components outside of the app run `npm run storybook` [Storybook](https://storybook.js.org/blog/get-started-with-storybook-and-next-js/)
+## Components
+
+Shared components are in the `components` folder. To see examples of available components or easily develop components outside of the app run `npm run storybook` [Storybook](https://storybook.js.org/blog/get-started-with-storybook-and-next-js/).
+
+## Project Conventions
+
+Since we have two sections of this app, for Artist's and User's (the marketplace). Artist app specific code is contained in an Artists folder, for example:  `Components/Artists` or the file's prefixed with "Artist" for example: `ArtistCollectionContext.js`.
+
 
 ## Deploy on Vercel
+
+We are currently using Heroku for deployments due to pricing issues with vercel and github org accounts.
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Continuous Integration
+
+All pull requests to the `main` branch will be automatically checked for build errors using `.github/workflows/pull-request.yaml`.
 
 ## Styles and Component Libraries
 
@@ -51,6 +64,7 @@ Styles are generated with [PostCSS](https://postcss.org/).
 
 Consider downloading Tailwind CSS IntelliSense if using VS Code. 
 
+Overrides for Daisy UI and aother component libraries can be found in `globals.css`.
 
 ## Code Formatting & Linting
 
@@ -73,7 +87,7 @@ All tests can be found under the `tests` folder.
 
 ## Managing Content
 
-Content for some pages can be found under within '.json' files  in the `content/` folder. In there, there is a `fans` (NiftyTunes) and `artists` (BRIDG3 For Artists) folder for each section of the app. Each .json file corresponds to a single page within the app, edit the values of each key in the json object to change the text that appears on each page.
+Content for some pages can be found under within '.json' files  in the `content/` folder to make content easy to update without having to know React. In there, there is a `marketplace` (NiftyTunes) and `artists` (BRIDG3 For Artists) folder for each section of the app. Each .json file corresponds to a single page within the app, edit the values of each key in the json object to change the text that appears on each page.
 
 You can find references to these content files throughout the app by searching for `content.[some key]` for example `content.title` in the artist's home page (`artists/index.js`) corresponds to the `"title:"` in key in the `home.json` file.
 
