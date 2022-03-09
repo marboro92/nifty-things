@@ -3,40 +3,18 @@ import NextLink from 'next/link'
 import Head from '../../components/Head'
 import { H1, Body1, Label } from '../../components/typography'
 import { Button } from '../../components/buttons'
-import {
-  Discord,
-  Facebook,
-  HeartWithCircleBg,
-  Instagram,
-  Twitter,
-} from '../../components/icons'
+import { HeartWithCircleBg } from '../../components/icons'
 import Link from '../../components/links/Link'
 import { ROUTES } from '../../constants/artists-routes'
 import ForArtistsHeader from '../../components/artists/ForArtistsHeader'
 import content from '../../content/artists/home.json'
+import SocialMediaBar from '../../components/SocialMediaBar'
 
 const ReasonCard = ({ title, description }) => (
   <div className="artboard artboard-demo items-start gap-2 p-2 rounded">
     <HeartWithCircleBg />
     <h6 className="font-bold text-left">{title}</h6>
     <p className="text-neutral">{description}</p>
-  </div>
-)
-
-const SocialMediaBar = () => (
-  <div className="flex text-neutral-400 space-x-1">
-    <a href={content.facebookLink} className="hover:text-primary">
-      <Facebook />
-    </a>
-    <a href={content.twitterLink} className="hover:text-primary">
-      <Twitter />
-    </a>
-    <a href={content.instagramLink} className="hover:text-primary">
-      <Instagram />
-    </a>
-    <a href={content.discordLink} className="hover:text-primary">
-      <Discord />
-    </a>
   </div>
 )
 
@@ -118,7 +96,12 @@ const ArtistPage = () => {
               </div>
             </div>
             <div className="flex w-full justify-between mt-6 pt-2">
-              <SocialMediaBar />
+              <SocialMediaBar
+                discordLink={content.discordLink}
+                facebookLink={content.facebookLink}
+                instagramLink={content.instagramLink}
+                twitterLink={content.twitterLink}
+              />
               <p className="text-neutral-400">
                 &copy;{new Date().getFullYear()} BRIDG3 Inc. All rights
                 reserved.

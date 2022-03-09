@@ -19,9 +19,11 @@ const CreateCollectionPage = () => {
   const router = useRouter()
   const [{ collections }, dispatch] = useArtistCollections()
   const { id: currentId } = router.query
+  // TODO: replace with collection details call
   const collection =
     findIdInCollection(collections.public, currentId) ||
     findIdInCollection(collections.private, currentId)
+
   const {
     getValues,
     setValue,

@@ -5,36 +5,18 @@ import {
   Ethereum,
   Fraction,
   Heart,
-  Lock,
   Matic,
   Multiuser,
   PlayButton,
   Solana,
   User,
-  Www,
 } from '../../components/icons'
-import { H1, H2 } from '../../components/typography'
+import { H1 } from '../../components/typography'
 import { SOCIAL_ICON_MAP } from '../../components/icons/social-icon-map.const'
-import CollectionGrid from '../../components/artists/CollectionsGrid'
-import ProfileBanner from '../../components/artists/ProfileBanner'
 import { Button } from '../../components/buttons'
-import { findIdInCollection } from '../../contexts/ArtistCollectionsContext'
-import { MOCK_COLLECTIONS } from '../../mock-data/mock-collections'
-
-const TableCard = ({ children, header, className }) => (
-  <div
-    className={`border border-neutral-400 rounded-lg overflow-auto ${className}`}
-  >
-    <div
-      className={`bg-neutral-100 ${
-        children ? 'border-b' : ''
-      } border-neutral-400 border-b-1 p-1 flex items-center`}
-    >
-      {header}
-    </div>
-    {children && <div className="p-2 text-neutral">{children}</div>}
-  </div>
-)
+import TableCard from '../../components/TableCard'
+import { getPublicCollection } from '../../utils/api'
+import { useEffect, useState } from 'react'
 
 const IconSummary = ({ icon, label }) => (
   <div className="flex items-end space-x-1">
@@ -51,13 +33,22 @@ const CURRENCY_LOGO = {
 
 const CollectionPage = () => {
   const router = useRouter()
-  const collections = MOCK_COLLECTIONS.public
   const { id: currentId } = router.query
-  const collection = findIdInCollection(collections, currentId)
+  const [collection, setCollection] = useState(null)
+
+  useEffect(async () => {
+    try {
+      const data = await getPublicCollection(currentId)
+      setCollection(data)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [currentId])
+
   return (
     <Layout>
       {collection && (
-        <div className="flex w-full gap-3 my-5 pl-4 pr-1 max-w-[1336px]">
+        <div className="flex w-full gap-3 my-5 pl-4 pr-1 max-w-[1236px] mx-auto">
           <div>
             <Image
               layout="fixed"
@@ -68,7 +59,7 @@ const CollectionPage = () => {
               priority
             />
             <div className="space-y-1 mt-2 max-w-[512px]">
-              {collection.trackList.map((item, index) => (
+              {collection?.trackList?.map((item, index) => (
                 <div
                   className="flex bg-neutral-100 border border-neutral-400 rounded-lg py-1 px-2"
                   key={index}
@@ -84,7 +75,9 @@ const CollectionPage = () => {
                     <p className="font-bold">
                       {index + 1}. {item.title}
                     </p>
-                    <p className="text-primary text-[14px]">@A-SHO</p>
+                    <p className="text-primary text-[14px]">
+                      @{collection?.username}
+                    </p>
                   </div>
                   <p className="ml-auto text-[14px]">{item.duration}</p>
                 </div>
@@ -93,7 +86,7 @@ const CollectionPage = () => {
           </div>
           <div>
             <div className="flex justify-between items-center">
-              <p className="text-primary">@A-SHO</p>
+              <p className="text-primary">@{collection?.username}</p>
             </div>
             <H1 className="my-1">{collection.title}</H1>
             <div className="flex space-x-1">
@@ -133,11 +126,11 @@ const CollectionPage = () => {
                         ($100.52)
                       </span>
                     </p>
-                    <Button className="mt-2">
-                      <>
-                        <Www className="mr-half" />
-                        Buy Now
-                      </>
+                    <Button
+                      className="mt-2"
+                      onClick={() => router.push(`/confirm/${currentId}`)}
+                    >
+                      Buy Now
                     </Button>
                   </div>
                 </div>

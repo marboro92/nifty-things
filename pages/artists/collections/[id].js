@@ -23,21 +23,7 @@ import CollectionGrid from '../../../components/artists/CollectionsGrid'
 import ProfileBanner from '../../../components/artists/ProfileBanner'
 import { Button } from '../../../components/buttons'
 import { MARKETPLACE_INFO } from '../../../constants/marketplaces'
-
-const TableCard = ({ children, header, className }) => (
-  <div
-    className={`border border-neutral-400 rounded-lg overflow-auto ${className}`}
-  >
-    <div
-      className={`bg-neutral-100 ${
-        children ? 'border-b' : ''
-      } border-neutral-400 border-b-1 p-1 flex items-center`}
-    >
-      {header}
-    </div>
-    {children && <div className="p-2 text-neutral">{children}</div>}
-  </div>
-)
+import TableCard from '../../../components/TableCard'
 
 const IconSummary = ({ icon, label }) => (
   <div className="flex items-end space-x-1">
@@ -100,7 +86,9 @@ const CollectionPage = () => {
                     <p className="font-bold">
                       {index + 1}. {item.title}
                     </p>
-                    <p className="text-primary text-[14px]">@A-SHO</p>
+                    <p className="text-primary text-[14px]">
+                      @{collection?.username}
+                    </p>
                   </div>
                   <p className="ml-auto text-[14px]">{item.duration}</p>
                 </div>
@@ -109,7 +97,7 @@ const CollectionPage = () => {
           </div>
           <div>
             <div className="flex justify-between items-center">
-              <p className="text-primary">@A-SHO</p>
+              <p className="text-primary">@{collection?.username}</p>
             </div>
             <H1 className="my-1">{collection.title}</H1>
             <div className="flex space-x-1">
@@ -161,7 +149,15 @@ const CollectionPage = () => {
                         ($100.52)
                       </span>
                     </p>
-                    <Button className="mt-2">
+                    <Button
+                      as="a"
+                      className="mt-2"
+                      href={
+                        collection?.marketplace === 'nifty'
+                          ? `/collections/${currentId}`
+                          : null
+                      }
+                    >
                       <>
                         <Www className="mr-half" /> View on{' '}
                         {MARKETPLACE_INFO[collection?.marketplace].name}

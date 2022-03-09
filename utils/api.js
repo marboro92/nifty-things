@@ -83,3 +83,24 @@ export const getProfileSearchResults = async (search, type) => {
   // uncomment to use mock data
   return (type === 'label' ? MOCK_LABEL_SEARCH : MOCK_ARTIST_SEARCH).records
 }
+
+/* ------------- NIFTY TUNES MARKETPLACE CALLS -------------- */
+
+/**
+ * getPublicCollections returns a list of all collections available for users to purchase
+ * @returns an object of public collections
+ */
+
+export const getPublicCollections = async () => {
+  return MOCK_COLLECTIONS.public.filter(({ minted }) => minted)
+}
+
+/**
+ * getPublicCollection returns a specific collection
+ * @param collectionId string id for the specific artist
+ * @returns a single public collection
+ */
+
+export const getPublicCollection = async (collectionId) => {
+  return MOCK_COLLECTIONS.public.find(({ id }) => collectionId == id)
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Let's confirm.",
+  "subtitle": "You are purchasing the following NFT collection:",
+  "descriptionTitle": "Description",
+  "priceTitle": "Price",
+  "priceDescription": "Current price",
+  "confirmButton": "Confirm and Buy",
+  "successTitle": "You're Done!",
+  "successSubtitle": "You just purchased this NFT Collection!",
+  "successButton": "Back to the Marketplace"
+}

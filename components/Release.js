@@ -14,13 +14,14 @@ const Release = ({
   return (
     <a
       href={href}
-      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-[340px] h-[300px] mx-2 my-2 ${className}`}
+      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm h-[340px] mx-2 my-2 ${className}`}
     >
-      <figure>
+      <figure className="h-[180px] overflow-hidden w-full">
         <Image
           layout="responsive"
           width="100%"
-          height="50%"
+          height="100%"
+          className=""
           src={coverImgSrc}
         />
       </figure>
@@ -32,7 +33,7 @@ const Release = ({
         <label className="block text-xs text-bold text-neutral">
           by <span className="text-primary">@{handle}</span>
         </label>
-        <p className="mt-1 text-xs text-neutral max-h-[40px] overflow-hidden">
+        <p className="mt-1 text-xs text-neutral max-h-[60px] overflow-hidden">
           {description}
         </p>
       </div>
