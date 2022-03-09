@@ -15,6 +15,15 @@
   opacity: 1;
 }
 
+.table :where(thead,tfoot) :where(th,td) {
+  @apply bg-transparent border-b;
+}
+
+
+.table:where(:not(.table-zebra)) :where(thead,tbody,tfoot) :where(tr:not(:last-child) :where(th,td)) {
+  @apply border-none;
+}
+
 /* React Input Verification Code OVERRIDES */
 
 .custom-verification-code-input .ReactInputVerificationCode__container {

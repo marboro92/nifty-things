@@ -44,6 +44,7 @@ module.exports = {
     fontSize: {
       tiny: '0.5rem',
       xs: '0.75rem',
+      sm: '0.875rem',
     },
     zIndex: {
       nav: '100',
