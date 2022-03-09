@@ -2,8 +2,15 @@ import NextHead from 'next/head'
 
 const Head = ({ title, nifty = false }) => (
   <NextHead>
-    <title>{title || 'BRIDG3'}</title>
-    <meta name="description" content="BRIDG3 NFT Collection Management" />
+    <title>{title || (nifty ? 'NiftyTunes' : 'BRIDG3')}</title>
+    <meta
+      name="description"
+      content={
+        nifty
+          ? 'NiftyTunes NFT Marketplace'
+          : 'BRIDG3 NFT Collection Management'
+      }
+    />
     {nifty ? (
       <link rel="icon" href="/favicon-n.ico" />
     ) : (
