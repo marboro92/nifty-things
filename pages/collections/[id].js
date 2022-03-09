@@ -97,7 +97,7 @@ const CollectionPage = () => {
               />
               <IconSummary icon={<Heart />} label="0 liked" />
             </div>
-            <div className="mt-3 space-y-1">
+            <div className="mt-3 space-y-1 w-full">
               <TableCard
                 header={
                   <>
