@@ -13,19 +13,19 @@ import content from '../../content/marketplace/confirm.json'
 const ConfirmSection = ({ collection, loading, onConfirm }) => (
   <>
     <H1 className="mt-5">{content.title}</H1>
-    <h3 className="font-bold text-[1.2rem] pt-3">{content.subtitle}</h3>
-    <div className="flex mt-4">
-      <div>
+    <h3 className="font-bold text-[1.2rem] pt-2">{content.subtitle}</h3>
+    <div className="lg:flex lg:gap-2 mt-4">
+      <figure className="max-w-[512px] w-full">
         <Image
-          layout="fixed"
-          height="512px"
-          width="512px"
+          layout="responsive"
+          height="100%"
+          width="100%"
           src={collection.coverImgSrc}
           className="mt-2 rounded-lg"
           priority
         />
-      </div>
-      <div className="space-y-2 p-2 w-full">
+      </figure>
+      <div className="space-y-2 w-full mt-1">
         <TableCard
           header={
             <>
@@ -65,7 +65,7 @@ const ConfirmSection = ({ collection, loading, onConfirm }) => (
         </TableCard>
       </div>
     </div>
-    <div className="flex w-full justify-end px-3 py-2">
+    <div className="flex w-full  justify-center lg:justify-end px-3 py-2">
       <Button loading={loading} onClick={onConfirm}>
         {content.confirmButton}
       </Button>
@@ -79,16 +79,16 @@ const Minted = ({ collection, onContinue }) => (
     <h3 className="font-bold text-[1.5rem] px-2 pt-1 pb-2">
       {content.successSubtitle}
     </h3>
-    <div>
+    <figure className="max-w-[512px] w-full">
       <Image
-        layout="fixed"
-        height="512px"
-        width="512px"
+        layout="responsive"
+        height="100%"
+        width="100%"
         src={collection.coverImgSrc}
         className="mt-2 rounded-lg"
         priority
       />
-    </div>
+    </figure>
     <Button size="md" onClick={onContinue}>
       {content.successButton}
     </Button>
@@ -123,7 +123,7 @@ const ConfirmPage = () => {
   }
   return (
     <Layout>
-      <div className="h-full md:my-3 pl-4 pr-1 max-w-[1236px] mx-auto">
+      <div className="h-full md:my-3 max-w-[512px] lg:max-w-[1236px] px-1 mx-auto">
         {collection && !minted && (
           <ConfirmSection
             collection={collection}
