@@ -25,7 +25,7 @@ const ConfirmSection = ({ collection, loading, onConfirm }) => (
           priority
         />
       </div>
-      <div className="space-y-2 p-2">
+      <div className="space-y-2 p-2 w-full">
         <TableCard
           header={
             <>
@@ -42,7 +42,9 @@ const ConfirmSection = ({ collection, loading, onConfirm }) => (
           header={
             <>
               <Fraction />
-              {content.priceTitle}
+              <span className="font-bold text-primary ml-half">
+                {content.priceTitle}
+              </span>
             </>
           }
         >
