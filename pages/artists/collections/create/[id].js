@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import Layout from '../../../../components/artists/Layout'
 import ProfileBanner from '../../../../components/artists/ProfileBanner'
 import { Button } from '../../../../components/buttons'
 import { ImageUpload, Input, Textarea } from '../../../../components/inputs'
+import Datepicker from '../../../../components/inputs/Datepicker'
 import Select from '../../../../components/inputs/Select'
 import H1 from '../../../../components/typography/H1'
 import { ROUTES } from '../../../../constants/artists-routes'
@@ -31,6 +32,7 @@ const CreateCollectionPage = () => {
     watch,
     formState: { errors },
     handleSubmit,
+    control,
   } = useForm({
     defaultValues: {
       title: collection?.title,
@@ -40,6 +42,7 @@ const CreateCollectionPage = () => {
       royalty: collection?.royalty || '5.00',
       marketplace: 'nifty',
       currency: MARKETPLACE_INFO['nifty'].currencies[0],
+      releaseDate: new Date(),
     },
   })
   const watchMarketplace = watch('marketplace', 'nifty')
@@ -185,6 +188,25 @@ const CreateCollectionPage = () => {
                 }),
               }}
               required
+            />
+            <Controller
+              name="releaseDate"
+              control={control}
+              rules={{
+                required:
+                  "A release date is required. To release today choose today's date",
+              }}
+              render={({ field }) => (
+                <Datepicker
+                  onChange={(date) => field.onChange(date)}
+                  value={field.value}
+                  required
+                  error={errors?.releaseDate}
+                  errorMessage={errors?.releaseDate?.message}
+                  label="Release Date"
+                  description="This is the date your NFT release will be made public and available to be bought."
+                />
+              )}
             />
             <H1 className="mt-5">Utilities</H1>
             <Input
