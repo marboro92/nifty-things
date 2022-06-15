@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Button } from './buttons'
 import { VerifiedArtist } from './icons'
 import { Label } from './typography'
 
@@ -10,6 +11,7 @@ const Release = ({
   coverImgSrc,
   href = '/',
   className = '',
+  minted = false,
 }) => {
   return (
     <a
@@ -36,6 +38,7 @@ const Release = ({
         <p className="mt-1 text-xs text-neutral max-h-[60px] overflow-hidden">
           {description}
         </p>
+        {minted ? <Label>You own it!</Label> : <Button>Mint</Button>}
       </div>
     </a>
   )

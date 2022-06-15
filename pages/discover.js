@@ -36,7 +36,8 @@ const HomePage = () => {
                 description={description}
                 handle={username}
                 coverImgSrc={coverImgSrc}
-                href={`collections/${id}`}
+                minted={false}
+                onMint={() => {}}
                 key={id}
               />
             )
