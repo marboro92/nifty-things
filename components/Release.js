@@ -21,7 +21,7 @@ const Release = ({
   }
   return (
     <div
-      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm border-neutral-100 h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
+      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm border-neutral-100 min-w-[300px] h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
     >
       <figure className="h-[180px] overflow-hidden w-full">
         <Image
