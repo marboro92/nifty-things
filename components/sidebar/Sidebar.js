@@ -5,7 +5,7 @@ import * as Icons from './icons'
 const NAV_ITEMS = [
   {
     label: 'Discover',
-    href: '/discover',
+    href: '/',
     selected: true,
   },
   {
