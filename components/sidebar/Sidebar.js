@@ -21,8 +21,8 @@ const NavSection = ({ itemsList, currentRoute }) => (
         <li key={item.label}>
           <Link href={item.href}>
             <a
-              className={`flex gap-1 my-half rounded-full py-1 pl-2 font-light hover:bg-[#e5edf5] ${
-                currentRoute === item.href ? 'text-primary' : 'text-neutral'
+              className={`flex gap-1 my-half rounded-md py-1 pl-2 font-light hover:text-primary ${
+                currentRoute === item.href ? 'bg-[#efefff]' : 'bg-transparent'
               }`}
             >
               {item.icon}
