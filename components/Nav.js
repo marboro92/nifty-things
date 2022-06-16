@@ -7,7 +7,7 @@ const Nav = ({ children, homeHref, className = '' }) => (
     >
       <nav className="flex w-full items-center justify-between mx-auto px-1 max-w-[1236px]">
         <Link href={homeHref} passHref>
-          <a className="font-bold text-[24px]">NiftyTunes</a>
+          <a className="font-bold text-[24px]">NiFTy</a>
         </Link>
         <div className="flex items-center justify-end space-x-3">
           {children}

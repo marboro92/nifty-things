@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['picsum.photos'], //placeholder images
+    domains: ['gateway.ipfscdn.io'], //placeholder images
   },
   webpack(config, options) {
     config.module.rules.push({

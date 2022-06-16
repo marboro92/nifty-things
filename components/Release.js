@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { Button } from './buttons'
 import { VerifiedArtist } from './icons'
 import { Label } from './typography'
@@ -6,17 +7,21 @@ import { Label } from './typography'
 const Release = ({
   title,
   description,
-  handle,
   verified,
   coverImgSrc,
-  href = '/',
+  onClaim,
   className = '',
-  minted = false,
+  claimed = false,
 }) => {
+  const [loading, setLoading] = useState(false)
+  const handleClaim = async () => {
+    setLoading(true)
+    await onClaim()
+    setLoading(false)
+  }
   return (
-    <a
-      href={href}
-      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
+    <div
+      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm border-neutral-100 h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
     >
       <figure className="h-[180px] overflow-hidden w-full">
         <Image
@@ -32,15 +37,18 @@ const Release = ({
           {title}{' '}
           {verified && <VerifiedArtist className="h-1 w-1 mx-[2px] inline" />}
         </Label>
-        <label className="block text-xs text-bold text-neutral">
-          by <span className="text-primary">@{handle}</span>
-        </label>
-        <p className="mt-1 text-xs text-neutral max-h-[60px] overflow-hidden">
+        <p className="mt-1 mb-2 text-xs text-neutral max-h-[60px] overflow-hidden">
           {description}
         </p>
-        {minted ? <Label>You own it!</Label> : <Button>Mint</Button>}
+        {claimed ? (
+          <Label>Claimed</Label>
+        ) : (
+          <Button onClick={handleClaim} loading={loading}>
+            Claim
+          </Button>
+        )}
       </div>
-    </a>
+    </div>
   )
 }
 
