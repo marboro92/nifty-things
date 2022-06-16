@@ -1,38 +1,22 @@
-import { useWeb3React } from '@web3-react/core'
+import { useMetamask, useDisconnect, useAddress } from '@thirdweb-dev/react'
 import { Button } from '../buttons'
-import { injected } from '../../utils/wallet-connector'
 
 export const ConnectButton = () => {
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React()
-
-  const connect = async () => {
-    try {
-      await activate(injected)
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-
-  const disconnect = async () => {
-    try {
-      deactivate()
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
+  const connectWithMetamask = useMetamask()
+  const disconnect = useDisconnect()
+  const address = useAddress()
 
   return (
     <div>
-      {active ? (
+      {address ? (
         <>
           <span className="mr-2">
-            Connected with <b>{account}</b>
+            Connected with <b>{address}</b>
           </span>
           <Button onClick={disconnect}>Disconnect</Button>
         </>
       ) : (
-        <Button onClick={connect}>Connect Wallet</Button>
+        <Button onClick={connectWithMetamask}>Connect Wallet</Button>
       )}
     </div>
   )
