@@ -26,8 +26,6 @@ const HomePage = () => {
       },
       body: JSON.stringify({ id, address }),
     })
-
-    console.log(response)
     loadNFTCollections()
   }
 
