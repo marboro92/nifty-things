@@ -19,7 +19,6 @@ const HomePage = () => {
   useEffect(async () => {
     try {
       const data = await loadNFTCollections()
-      console.log(data)
       setCollections(data)
     } catch (e) {
       console.error(e)

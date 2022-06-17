@@ -15,23 +15,25 @@ const HomePage = () => {
 
   const loadNFTCollections = async () => {
     const nfts = await contract.getAll()
-    return nfts
+    setCollections(nfts)
   }
 
   const handleClaim = async (id) => {
-    // const sdk = new ThirdwebSDK('rinkeby')
-    // console.log(sdk)
-    // const module = await sdk.getNFTCollection(
-    //   process.env.NEXT_PUBLIC_SMART_CONTRACT
-    // )
-    // console.log(address)
-    await contract.transfer(address, id)
+    const response = await fetch('/api/claim-nfts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id, address }),
+    })
+
+    console.log(response)
+    loadNFTCollections()
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const data = await loadNFTCollections()
-      setCollections(data)
+      loadNFTCollections()
     } catch (e) {
       console.error(e)
     }
