@@ -1,5 +1,6 @@
 import { useNFTCollection } from '@thirdweb-dev/react'
 import { useAddress } from '@thirdweb-dev/react'
+import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
@@ -10,8 +11,9 @@ const HomePage = () => {
   const [collections, setCollections] = useState()
   const [claimed, setClaimed] = useState()
   const address = useAddress()
-  const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
   console.log(address)
+  const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
+  console.log(contract)
 
   const loadNFTCollections = async () => {
     const nfts = await contract.getAll()
@@ -19,8 +21,14 @@ const HomePage = () => {
     return nfts
   }
 
-  const handleClaim = async () => {
-    await contract.nft.transfer(address)
+  const handleClaim = async (id) => {
+    // const sdk = new ThirdwebSDK('rinkeby')
+    // console.log(sdk)
+    // const module = await sdk.getNFTCollection(
+    //   process.env.NEXT_PUBLIC_SMART_CONTRACT
+    // )
+    // console.log(address)
+    await contract.transfer(address, id)
   }
 
   useEffect(async () => {
@@ -50,7 +58,7 @@ const HomePage = () => {
               description={metadata.description}
               coverImgSrc={metadata.image}
               key={metadata.id._hex}
-              onClaim={handleClaim}
+              onClaim={() => handleClaim(metadata.id)}
               claimed={
                 owner !== process.env.NEXT_PUBLIC_DEFAULT_OWNER ||
                 address == collectionOriginalOwner

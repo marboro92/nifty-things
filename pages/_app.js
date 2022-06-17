@@ -13,7 +13,16 @@ configureAmplify()
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThirdwebProvider desiredChainId={ChainId.Rinkeby}>
+    <ThirdwebProvider
+      desiredChainId={ChainId.Rinkeby}
+      sdkOptions={{
+        gasless: {
+          openzeppelin: {
+            relayerUrl: process.env.NEXT_PUBLIC_OPENZEP_RELAYER_URL,
+          },
+        },
+      }}
+    >
       <ArtistUserProvider>
         <ArtistCollectionsProvider>
           <Component {...pageProps} />
