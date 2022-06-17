@@ -34,7 +34,7 @@ const HomePage = () => {
       <div className="flex flex-wrap">
         {collections &&
           collections.length &&
-          [collections[0]]
+          collections
             .filter(({ owner }) => owner === address)
             .map(({ metadata }) => (
               <Release

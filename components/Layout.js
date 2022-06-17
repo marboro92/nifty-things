@@ -16,7 +16,7 @@ const Layout = ({ children, banner }) => {
               <ConnectButton />
             </Nav>
             {banner}
-            <div className="w-full max-w-[1236px] mx-auto flex h-full">
+            <div className="w-full max-w-[1400px] mx-auto flex h-full">
               <Sidebar open={open} />
               <div>{children}</div>
             </div>

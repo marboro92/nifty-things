@@ -21,16 +21,10 @@ const Release = ({
   }
   return (
     <div
-      className={`block card card-bordered card-compact bg-base-200 rounded-lg lg:card-normal max-w-sm border-neutral-100 min-w-[300px] h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
+      className={`block card card-bordered card-compact rounded-lg lg:card-normal max-w-sm bg-white border-neutral-100 min-w-[320px] md:min-w-sm h-[340px] m-1 lg:mx-2 md:my-2 ${className}`}
     >
       <figure className="h-[180px] overflow-hidden w-full">
-        <Image
-          layout="responsive"
-          width="100%"
-          height="100%"
-          className=""
-          src={coverImgSrc}
-        />
+        <img width="100%" height="auto" src={coverImgSrc} />
       </figure>
       <div className="px-3 py-1 text-center overflow-hidden">
         <Label>

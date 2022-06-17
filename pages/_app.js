@@ -5,6 +5,10 @@ import '../styles/globals.css'
 import { ArtistUserProvider } from '../contexts/ArtistUserContext'
 import { ArtistCollectionsProvider } from '../contexts/ArtistCollectionsContext'
 
+// import { Web3Auth } from '@web3auth/web3auth'
+// import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
+// import RPC from '../utils/evm'
+
 configureAmplify()
 
 function MyApp({ Component, pageProps }) {
