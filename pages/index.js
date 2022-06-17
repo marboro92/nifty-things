@@ -11,13 +11,10 @@ const HomePage = () => {
   const [collections, setCollections] = useState()
   const [claimed, setClaimed] = useState()
   const address = useAddress()
-  console.log(address)
   const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
-  console.log(contract)
 
   const loadNFTCollections = async () => {
     const nfts = await contract.getAll()
-    console.log(nfts)
     return nfts
   }
 
@@ -34,7 +31,6 @@ const HomePage = () => {
   useEffect(async () => {
     try {
       const data = await loadNFTCollections()
-      console.log(data)
       setCollections(data)
     } catch (e) {
       console.error(e)
