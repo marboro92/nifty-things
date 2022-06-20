@@ -92,3 +92,6 @@ Content for some pages can be found under within '.json' files  in the `content/
 You can find references to these content files throughout the app by searching for `content.[some key]` for example `content.title` in the artist's home page (`creator/index.js`) corresponds to the `"title:"` in key in the `home.json` file.
 
 If needed, you can double check the syntax of the json object after making changes by copy and pasting the contents of the .json file into a linter for example https://jsonlint.com/ and checking that it is valid.
+
+
+
