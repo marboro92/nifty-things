@@ -15,5 +15,5 @@ const Template = (args) => <H1 {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-  children: 'Artists Matter. Period.',
+  children: 'Creators Matter. Period.',
 }

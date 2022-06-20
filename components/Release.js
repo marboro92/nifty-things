@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Button } from './buttons'
-import { VerifiedArtist } from './icons'
+import { VerifiedCreator } from './icons'
 import { Label } from './typography'
 
 const Release = ({
@@ -29,7 +29,7 @@ const Release = ({
       <div className="px-3 py-1 text-center overflow-hidden">
         <Label>
           {title}{' '}
-          {verified && <VerifiedArtist className="h-1 w-1 mx-[2px] inline" />}
+          {verified && <VerifiedCreator className="h-1 w-1 mx-[2px] inline" />}
         </Label>
         <p className="mt-1 mb-2 text-xs text-neutral max-h-[60px] overflow-hidden">
           {description}

@@ -39,7 +39,7 @@ Shared components are in the `components` folder. To see examples of available c
 
 ## Project Conventions
 
-Since we have two sections of this app, for Artist's and User's (the marketplace). Artist app specific code is contained in an Artists folder, for example:  `Components/Artists` or the file's prefixed with "Artist" for example: `ArtistCollectionContext.js`.
+Since we have two sections of this app, for Creator's and User's (the marketplace). Creator app specific code is contained in an Creators folder, for example:  `Components/Creators` or the file's prefixed with "Creator" for example: `CreatorCollectionContext.js`.
 
 
 ## Deploy on Vercel
@@ -87,8 +87,8 @@ All tests can be found under the `tests` folder.
 
 ## Managing Content
 
-Content for some pages can be found under within '.json' files  in the `content/` folder to make content easy to update without having to know React. In there, there is a `marketplace` (NiftyTunes) and `artists` (BRIDG3 For Artists) folder for each section of the app. Each .json file corresponds to a single page within the app, edit the values of each key in the json object to change the text that appears on each page.
+Content for some pages can be found under within '.json' files  in the `content/` folder to make content easy to update without having to know React. In there, there is a `marketplace` (NiftyTunes) and `creator` (BRIDG3 For Creators) folder for each section of the app. Each .json file corresponds to a single page within the app, edit the values of each key in the json object to change the text that appears on each page.
 
-You can find references to these content files throughout the app by searching for `content.[some key]` for example `content.title` in the artist's home page (`artists/index.js`) corresponds to the `"title:"` in key in the `home.json` file.
+You can find references to these content files throughout the app by searching for `content.[some key]` for example `content.title` in the artist's home page (`creator/index.js`) corresponds to the `"title:"` in key in the `home.json` file.
 
 If needed, you can double check the syntax of the json object after making changes by copy and pasting the contents of the .json file into a linter for example https://jsonlint.com/ and checking that it is valid.

@@ -18,7 +18,7 @@ export const Default = Template.bind({})
 
 Default.args = {
   name: 'search',
-  placeholder: 'Search artists',
+  placeholder: 'Search creator',
   error: false,
 }
 
@@ -26,7 +26,7 @@ export const WithResults = Template.bind({})
 
 WithResults.args = {
   name: 'search',
-  placeholder: 'Search artists',
+  placeholder: 'Search creator',
   dropdownItems: [
     {
       content: 'item 1',

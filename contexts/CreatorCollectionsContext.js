@@ -1,18 +1,18 @@
 import * as React from 'react'
 
-const INITIAL_ARTIST_COLLECTIONS_CONTEXT = {
+const INITIAL_CREATOR_COLLECTIONS_CONTEXT = {
   collections: {
     public: [],
     private: [],
   },
 }
 
-export const ARTIST_COLLECTIONS_ACTIONS = {
+export const CREATOR_COLLECTIONS_ACTIONS = {
   UPDATE_COLLECTION: 'update collection',
   SET_COLLECTIONS: 'set collections',
 }
 
-export const ArtistCollectionsContext = React.createContext()
+export const CreatorCollectionsContext = React.createContext()
 
 // TEMP WORKAROUND FOR NOT HAVING A RELEASE DETAILS ENDPOINT
 // this handles finding and updating the correct collection to show the work on the front end
@@ -55,9 +55,9 @@ const updateCollection = (state, idToUpdate, newCollectionData) => {
   throw new Error('Invalid idToUpdate provided to updateCollection.')
 }
 
-const artistCollectionsReducer = (state, action) => {
+const creatorCollectionsReducer = (state, action) => {
   switch (action.type) {
-    case ARTIST_COLLECTIONS_ACTIONS.UPDATE_COLLECTION: {
+    case CREATOR_COLLECTIONS_ACTIONS.UPDATE_COLLECTION: {
       return {
         ...state,
         collections: updateCollection(
@@ -67,7 +67,7 @@ const artistCollectionsReducer = (state, action) => {
         ),
       }
     }
-    case ARTIST_COLLECTIONS_ACTIONS.SET_COLLECTIONS: {
+    case CREATOR_COLLECTIONS_ACTIONS.SET_COLLECTIONS: {
       return {
         ...state,
         collections: action.payload.data,
@@ -79,23 +79,23 @@ const artistCollectionsReducer = (state, action) => {
   }
 }
 
-export const ArtistCollectionsProvider = ({ children }) => {
+export const CreatorCollectionsProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(
-    artistCollectionsReducer,
-    INITIAL_ARTIST_COLLECTIONS_CONTEXT
+    creatorCollectionsReducer,
+    INITIAL_CREATOR_COLLECTIONS_CONTEXT
   )
   return (
-    <ArtistCollectionsContext.Provider value={[state, dispatch]}>
+    <CreatorCollectionsContext.Provider value={[state, dispatch]}>
       {children}
-    </ArtistCollectionsContext.Provider>
+    </CreatorCollectionsContext.Provider>
   )
 }
 
-export const useArtistCollections = () => {
-  const context = React.useContext(ArtistCollectionsContext)
+export const useCreatorCollections = () => {
+  const context = React.useContext(CreatorCollectionsContext)
   if (context === undefined) {
     throw new Error(
-      'useArtistCollections must be used within a ArtistCollectionsProvider'
+      'useCreatorCollections must be used within a CreatorCollectionsProvider'
     )
   }
   return context

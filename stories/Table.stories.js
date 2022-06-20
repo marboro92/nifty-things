@@ -26,7 +26,7 @@ Default.args = {
           name="Hart Haggarly"
         />
         <Table.Cell>Joshua</Table.Cell>
-        <Table.Cell>Artist</Table.Cell>
+        <Table.Cell>Creator</Table.Cell>
         <Table.Cell>Admin</Table.Cell>
       </Table.Row>
       <Table.Row>
@@ -43,7 +43,7 @@ Default.args = {
             <option>B Yonce</option>
           </select>
         </Table.Cell>
-        <Table.Cell>Artist</Table.Cell>
+        <Table.Cell>Creator</Table.Cell>
         <Table.Cell>Admin</Table.Cell>
       </Table.Row>
       <Table.Row>
@@ -52,7 +52,7 @@ Default.args = {
           name="Linda Playa"
         />
         <Table.Cell>Not You</Table.Cell>
-        <Table.Cell>Artist</Table.Cell>
+        <Table.Cell>Creator</Table.Cell>
         <Table.Cell>Admin</Table.Cell>
       </Table.Row>
     </>

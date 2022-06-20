@@ -1,16 +1,16 @@
 import { API_BASE_URL } from '../constants/api'
-import { MOCK_ARTIST_SEARCH } from '../mock-data/mock-artist-search'
+import { MOCK_CREATOR_SEARCH } from '../mock-data/mock-creator-search'
 import { MOCK_COLLECTIONS } from '../mock-data/mock-collections'
 import { MOCK_LABEL_SEARCH } from '../mock-data/mock-label-search'
 import { getToken } from './cognito'
 
 /**
  * getCollection returns a list of all collections
- * @param artistId a string id for the specific artist
+ * @param creatorId a string id for the specific creator
  * @returns an object of private and public collections
  */
 
-export const getCollections = async (artistId) => {
+export const getCollections = async (creatorId) => {
   // TODO: replace with new endpoint
   // const transfromCollectionList = (collectionList) =>
   //   collectionList?.map(({ releaseId, releaseTitle, ...item }) => ({
@@ -26,7 +26,7 @@ export const getCollections = async (artistId) => {
   //     ...item,
   //   }))
   // const response = await fetch(
-  //   `${API_BASE_URL}artistProfile/${artistId}/releases`
+  //   `${API_BASE_URL}creatorProfile/${creatorId}/releases`
   // )
   // const data = await response.json()
   // return {
@@ -38,15 +38,15 @@ export const getCollections = async (artistId) => {
 
 /**
  * initiateProfileClaim sends an email with a verification code to the
- * artist and returns whether this was successful or errors
- * @param id a string id for the specific artist profile being claimed
+ * creator and returns whether this was successful or errors
+ * @param id a string id for the specific creator profile being claimed
  * @returns an object of private and public collections
  */
 export const initiateProfileClaim = async (id) => {
   if (!process.env.NEXT_PUBLIC_MOCK_COGNITO) {
     const token = await getToken()
     const response = await fetch(
-      `https://wumata79tb.execute-api.us-east-1.amazonaws.com/dev/artistProfile/claim/initiate/${id}`,
+      `https://wumata79tb.execute-api.us-east-1.amazonaws.com/dev/creatorProfile/claim/initiate/${id}`,
       {
         method: 'PUT',
         authorization: token,
@@ -58,14 +58,14 @@ export const initiateProfileClaim = async (id) => {
 }
 
 /**
- * checkVerificationCode checks the code for artist profile verification
+ * checkVerificationCode checks the code for creator profile verification
  * @param code a 4 digit code inputted by the user
  * @returns returns wherther the the cide verification what successful
  */
 export const checkVerificationCode = async (code) => {
   if (!process.env.NEXT_PUBLIC_MOCK_COGNITO) {
     const response = await fetch(
-      `${API_BASE_URL}artistProfile/claim/attempt/${code}`,
+      `${API_BASE_URL}creatorProfile/claim/attempt/${code}`,
       { method: 'PUT' }
     )
     const data = await response.json()
@@ -76,12 +76,12 @@ export const checkVerificationCode = async (code) => {
 /**
  * getProfileSearchResults searches for profiles the user can claim
  * @param search a string search term
- * @param type the user type, artist or label (captured in get-access)
+ * @param type the user type, creator or label (captured in get-access)
  * @returns returns a list of search results
  */
 export const getProfileSearchResults = async (search, type) => {
   // uncomment to use mock data
-  return (type === 'label' ? MOCK_LABEL_SEARCH : MOCK_ARTIST_SEARCH).records
+  return (type === 'label' ? MOCK_LABEL_SEARCH : MOCK_CREATOR_SEARCH).records
 }
 
 /* ------------- NIFTY TUNES MARKETPLACE CALLS -------------- */
@@ -97,7 +97,7 @@ export const getPublicCollections = async () => {
 
 /**
  * getPublicCollection returns a specific collection
- * @param collectionId string id for the specific artist
+ * @param collectionId string id for the specific creator
  * @returns a single public collection
  */
 

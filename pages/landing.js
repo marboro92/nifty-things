@@ -5,7 +5,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import SocialMediaBar from '../components/SocialMediaBar'
 import { H1, Body1 } from '../components/typography'
-import { ROUTES } from '../constants/artists-routes'
+import { ROUTES } from '../constants/creator-routes'
 import content from '../content/landing.json'
 
 const GeneralLandingPage = () => {
@@ -40,7 +40,7 @@ const GeneralLandingPage = () => {
               </div>
               <div className="mt-3">
                 <NextLink href={ROUTES.HOME} passHref>
-                  <Button>{content.artistsButton}</Button>
+                  <Button>{content.creatorButton}</Button>
                 </NextLink>
               </div>
             </div>

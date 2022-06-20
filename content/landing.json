@@ -1,13 +1,13 @@
 {
-  "title": "Music for everyone.",
-  "body": "All Artists. All Distributors. All in NFTs.",
-  "artistsButton": "Go to Artist's Portal",
+  "title": "NFT Marketplace",
+  "body": "Welcome to the NFT Marketplace",
+  "creatorButton": "Go to Creator's Platform",
   "fansButton": "Visit the marketplace",
   "contactJustifier": "Have any questions?",
   "contactTitle": "We're happy to help!",
   "contactBody": "Please feel free to contact us at anytime using one of our social media links below!",
-  "facebookLink": "https://www.facebook.com/tunesnifty/",
-  "twitterLink": "https://twitter.com/tunesnifty?s=21",
-  "instagramLink": "https://instagram.com/tunesnifty?utm_medium=copy_link",
-  "discordLink": "https://discord.com/invite/uAhpWjR6Pa"
+  "facebookLink": "",
+  "twitterLink": "",
+  "instagramLink": "",
+  "discordLink": ""
 }

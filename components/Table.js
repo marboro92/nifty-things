@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { VerifiedArtist } from './icons'
+import { VerifiedCreator } from './icons'
 import { Label } from './typography'
 
 const Table = ({ children, head }) => {
