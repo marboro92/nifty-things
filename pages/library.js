@@ -4,12 +4,18 @@ import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
+import { Label } from '../components/typography'
 
 const HomePage = () => {
   const contract = useNFTDrop(process.env.NEXT_PUBLIC_SMART_CONTRACT)
   const [collections, setCollections] = useState()
   const [claimed, setClaimed] = useState()
   const address = useAddress()
+
+  const yourCollections =
+    collections && collections.length
+      ? collections?.filter(({ owner }) => owner === address)
+      : []
 
   const loadNFTCollections = async () => {
     const nfts = await contract.getAll()
@@ -32,18 +38,22 @@ const HomePage = () => {
       </h3>
       <div className="flex flex-wrap">
         {collections &&
-          collections.length &&
-          collections
-            .filter(({ owner }) => owner === address)
-            .map(({ metadata }) => (
-              <Release
-                title={metadata.name}
-                description={metadata.description}
-                coverImgSrc={metadata.image}
-                key={metadata.id._hex}
-                claimed
-              />
-            ))}
+          Boolean(yourCollections.length) &&
+          yourCollections.map(({ metadata }) => (
+            <Release
+              title={metadata.name}
+              description={metadata.description}
+              coverImgSrc={metadata.image}
+              key={metadata.id._hex}
+              claimed
+            />
+          ))}
+
+        {!Boolean(yourCollections.length) && (
+          <Label className="px-2">
+            You don't currently have any NFT's. Go claim some!
+          </Label>
+        )}
       </div>
     </Layout>
   )
