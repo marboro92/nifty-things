@@ -5,11 +5,11 @@ import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
+import { claimNft } from '../utils/contract'
 
 const HomePage = () => {
   const contract = useNFTCollection(process.env.NEXT_PUBLIC_SMART_CONTRACT)
   const [collections, setCollections] = useState()
-  const [claimed, setClaimed] = useState()
   const address = useAddress()
   const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
 
@@ -19,13 +19,7 @@ const HomePage = () => {
   }
 
   const handleClaim = async (id) => {
-    const response = await fetch('/api/claim-nfts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id, address }),
-    })
+    await claimNft(id, address)
     loadNFTCollections()
   }
 
