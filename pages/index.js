@@ -4,15 +4,25 @@ import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
 import { claimNft, getAllAvailableNfts } from '../utils/contract'
+import { Label } from '../components/typography'
 
 const HomePage = () => {
   const [collections, setCollections] = useState()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState()
   const address = useAddress()
   const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
 
   const loadNFTCollections = async () => {
-    const nfts = await getAllAvailableNfts()
-    setCollections(nfts)
+    setLoading(true)
+    setError()
+    try {
+      const nfts = await getAllAvailableNfts()
+      setCollections(nfts)
+    } catch (e) {
+      setError(error)
+    }
+    setLoading(false)
   }
 
   const handleClaim = async (id) => {
@@ -34,6 +44,10 @@ const HomePage = () => {
         {content.subtitle}
       </h3>
       <div className="flex flex-wrap">
+        {!collections && loading && (
+          <Label>Hold tight! Getting available NFTs...</Label>
+        )}
+        {error && <Label>Something went wrong: {error}</Label>}
         {collections &&
           collections.length &&
           collections.map(({ owner, id, metadata }) => (
