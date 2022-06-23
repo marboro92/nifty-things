@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
-import { claimNft } from '../utils/contract'
+import { claimNft, getAllAvailableNfts } from '../utils/contract'
 
 const HomePage = () => {
   const contract = useNFTCollection(process.env.NEXT_PUBLIC_SMART_CONTRACT)
@@ -14,7 +14,8 @@ const HomePage = () => {
   const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
 
   const loadNFTCollections = async () => {
-    const nfts = await contract.getAll()
+    const nfts = await getAllAvailableNfts()
+    console.log(JSON.stringify(nfts))
     setCollections(nfts)
   }
 
@@ -42,12 +43,12 @@ const HomePage = () => {
       <div className="flex flex-wrap">
         {collections &&
           collections.length &&
-          collections.map(({ owner, metadata }) => (
+          collections.map(({ owner, id, metadata }) => (
             <Release
               title={metadata.name}
               description={metadata.description}
               coverImgSrc={metadata.image}
-              key={metadata.id._hex}
+              key={id}
               onClaim={() => handleClaim(metadata.id)}
               claimed={
                 owner !== process.env.NEXT_PUBLIC_DEFAULT_OWNER ||

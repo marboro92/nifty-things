@@ -27,7 +27,7 @@ contract NFTCollectible is ERC721Enumerable, Ownable {
 
         require(totalMinted.add(10) < MAX_SUPPLY, "Not enough NFTs left to reserve");
 
-        for (uint i = 0; i < 10; i++) {
+        for (uint i = 0; i < 8; i++) {
             _mintSingleNFT();
         }
     }
