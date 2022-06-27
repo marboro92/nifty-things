@@ -12,6 +12,10 @@ const NAV_ITEMS = [
     label: 'Library',
     href: '/library',
   },
+  {
+    label: <span className="font-bold">+ Mint</span>,
+    href: '/mint',
+  },
 ]
 
 const NavSection = ({ itemsList, currentRoute }) => (
