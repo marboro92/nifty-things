@@ -1,20 +1,23 @@
-import { useNFTCollection } from '@thirdweb-dev/react'
+import { useMarketplace } from '@thirdweb-dev/react'
 import { useAddress } from '@thirdweb-dev/react'
-import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
 
 const HomePage = () => {
-  const contract = useNFTCollection(process.env.NEXT_PUBLIC_SMART_CONTRACT)
+  const contract = useMarketplace(process.env.NEXT_PUBLIC_SMART_CONTRACT)
   const [collections, setCollections] = useState()
-  const [claimed, setClaimed] = useState()
   const address = useAddress()
   const collectionOriginalOwner = process.env.NEXT_PUBLIC_DEFAULT_OWNER
+  console.log(collections)
 
   const loadNFTCollections = async () => {
-    const nfts = await contract.getAll()
+    const listings = await contract.getAllListings()
+    const nfts = listings.map(({ asset, ...rest }) => ({
+      metadata: asset,
+      ...rest,
+    }))
     setCollections(nfts)
   }
 
