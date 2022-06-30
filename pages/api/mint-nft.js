@@ -2,16 +2,11 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import FormData from 'form-data'
 const fs = require('fs')
 
-const mintFile = (file) => {
-  var data = new FormData()
-  data.append('file', fs.createReadStream('/Users/Desktop/images/cat.JPG'))
-  data.append('pinataOptions', '{"cidVersion": 1}')
-  data.append(
-    'pinataMetadata',
-    '{"name": "MyFile", "keyvalues": {"company": "Pinata"}}'
-  )
+const mintFile = async (file) => {
+  const data = new FormData()
+  data.append('file', file)
   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`
-  fetch(url, {
+  const response = await fetch(url, data, {
     method: 'POST',
     headers: {
       'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
@@ -21,6 +16,8 @@ const mintFile = (file) => {
     },
     body: JSON.stringify({ file }),
   })
+  const info = await response.json()
+  return info
 }
 
 export default async function handler(req, res) {
@@ -37,12 +34,12 @@ export default async function handler(req, res) {
 
         const nftCollectionAddress = process.env.NEXT_PUBLIC_SMART_CONTRACT
         const nftCollection = sdk.getNFTCollection(nftCollectionAddress)
-        mintFile(image)
+        const fileInfo = await mintFile(image)
+        console.log(fileInfo)
         const nft = await nftCollection?.mintTo(address, {
           name,
           description,
-          image:
-            'https://gateway.pinata.cloud/ipfs/QmV8qougsq4FkFvp1tu1izsCZyozgPZCK2cmdfdpG6XxAC/7',
+          image: `https://gateway.ipfscdn.io/ipfs/${IPFS_KEY}/${index}`,
         })
 
         res.status(201).json(nft)
