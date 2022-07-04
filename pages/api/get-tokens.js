@@ -12,9 +12,13 @@ export default async function handler(req, res) {
       const { address } = req.body
 
       try {
-        const response = await contract?.transfer(address, 2)
-
-        res.status(201).json(response)
+        const balance = await contract?.balanceOf(address)
+        if (!balance) {
+          const response = await contract?.transfer(address, 2)
+          res.status(201).json(response)
+        } else {
+          res.status(403).json({ error: 'DAL already claimed' })
+        }
       } catch (error) {
         res.status(500).json({ error })
         console.error(error)
