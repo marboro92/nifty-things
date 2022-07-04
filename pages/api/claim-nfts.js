@@ -2,10 +2,7 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 
 export default async function handler(req, res) {
   // Connect to thirdweb SDK
-  const sdk = ThirdwebSDK.fromPrivateKey(
-    process.env.NEXT_PUBLIC_PRIVATE_KEY,
-    'rinkeby'
-  )
+  const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, 'rinkeby')
 
   const nftCollectionAddress = process.env.NEXT_PUBLIC_SMART_CONTRACT
   const nftCollection = sdk.getNFTCollection(nftCollectionAddress)

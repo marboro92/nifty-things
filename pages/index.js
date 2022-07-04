@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import Release from '../components/Release'
 import content from '../content/marketplace/discover.json'
 import { useEffect, useState } from 'react'
+import { Button } from '../components/buttons'
+import ClaimTokens from '../components/ClaimTokens'
 
 const HomePage = () => {
   const contract = useMarketplace(process.env.NEXT_PUBLIC_SMART_CONTRACT)
@@ -48,6 +50,7 @@ const HomePage = () => {
       <h3 className="font-bold text-[1.5rem] px-2 pt-2 md:pt-5 pb-2">
         {content.subtitle}
       </h3>
+      <ClaimTokens address={address} />
       <div className="flex flex-wrap">
         {collections &&
           collections.length &&
@@ -58,10 +61,6 @@ const HomePage = () => {
               coverImgSrc={metadata.image}
               key={metadata.id._hex}
               onClaim={() => handleClaim(metadata.id)}
-              claimed={
-                owner !== process.env.NEXT_PUBLIC_DEFAULT_OWNER ||
-                address == collectionOriginalOwner
-              }
             />
           ))}
       </div>
