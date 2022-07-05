@@ -1,10 +1,3 @@
-import Link from 'next/link'
-import { useState } from 'react'
-import { MenuButton, PillButton } from '.'
-import Head from '../Head'
-import Sidebar from '../sidebar/Sidebar'
-import Player from '../player/Player'
-
 import { forwardRef } from 'react'
 
 const Tab = (

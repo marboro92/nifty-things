@@ -1,6 +1,4 @@
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
-
-import { configureAmplify } from '../utils/cognito'
 import '../styles/globals.css'
 import { CreatorUserProvider } from '../contexts/CreatorUserContext'
 import { CreatorCollectionsProvider } from '../contexts/CreatorCollectionsContext'
@@ -8,8 +6,6 @@ import { CreatorCollectionsProvider } from '../contexts/CreatorCollectionsContex
 // import { Web3Auth } from '@web3auth/web3auth'
 // import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from '@web3auth/base'
 // import RPC from '../utils/evm'
-
-configureAmplify()
 
 function MyApp({ Component, pageProps }) {
   return (
