@@ -54,13 +54,13 @@ const HomePage = () => {
       <div className="flex flex-wrap">
         {collections &&
           collections.length &&
-          collections.map(({ owner, metadata }) => (
+          collections.map(({ tokenId, metadata }) => (
             <Release
               title={metadata.name}
               description={metadata.description}
               coverImgSrc={metadata.image}
               key={metadata.id._hex}
-              onClaim={() => handleClaim(metadata.id)}
+              onClaim={() => handleClaim(tokenId)}
             />
           ))}
       </div>

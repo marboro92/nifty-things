@@ -2,17 +2,17 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 
 export default async function handler(req, res) {
   // Connect to thirdweb SDK
-  const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, 'rinkeby')
+  const sdk = new ThirdwebSDK('rinkeby')
 
   const nftCollectionAddress = process.env.NEXT_PUBLIC_SMART_CONTRACT
-  const nftCollection = sdk.getNFTCollection(nftCollectionAddress)
+  const contract = sdk.getMarketplace(nftCollectionAddress)
 
   switch (req.method) {
     case 'POST':
       const { id, address } = req.body
 
       try {
-        const response = await nftCollection?.transfer(address, id)
+        const response = await contract?.buyoutListing(id, 1)
 
         res.status(201).json({
           payload: response?.payload,
